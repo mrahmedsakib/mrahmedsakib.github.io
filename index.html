@@ -1353,6 +1353,27 @@ footer {
   .modal-header { padding: 1.4rem 1.4rem 1.2rem; }
 }
 
+.cert-exp-wrapper {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #f0fdf4 0%, #ede9fe 100%);
+}
+
+#techBg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+.cert-exp-wrapper .section-container {
+  position: relative;
+  z-index: 1;
+}
+
 </style>
 </head>
 <body>
@@ -1544,59 +1565,65 @@ footer {
   </div>
 </section>
 
-<!-- সার্টিফিকেট -->
-<section id="certifications">
-  <div class="section-container">
-    <h2 class="section-title">Certifications</h2>
-    <div class="certs-grid">
-      <div class="cert-card">
-        <div class="cert-icon"><i class="fas fa-tasks"></i></div>
-        <h3>Lean Project Management</h3>
-        <p>LeanPM® Foundation</p>
-        <div class="cert-badge">Feb 2026</div>
-      </div>
-      <div class="cert-card">
-        <div class="cert-icon"><i class="fas fa-shield-alt"></i></div>
-        <h3>Cybersecurity</h3>
-        <p>Byte Capsule</p>
-        <div class="cert-badge">Oct 2023</div>
-      </div>
-      <div class="cert-card">
-        <div class="cert-icon"><i class="fas fa-database"></i></div>
-        <h3>Big Data Technology</h3>
-        <p>IIT, University of Dhaka</p>
-        <div class="cert-badge">May 2023</div>
-      </div>
-      <div class="cert-card">
-        <div class="cert-icon"><i class="fas fa-chalkboard-user"></i></div>
-        <h3>Employability Skilling</h3>
-        <p>Wadhwani Foundation</p>
-        <div class="cert-badge">Nov 2023</div>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- সার্টিফিকেট + এক্সপেরিয়েন্স wrapper -->
+<div class="cert-exp-wrapper">
 
-<!-- এক্সপেরিয়েন্স -->
-<section id="experience">
-  <div class="section-container">
-    <h2 class="section-title">Work Experience</h2>
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-date">2023 — Present</div>
-        <div class="timeline-title">Junior Software Engineer</div>
-        <div class="timeline-company">Mysoftheaven (BD) LTD.</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-date">2022 — 2023</div>
-        <div class="timeline-title">Support & Implementation Engineer</div>
-        <div class="timeline-company">Mysoftheaven (BD) LTD.</div>
+  <!-- সার্টিফিকেট -->
+  <section id="certifications">
+    <div class="section-container">
+      <h2 class="section-title">Certifications</h2>
+      <div class="certs-grid">
+        <div class="cert-card">
+          <div class="cert-icon"><i class="fas fa-tasks"></i></div>
+          <h3>Lean Project Management</h3>
+          <p>LeanPM® Foundation</p>
+          <div class="cert-badge">Feb 2026</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon"><i class="fas fa-shield-alt"></i></div>
+          <h3>Cybersecurity</h3>
+          <p>Byte Capsule</p>
+          <div class="cert-badge">Oct 2023</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon"><i class="fas fa-database"></i></div>
+          <h3>Big Data Technology</h3>
+          <p>IIT, University of Dhaka</p>
+          <div class="cert-badge">May 2023</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon"><i class="fas fa-chalkboard-user"></i></div>
+          <h3>Employability Skilling</h3>
+          <p>Wadhwani Foundation</p>
+          <div class="cert-badge">Nov 2023</div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <!-- এক্সপেরিয়েন্স -->
+  <section id="experience">
+    <div class="section-container">
+      <h2 class="section-title">Work Experience</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2023 — Present</div>
+          <div class="timeline-title">Junior Software Engineer</div>
+          <div class="timeline-company">Mysoftheaven (BD) LTD.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2022 — 2023</div>
+          <div class="timeline-title">Support & Implementation Engineer</div>
+          <div class="timeline-company">Mysoftheaven (BD) LTD.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <canvas id="techBg"></canvas>
+</div>
 
 <!-- কন্টাক্ট -->
 <section id="contact">
@@ -1951,6 +1978,73 @@ document.getElementById('projectModal').addEventListener('click', function(e) {
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') closeModal();
 });
+
+// ========== CERT-EXP BACKGROUND ANIMATION ==========
+(function () {
+  const canvas = document.getElementById('techBg');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const wrapper = canvas.parentElement;
+  const nodes = [];
+  const NODE_COUNT = 40;
+
+  function resize() {
+    canvas.width = wrapper.offsetWidth;
+    canvas.height = wrapper.offsetHeight;
+  }
+
+  function initNodes() {
+    nodes.length = 0;
+    for (let i = 0; i < NODE_COUNT; i++) {
+      nodes.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5,
+        r: Math.random() * 3 + 2
+      });
+    }
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const dx = nodes[i].x - nodes[j].x;
+        const dy = nodes[i].y - nodes[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 140) {
+          ctx.beginPath();
+          ctx.moveTo(nodes[i].x, nodes[i].y);
+          ctx.lineTo(nodes[j].x, nodes[j].y);
+          ctx.strokeStyle = `rgba(45, 212, 191, ${1 - dist / 140})`;
+          ctx.lineWidth = 0.6;
+          ctx.stroke();
+        }
+      }
+    }
+
+    nodes.forEach(n => {
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(139, 92, 246, 0.5)';
+      ctx.fill();
+      n.x += n.vx;
+      n.y += n.vy;
+      if (n.x < 0 || n.x > canvas.width) n.vx *= -1;
+      if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
+    });
+
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', () => { resize(); initNodes(); });
+  resize();
+  initNodes();
+  draw();
+})();
+
 </script>
 </body>
 </html>
