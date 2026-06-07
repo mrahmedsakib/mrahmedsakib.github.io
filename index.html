@@ -697,6 +697,15 @@ footer {
     gap: 2rem;
   }
 
+  #matrixBg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+
   .hero h1 {
     font-size: 2.8rem;
   }
@@ -1371,6 +1380,7 @@ footer {
 
 <!-- হিরো -->
 <section id="home" class="hero">
+  <canvas id="matrixBg"></canvas>
   <div class="hero-container">
     <div>
       <div class="hero-badge">✦ CREATIVE DEVELOPER ✦</div>
@@ -1945,6 +1955,58 @@ document.getElementById('projectModal').addEventListener('click', function(e) {
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') closeModal();
 });
+</script>
+<script>
+(function() {
+  const canvas = document.getElementById('matrixBg');
+  const hero = document.getElementById('home');
+  const ctx = canvas.getContext('2d');
+  const CHARS = 'ラルイウエオカキクケコ0123456789ABCDEF</>{}[];Laravel PHP React MySQL API Git JWT'.split('');
+  const FS = 13;
+  let cols, drops;
+
+  function resize() {
+    canvas.width = hero.offsetWidth;
+    canvas.height = hero.offsetHeight;
+    cols = Math.floor(canvas.width / FS);
+    drops = Array.from({length: cols}, () => Math.random() * -50);
+  }
+
+  function draw() {
+    const W = canvas.width, H = canvas.height;
+    ctx.fillStyle = 'rgba(254,254,248,0.18)';
+    ctx.fillRect(0, 0, W, H);
+
+    for (let i = 0; i < cols; i++) {
+      const char = CHARS[Math.floor(Math.random() * CHARS.length)];
+      const x = i * FS, y = drops[i] * FS;
+      const p = y / H;
+
+      let alpha = p < 0.15 ? 0.55 + Math.random() * 0.35
+                : p < 0.45 ? 0.20 + Math.random() * 0.25
+                : p < 0.75 ? 0.08 + Math.random() * 0.12
+                :             0.03 + Math.random() * 0.06;
+
+      const col = p < 0.5 ? `rgba(45,212,191,${alpha})` : `rgba(139,92,246,${alpha})`;
+
+      if (Math.random() > 0.92) {
+        ctx.fillStyle = 'rgba(255,255,255,0.9)';
+        ctx.font = `bold ${FS}px monospace`;
+      } else {
+        ctx.fillStyle = col;
+        ctx.font = `${FS}px monospace`;
+      }
+
+      ctx.fillText(char, x, y);
+      if (y > H && Math.random() > 0.975) drops[i] = 0;
+      drops[i] += 0.45 + Math.random() * 0.35;
+    }
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+  setInterval(draw, 40);
+})();
 </script>
 </body>
 </html>
