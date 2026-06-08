@@ -1371,6 +1371,8 @@ footer {
   position:relative;
   overflow:hidden;
   border-radius:32px;
+  padding:60px 20px;
+  background: linear-gradient(135deg,#0f172a,#111827);
   isolation:isolate;
 }
 
@@ -1379,71 +1381,165 @@ footer {
   position:absolute;
   inset:0;
   z-index:0;
-  overflow:hidden;
   pointer-events:none;
 }
 
 .floating-tech i{
   position:absolute;
-  font-size:32px;
-  color:rgba(99,102,241,.08);
-  filter:drop-shadow(0 0 12px rgba(99,102,241,.25));
-  animation:floatTech linear infinite;
+  font-size:34px;
+  color:rgba(99,102,241,.12);
+  animation:floatTech 18s ease-in-out infinite;
+  transition:.3s;
+}
+
+.floating-tech i:nth-child(odd){
+  color:rgba(56,189,248,.10);
 }
 
 /* positions */
-.floating-tech i:nth-child(1){top:8%;left:6%;animation-duration:18s;}
-.floating-tech i:nth-child(2){top:18%;left:80%;animation-duration:24s;}
-.floating-tech i:nth-child(3){top:40%;left:12%;animation-duration:20s;}
-.floating-tech i:nth-child(4){top:65%;left:88%;animation-duration:26s;}
-.floating-tech i:nth-child(5){top:30%;left:55%;animation-duration:22s;}
-.floating-tech i:nth-child(6){top:75%;left:20%;animation-duration:19s;}
-.floating-tech i:nth-child(7){top:50%;left:72%;animation-duration:25s;}
-.floating-tech i:nth-child(8){top:82%;left:60%;animation-duration:21s;}
-.floating-tech i:nth-child(9){top:15%;left:35%;animation-duration:23s;}
-.floating-tech i:nth-child(10){top:58%;left:42%;animation-duration:28s;}
-.floating-tech i:nth-child(11){top:25%;left:92%;animation-duration:20s;}
-.floating-tech i:nth-child(12){top:85%;left:8%;animation-duration:27s;}
-.floating-tech i:nth-child(13){top:45%;left:28%;animation-duration:22s;}
-.floating-tech i:nth-child(14){top:70%;left:78%;animation-duration:24s;}
+.floating-tech i:nth-child(1){top:10%;left:6%;}
+.floating-tech i:nth-child(2){top:20%;left:80%;}
+.floating-tech i:nth-child(3){top:40%;left:12%;}
+.floating-tech i:nth-child(4){top:65%;left:88%;}
+.floating-tech i:nth-child(5){top:30%;left:55%;}
+.floating-tech i:nth-child(6){top:75%;left:20%;}
+.floating-tech i:nth-child(7){top:50%;left:72%;}
+.floating-tech i:nth-child(8){top:82%;left:60%;}
+.floating-tech i:nth-child(9){top:15%;left:35%;}
+.floating-tech i:nth-child(10){top:58%;left:42%;}
+.floating-tech i:nth-child(11){top:25%;left:92%;}
+.floating-tech i:nth-child(12){top:85%;left:8%;}
+.floating-tech i:nth-child(13){top:45%;left:28%;}
+.floating-tech i:nth-child(14){top:70%;left:78%;}
 
 @keyframes floatTech{
-  0%{
-    transform:translateY(0) rotate(0deg);
-  }
-  50%{
-    transform:translateY(-25px) rotate(8deg);
-  }
-  100%{
-    transform:translateY(0) rotate(0deg);
-  }
+  0%,100%{transform:translateY(0) rotate(0deg);}
+  50%{transform:translateY(-30px) rotate(10deg);}
 }
 
-/* content above background */
-#certifications,
-#experience{
+/* section title */
+.section-title{
+  font-size:28px;
+  font-weight:700;
+  color:#fff;
+  margin-bottom:25px;
+  position:relative;
+}
+
+.section-title::after{
+  content:"";
+  width:80px;
+  height:3px;
+  background:linear-gradient(90deg,#6366f1,#38bdf8);
+  position:absolute;
+  left:0;
+  bottom:-8px;
+  border-radius:10px;
+}
+
+/* CERT GRID */
+.certs-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:20px;
   position:relative;
   z-index:2;
 }
 
-/* glass cards */
-.cert-card,
-.timeline-item{
-  background:rgba(255,255,255,.75);
-  backdrop-filter:blur(20px);
-  -webkit-backdrop-filter:blur(20px);
-  border:1px solid rgba(255,255,255,.4);
-  box-shadow:
-    0 10px 30px rgba(0,0,0,.06),
-    0 0 0 1px rgba(255,255,255,.3);
+.cert-card{
+  padding:20px;
+  border-radius:18px;
+  background:rgba(255,255,255,.08);
+  backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,.12);
+  color:#fff;
+  transition:.4s;
+  position:relative;
+  overflow:hidden;
 }
 
-/* hover effect */
-.cert-card:hover,
+.cert-card::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  background:linear-gradient(45deg,#6366f1,#38bdf8,#22c55e);
+  opacity:0;
+  transition:.4s;
+  z-index:-1;
+}
+
+.cert-card:hover{
+  transform:translateY(-10px) scale(1.02);
+}
+
+.cert-card:hover::before{
+  opacity:.25;
+}
+
+.cert-icon{
+  font-size:26px;
+  margin-bottom:10px;
+  color:#38bdf8;
+}
+
+.cert-badge{
+  display:inline-block;
+  margin-top:10px;
+  font-size:12px;
+  padding:5px 10px;
+  border-radius:20px;
+  background:rgba(99,102,241,.2);
+  color:#c7d2fe;
+}
+
+/* TIMELINE */
+.timeline{
+  position:relative;
+  margin-top:20px;
+  padding-left:30px;
+  border-left:2px solid rgba(255,255,255,.15);
+  z-index:2;
+}
+
+.timeline-item{
+  position:relative;
+  margin-bottom:30px;
+  padding:20px;
+  border-radius:16px;
+  background:rgba(255,255,255,.06);
+  backdrop-filter:blur(16px);
+  transition:.4s;
+}
+
 .timeline-item:hover{
-  transform:translateY(-6px);
-  box-shadow:
-    0 20px 40px rgba(99,102,241,.12);
+  transform:translateX(8px);
+}
+
+.timeline-dot{
+  position:absolute;
+  left:-38px;
+  top:24px;
+  width:14px;
+  height:14px;
+  background:linear-gradient(45deg,#6366f1,#38bdf8);
+  border-radius:50%;
+  box-shadow:0 0 0 4px rgba(99,102,241,.15);
+}
+
+.timeline-content h3{
+  color:#fff;
+  margin:5px 0;
+  font-size:18px;
+}
+
+.timeline-content p{
+  color:rgba(255,255,255,.7);
+  margin:0;
+}
+
+.timeline-date{
+  font-size:12px;
+  color:#93c5fd;
 }
 
 </style>
@@ -1640,6 +1736,7 @@ footer {
 <!-- সার্টিফিকেট + এক্সপেরিয়েন্স wrapper -->
 <div class="cert-exp-wrapper">
 
+  <!-- floating background -->
   <div class="floating-tech">
     <i class="fab fa-laravel"></i>
     <i class="fab fa-php"></i>
@@ -1657,59 +1754,74 @@ footer {
     <i class="fas fa-layer-group"></i>
   </div>
 
-  <!-- সার্টিফিকেট -->
+  <!-- Certifications -->
   <section id="certifications">
     <div class="section-container">
       <h2 class="section-title">Certifications</h2>
+
       <div class="certs-grid">
+
         <div class="cert-card">
           <div class="cert-icon"><i class="fas fa-tasks"></i></div>
           <h3>Lean Project Management</h3>
           <p>LeanPM® Foundation</p>
-          <div class="cert-badge">Feb 2026</div>
+          <span class="cert-badge">Feb 2026</span>
         </div>
+
         <div class="cert-card">
           <div class="cert-icon"><i class="fas fa-shield-alt"></i></div>
           <h3>Cybersecurity</h3>
           <p>Byte Capsule</p>
-          <div class="cert-badge">Oct 2023</div>
+          <span class="cert-badge">Oct 2023</span>
         </div>
+
         <div class="cert-card">
           <div class="cert-icon"><i class="fas fa-database"></i></div>
           <h3>Big Data Technology</h3>
           <p>IIT, University of Dhaka</p>
-          <div class="cert-badge">May 2023</div>
+          <span class="cert-badge">May 2023</span>
         </div>
+
         <div class="cert-card">
           <div class="cert-icon"><i class="fas fa-chalkboard-user"></i></div>
           <h3>Employability Skilling</h3>
           <p>Wadhwani Foundation</p>
-          <div class="cert-badge">Nov 2023</div>
+          <span class="cert-badge">Nov 2023</span>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- এক্সপেরিয়েন্স -->
+  <!-- Experience -->
   <section id="experience">
     <div class="section-container">
       <h2 class="section-title">Work Experience</h2>
+
       <div class="timeline">
+
         <div class="timeline-item">
           <div class="timeline-dot"></div>
-          <div class="timeline-date">2023 — Present</div>
-          <div class="timeline-title">Junior Software Engineer</div>
-          <div class="timeline-company">Mysoftheaven (BD) LTD.</div>
+          <div class="timeline-content">
+            <span class="timeline-date">2023 — Present</span>
+            <h3>Junior Software Engineer</h3>
+            <p>Mysoftheaven (BD) LTD.</p>
+          </div>
         </div>
+
         <div class="timeline-item">
           <div class="timeline-dot"></div>
-          <div class="timeline-date">2022 — 2023</div>
-          <div class="timeline-title">Support & Implementation Engineer</div>
-          <div class="timeline-company">Mysoftheaven (BD) LTD.</div>
+          <div class="timeline-content">
+            <span class="timeline-date">2022 — 2023</span>
+            <h3>Support & Implementation Engineer</h3>
+            <p>Mysoftheaven (BD) LTD.</p>
+          </div>
         </div>
+
       </div>
     </div>
   </section>
+
 </div>
 
 <!-- কন্টাক্ট -->
@@ -2074,102 +2186,7 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape') closeModal();
 });
 
-// ========== TECH BACKGROUND ANIMATION ==========
-(function () {
-  const canvas = document.getElementById('techBg');
-  if (!canvas) return;
 
-  const ctx = canvas.getContext('2d');
-  const wrapper = canvas.parentElement;
-
-  const icons = [
-    '</>',
-    '{}',
-    'PHP',
-    'JS',
-    'API',
-    'SQL',
-    'Git',
-    'MVC',
-    'Laravel',
-    'React'
-  ];
-
-  let particles = [];
-  const COUNT = 35;
-
-  function resize() {
-    canvas.width = wrapper.offsetWidth;
-    canvas.height = wrapper.offsetHeight;
-  }
-
-  function init() {
-    particles = [];
-
-    for (let i = 0; i < COUNT; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.4,
-        vy: (Math.random() - 0.5) * 0.4,
-        text: icons[Math.floor(Math.random() * icons.length)],
-        size: 12 + Math.random() * 8
-      });
-    }
-  }
-
-  function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    // connection lines
-    for (let i = 0; i < particles.length; i++) {
-      for (let j = i + 1; j < particles.length; j++) {
-        const dx = particles[i].x - particles[j].x;
-        const dy = particles[i].y - particles[j].y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-
-        if (dist < 150) {
-          ctx.beginPath();
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = `rgba(99,102,241,${0.15 - dist / 1000})`;
-          ctx.lineWidth = 1;
-          ctx.stroke();
-        }
-      }
-    }
-
-    particles.forEach(p => {
-      p.x += p.vx;
-      p.y += p.vy;
-
-      if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-      if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-
-      // glow circle
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, 3, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(99,102,241,0.6)';
-      ctx.fill();
-
-      // tech label
-      ctx.font = `${p.size}px Inter`;
-      ctx.fillStyle = 'rgba(255,255,255,0.08)';
-      ctx.fillText(p.text, p.x + 10, p.y - 10);
-    });
-
-    requestAnimationFrame(animate);
-  }
-
-  window.addEventListener('resize', () => {
-    resize();
-    init();
-  });
-
-  resize();
-  init();
-  animate();
-})();
 </script>
 </body>
 </html>
