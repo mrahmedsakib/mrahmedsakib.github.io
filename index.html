@@ -262,7 +262,7 @@ nav.scrolled {
   50% { box-shadow: 0 0 0 6px rgba(200,241,53,0); }
 }
 
-.hero h1 {
+.hero h3 {
   font-family: var(--font-display);
   font-size: clamp(3rem, 6vw, 5.2rem);
   font-weight: 800;
@@ -272,13 +272,13 @@ nav.scrolled {
   color: var(--ink);
 }
 
-.hero h1 .highlight {
+.hero h3 .highlight {
   position: relative;
   display: inline-block;
   color: var(--ink);
 }
 
-.hero h1 .highlight::after {
+.hero h3 .highlight::after {
   content: '';
   position: absolute;
   bottom: 4px;
@@ -1391,7 +1391,7 @@ footer {
     gap: 2.5rem;
   }
 
-  .hero h1 { font-size: 3rem; }
+  .hero h3 { font-size: 3rem; }
   .hero-stats { justify-content: center; }
   .btn-group { justify-content: center; }
   .profile-wrapper { justify-content: center; }
@@ -1425,7 +1425,7 @@ footer {
   nav { top: 12px; padding: 0.7rem 1.4rem; width: 94%; }
   .logo { font-size: 1.1rem; }
   .hero { padding: 90px 4% 50px; }
-  .hero h1 { font-size: 2.4rem; }
+  .hero h3 { font-size: 2.4rem; }
   .hero-desc { font-size: 0.88rem; }
   .hero-stats { gap: 0; width: 100%; }
   .hero-stat-item { flex: 1; }
@@ -1459,7 +1459,7 @@ footer {
 @media (max-width: 480px) {
   nav { top: 10px; padding: 0.65rem 1.2rem; width: 96%; }
   .hero { padding: 80px 4% 40px; }
-  .hero h1 { font-size: 2rem; letter-spacing: -0.03em; }
+  .hero h3 { font-size: 2rem; letter-spacing: -0.03em; }
   .hero-badge { font-size: 0.6rem; letter-spacing: 1.5px; }
   .hero-stats { flex-wrap: wrap; }
   .stat-value { font-size: 1.45rem; }
@@ -1488,7 +1488,7 @@ footer {
 }
 
 @media (max-width: 360px) {
-  .hero h2 { font-size: 1.75rem; }
+  .hero h3 { font-size: 1.75rem; }
   .hero-stats { gap: 0; }
   .stat-value { font-size: 1.3rem; }
   .certs-grid { grid-template-columns: 1fr; }
@@ -1538,7 +1538,7 @@ footer {
         <span class="hero-badge-dot">✦</span>
         WEB DEVELOPER | SOFTWARE ENGINEER
       </div>
-      <h2>Imtiaz <span class="highlight">Ahmed</span></h2>
+      <h3>Imtiaz <span class="highlight">Ahmed</span></h3>
       <div class="typing-wrapper">
         <span id="typed-text"></span>
       </div>
