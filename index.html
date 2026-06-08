@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="description" content="Imtiaz Ahmed - Creative Full Stack Developer Portfolio">
-<title>Imtiaz Ahmed | Creative Developer</title>
+<title>Imtiaz Ahmed | Software Engineer</title>
 
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -180,14 +180,32 @@ nav.scrolled {
   color: transparent;
 }
 
+/* ===== TYPING TEXT FIX (NO PAGE JUMP) ===== */
+.typing-wrapper {
+  min-height: 40px;   /* গুরুত্বপূর্ণ: space reserve */
+  display: flex;
+  align-items: center;
+}
+
 #typed-text {
   font-size: 1.1rem;
   color: var(--text-light);
-  margin-bottom: 1.5rem;
   display: inline-block;
+  white-space: nowrap;
+
+  /* cursor */
   border-right: 2px solid var(--primary);
   padding-right: 8px;
-  animation: blink 0.75s step-end infinite;
+
+  /* stop layout shift */
+  min-height: 1.2em;
+}
+
+/* blinking cursor */
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
 }
 
 @keyframes blink {
@@ -788,10 +806,6 @@ footer {
 
   .hero h1 {
     font-size: 2.2rem;
-  }
-
-  #typed-text {
-    font-size: 0.95rem;
   }
 
   .hero-desc {
@@ -1400,10 +1414,10 @@ footer {
 <section id="home" class="hero">
   <div class="hero-container">
     <div>
-      <div class="hero-badge">✦ CREATIVE DEVELOPER ✦</div>
+      <div class="hero-badge">✦ CREATIVE DEVELOPER | SOFTWARE ENGINEER ✦</div>
       <h1>Imtiaz <span>Ahmed</span></h1>
-      <div>
-        <span id="typed-text">Building digital solutions</span>
+      <div class="typing-wrapper">
+        <span id="typed-text"></span>
       </div>
       <p class="hero-desc">
         I'm a passionate software engineer specializing in building beautiful, scalable web applications. 
@@ -1697,7 +1711,13 @@ footer {
 
 <script>
 // ========== টাইপিং অ্যানিমেশন ==========
-const texts = ["Building digital solutions", "Creating web experiences", "Writing clean code", "Solving problems"];
+const texts = [
+  "Software Engineer",
+  "Laravel Developer",
+  "Creating Web Experiences",
+  "Writing Clean Code",
+  "Problem Solver"
+];
 let idx = 0, char = 0, del = false;
 const typedEl = document.getElementById("typed-text");
 
@@ -2040,10 +2060,10 @@ document.addEventListener('keydown', e => {
   }
 
   window.addEventListener('resize', () => { resize(); initNodes(); });
-  resize();
-  initNodes();
-  draw();
-})();
+    resize();
+    initNodes();
+    draw();
+  })();
 
 </script>
 </body>
