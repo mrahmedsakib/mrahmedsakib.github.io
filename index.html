@@ -1367,30 +1367,32 @@ footer {
   .modal-header { padding: 1.4rem 1.4rem 1.2rem; }
 }
 
-.cert-exp-wrapper {
+/* .cert-exp-wrapper {
   position: relative;
   overflow: hidden;
   background: linear-gradient(135deg, #f0fdf4 0%, #ede9fe 100%);
+} */
+
+.cert-exp-wrapper{
+  position:relative;
+  overflow:hidden;
+  border-radius:32px;
 }
 
-#techBg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.cert-exp-wrapper {
-  position: relative;
-  overflow: hidden;
+#techBg{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  z-index:0;
+  opacity:.9;
+  pointer-events:none;
 }
 
 #certifications,
-#experience {
-  position: relative;
-  z-index: 2;
+#experience{
+  position:relative;
+  z-index:2;
 }
 
 </style>
@@ -2014,15 +2016,23 @@ document.addEventListener('keydown', e => {
   const ctx = canvas.getContext('2d');
   const wrapper = canvas.parentElement;
 
-  const techs = [
-    'Laravel', 'PHP', 'MySQL', 'JavaScript',
-    'React', 'API', 'Git', 'GitHub',
-    'Docker', 'REST', 'HTML', 'CSS',
-    'Bootstrap', 'Tailwind', 'jQuery',
-    'MVC', 'JSON', 'Linux'
+  const icons = [
+    'Laravel',
+    'PHP',
+    'MySQL',
+    'JavaScript',
+    'REST API',
+    'GitHub',
+    'Docker',
+    'React',
+    'Tailwind',
+    'Linux',
+    '</>',
+    '{}'
   ];
 
-  const particles = [];
+  let particles = [];
+  const COUNT = 35;
 
   function resize() {
     canvas.width = wrapper.offsetWidth;
@@ -2030,37 +2040,61 @@ document.addEventListener('keydown', e => {
   }
 
   function init() {
-    particles.length = 0;
+    particles = [];
 
-    for (let i = 0; i < 25; i++) {
+    for (let i = 0; i < COUNT; i++) {
       particles.push({
-        text: techs[Math.floor(Math.random() * techs.length)],
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        speed: 0.2 + Math.random() * 0.4,
-        size: 12 + Math.random() * 6,
-        opacity: 0.08 + Math.random() * 0.08
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: (Math.random() - 0.5) * 0.4,
+        text: icons[Math.floor(Math.random() * icons.length)],
+        size: 12 + Math.random() * 8
       });
     }
   }
 
-  function draw() {
+  function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    particles.forEach(p => {
-      ctx.font = `${p.size}px Inter`;
-      ctx.fillStyle = `rgba(99,102,241,${p.opacity})`;
-      ctx.fillText(p.text, p.x, p.y);
+    // connection lines
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
 
-      p.y -= p.speed;
-
-      if (p.y < -20) {
-        p.y = canvas.height + 20;
-        p.x = Math.random() * canvas.width;
+        if (dist < 150) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(99,102,241,${0.15 - dist / 1000})`;
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        }
       }
+    }
+
+    particles.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+
+      if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+      if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+      // glow circle
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, 3, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(99,102,241,0.6)';
+      ctx.fill();
+
+      // tech label
+      ctx.font = `${p.size}px Inter`;
+      ctx.fillStyle = 'rgba(255,255,255,0.08)';
+      ctx.fillText(p.text, p.x + 10, p.y - 10);
     });
 
-    requestAnimationFrame(draw);
+    requestAnimationFrame(animate);
   }
 
   window.addEventListener('resize', () => {
@@ -2070,10 +2104,8 @@ document.addEventListener('keydown', e => {
 
   resize();
   init();
-  draw();
-}
-)();
-
+  animate();
+})();
 </script>
 </body>
 </html>
