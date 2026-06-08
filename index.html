@@ -1378,14 +1378,19 @@ footer {
   inset: 0;
   width: 100%;
   height: 100%;
-  pointer-events: none;
   z-index: 0;
-  opacity: 0.5;
+  pointer-events: none;
 }
 
-.cert-exp-wrapper .section-container {
+.cert-exp-wrapper {
   position: relative;
-  z-index: 1;
+  overflow: hidden;
+}
+
+#certifications,
+#experience {
+  position: relative;
+  z-index: 2;
 }
 
 </style>
@@ -2001,29 +2006,40 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape') closeModal();
 });
 
-// ========== CERT-EXP BACKGROUND ANIMATION ==========
+// ========== TECH BACKGROUND ANIMATION ==========
 (function () {
   const canvas = document.getElementById('techBg');
   if (!canvas) return;
+
   const ctx = canvas.getContext('2d');
   const wrapper = canvas.parentElement;
-  const nodes = [];
-  const NODE_COUNT = 40;
+
+  const techs = [
+    'Laravel', 'PHP', 'MySQL', 'JavaScript',
+    'React', 'API', 'Git', 'GitHub',
+    'Docker', 'REST', 'HTML', 'CSS',
+    'Bootstrap', 'Tailwind', 'jQuery',
+    'MVC', 'JSON', 'Linux'
+  ];
+
+  const particles = [];
 
   function resize() {
     canvas.width = wrapper.offsetWidth;
     canvas.height = wrapper.offsetHeight;
   }
 
-  function initNodes() {
-    nodes.length = 0;
-    for (let i = 0; i < NODE_COUNT; i++) {
-      nodes.push({
+  function init() {
+    particles.length = 0;
+
+    for (let i = 0; i < 25; i++) {
+      particles.push({
+        text: techs[Math.floor(Math.random() * techs.length)],
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.5,
-        vy: (Math.random() - 0.5) * 0.5,
-        r: Math.random() * 3 + 2
+        speed: 0.2 + Math.random() * 0.4,
+        size: 12 + Math.random() * 6,
+        opacity: 0.08 + Math.random() * 0.08
       });
     }
   }
@@ -2031,41 +2047,32 @@ document.addEventListener('keydown', e => {
   function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    for (let i = 0; i < nodes.length; i++) {
-      for (let j = i + 1; j < nodes.length; j++) {
-        const dx = nodes[i].x - nodes[j].x;
-        const dy = nodes[i].y - nodes[j].y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 140) {
-          ctx.beginPath();
-          ctx.moveTo(nodes[i].x, nodes[i].y);
-          ctx.lineTo(nodes[j].x, nodes[j].y);
-          ctx.strokeStyle = `rgba(45, 212, 191, ${1 - dist / 140})`;
-          ctx.lineWidth = 0.6;
-          ctx.stroke();
-        }
-      }
-    }
+    particles.forEach(p => {
+      ctx.font = `${p.size}px Inter`;
+      ctx.fillStyle = `rgba(99,102,241,${p.opacity})`;
+      ctx.fillText(p.text, p.x, p.y);
 
-    nodes.forEach(n => {
-      ctx.beginPath();
-      ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(139, 92, 246, 0.5)';
-      ctx.fill();
-      n.x += n.vx;
-      n.y += n.vy;
-      if (n.x < 0 || n.x > canvas.width) n.vx *= -1;
-      if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
+      p.y -= p.speed;
+
+      if (p.y < -20) {
+        p.y = canvas.height + 20;
+        p.x = Math.random() * canvas.width;
+      }
     });
 
     requestAnimationFrame(draw);
   }
 
-  window.addEventListener('resize', () => { resize(); initNodes(); });
+  window.addEventListener('resize', () => {
     resize();
-    initNodes();
-    draw();
-  })();
+    init();
+  });
+
+  resize();
+  init();
+  draw();
+}
+)();
 
 </script>
 </body>
