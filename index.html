@@ -1367,32 +1367,83 @@ footer {
   .modal-header { padding: 1.4rem 1.4rem 1.2rem; }
 }
 
-/* .cert-exp-wrapper {
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(135deg, #f0fdf4 0%, #ede9fe 100%);
-} */
-
 .cert-exp-wrapper{
   position:relative;
   overflow:hidden;
   border-radius:32px;
+  isolation:isolate;
 }
 
-#techBg{
+/* floating background */
+.floating-tech{
   position:absolute;
   inset:0;
-  width:100%;
-  height:100%;
   z-index:0;
-  opacity:.9;
+  overflow:hidden;
   pointer-events:none;
 }
 
+.floating-tech i{
+  position:absolute;
+  font-size:32px;
+  color:rgba(99,102,241,.08);
+  filter:drop-shadow(0 0 12px rgba(99,102,241,.25));
+  animation:floatTech linear infinite;
+}
+
+/* positions */
+.floating-tech i:nth-child(1){top:8%;left:6%;animation-duration:18s;}
+.floating-tech i:nth-child(2){top:18%;left:80%;animation-duration:24s;}
+.floating-tech i:nth-child(3){top:40%;left:12%;animation-duration:20s;}
+.floating-tech i:nth-child(4){top:65%;left:88%;animation-duration:26s;}
+.floating-tech i:nth-child(5){top:30%;left:55%;animation-duration:22s;}
+.floating-tech i:nth-child(6){top:75%;left:20%;animation-duration:19s;}
+.floating-tech i:nth-child(7){top:50%;left:72%;animation-duration:25s;}
+.floating-tech i:nth-child(8){top:82%;left:60%;animation-duration:21s;}
+.floating-tech i:nth-child(9){top:15%;left:35%;animation-duration:23s;}
+.floating-tech i:nth-child(10){top:58%;left:42%;animation-duration:28s;}
+.floating-tech i:nth-child(11){top:25%;left:92%;animation-duration:20s;}
+.floating-tech i:nth-child(12){top:85%;left:8%;animation-duration:27s;}
+.floating-tech i:nth-child(13){top:45%;left:28%;animation-duration:22s;}
+.floating-tech i:nth-child(14){top:70%;left:78%;animation-duration:24s;}
+
+@keyframes floatTech{
+  0%{
+    transform:translateY(0) rotate(0deg);
+  }
+  50%{
+    transform:translateY(-25px) rotate(8deg);
+  }
+  100%{
+    transform:translateY(0) rotate(0deg);
+  }
+}
+
+/* content above background */
 #certifications,
 #experience{
   position:relative;
   z-index:2;
+}
+
+/* glass cards */
+.cert-card,
+.timeline-item{
+  background:rgba(255,255,255,.75);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,.4);
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.06),
+    0 0 0 1px rgba(255,255,255,.3);
+}
+
+/* hover effect */
+.cert-card:hover,
+.timeline-item:hover{
+  transform:translateY(-6px);
+  box-shadow:
+    0 20px 40px rgba(99,102,241,.12);
 }
 
 </style>
@@ -1589,6 +1640,23 @@ footer {
 <!-- সার্টিফিকেট + এক্সপেরিয়েন্স wrapper -->
 <div class="cert-exp-wrapper">
 
+  <div class="floating-tech">
+    <i class="fab fa-laravel"></i>
+    <i class="fab fa-php"></i>
+    <i class="fas fa-database"></i>
+    <i class="fas fa-code"></i>
+    <i class="fab fa-js"></i>
+    <i class="fab fa-react"></i>
+    <i class="fab fa-bootstrap"></i>
+    <i class="fab fa-git-alt"></i>
+    <i class="fab fa-docker"></i>
+    <i class="fab fa-linux"></i>
+    <i class="fab fa-aws"></i>
+    <i class="fas fa-server"></i>
+    <i class="fas fa-network-wired"></i>
+    <i class="fas fa-layer-group"></i>
+  </div>
+
   <!-- সার্টিফিকেট -->
   <section id="certifications">
     <div class="section-container">
@@ -1642,8 +1710,6 @@ footer {
       </div>
     </div>
   </section>
-
-  <canvas id="techBg"></canvas>
 </div>
 
 <!-- কন্টাক্ট -->
