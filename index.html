@@ -1514,6 +1514,14 @@ footer {
   .modal-project-title { font-size: 1.05rem; }
   nav { padding: 0.6rem 1rem; }
 }
+
+/* ABOUT */
+@media (max-width: 768px) {
+  #about .section-container > div {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
 </style>
 </head>
 <body>
@@ -1527,6 +1535,7 @@ footer {
     </button>
     <ul class="nav-links" id="navLinks">
       <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#projects">Work</a></li>
       <li><a href="#certifications">Certificates</a></li>
@@ -1546,19 +1555,18 @@ footer {
     <div>
       <div class="hero-badge">
         <span class="hero-badge-dot">✦</span>
-        WEB DEVELOPER | SOFTWARE ENGINEER
+        FULL STACK DEVELOPER | SOFTWARE ARCHITECT
       </div>
       <h1>Imtiaz <span class="highlight">Ahmed</span></h1>
       <div class="typing-wrapper">
         <span id="typed-text"></span>
       </div>
       <p class="hero-desc">
-        I'm a passionate software engineer specializing in building beautiful, scalable web applications. 
-        With 2+ years of experience in Laravel, CakePHP, and modern JavaScript, I bring ideas to life.
+        Full-stack software engineer with 2.5+ years building responsive websites, e-commerce stores & web applications. Specialized in Laravel, CakePHP, PHP, and modern JavaScript — with a strong grasp of software architecture, OOP, and design patterns.
       </p>
       <div class="hero-stats">
         <div class="hero-stat-item">
-          <span class="stat-value">2+</span>
+          <span class="stat-value">2.5+</span>
           <div class="stat-label">Years</div>
         </div>
         <div class="hero-stat-item">
@@ -1588,6 +1596,86 @@ footer {
           <span class="chip-dot" style="background:var(--sky);"></span>Full Stack Dev
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" style="background:var(--bg);padding:90px 5%;position:relative;overflow:hidden;">
+  <div class="section-container">
+    <p class="section-eyebrow">About Me</p>
+    <h2 class="section-title">Who I <span>Am</span></h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;margin-top:2rem;">
+
+      <!-- Left -->
+      <div>
+        <p style="color:var(--ink-2);font-size:1rem;font-weight:500;line-height:1.8;margin-bottom:1rem;">
+          I'm a passionate full-stack software engineer and software architect with <strong>2.5+ years</strong> of hands-on experience.
+        </p>
+        <p style="color:var(--ink-3);font-size:0.875rem;line-height:1.8;margin-bottom:0.8rem;">
+          I design and develop responsive websites, e-commerce stores, and web applications. Strong professional experience in <strong>PHP, Laravel, CakePHP</strong>, and modern frontend technologies — with a deep understanding of software architecture, OOP, and design patterns.
+        </p>
+        <p style="color:var(--ink-3);font-size:0.875rem;line-height:1.8;margin-bottom:1.8rem;">
+          I also have experience in cybersecurity, and I'm always open to R&D on new ideas and technologies.
+        </p>
+
+        <div style="display:flex;flex-direction:column;gap:0.6rem;margin-bottom:2rem;">
+          <div style="display:flex;align-items:center;gap:12px;background:white;border-radius:14px;padding:0.75rem 1rem;border:1px solid var(--border);box-shadow:var(--shadow-sm);font-size:0.83rem;color:var(--ink-2);transition:all 0.25s;">
+            <span style="width:34px;height:34px;border-radius:10px;background:var(--lime-pale);display:flex;align-items:center;justify-content:center;color:var(--lime-dark);flex-shrink:0;border:1px solid rgba(168,204,26,0.2);"><i class="fas fa-bolt"></i></span>
+            Performance optimization & scalable architecture
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;background:white;border-radius:14px;padding:0.75rem 1rem;border:1px solid var(--border);box-shadow:var(--shadow-sm);font-size:0.83rem;color:var(--ink-2);">
+            <span style="width:34px;height:34px;border-radius:10px;background:var(--lime-pale);display:flex;align-items:center;justify-content:center;color:var(--lime-dark);flex-shrink:0;border:1px solid rgba(168,204,26,0.2);"><i class="fas fa-shield-alt"></i></span>
+            Cybersecurity awareness & secure coding practices
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;background:white;border-radius:14px;padding:0.75rem 1rem;border:1px solid var(--border);box-shadow:var(--shadow-sm);font-size:0.83rem;color:var(--ink-2);">
+            <span style="width:34px;height:34px;border-radius:10px;background:var(--lime-pale);display:flex;align-items:center;justify-content:center;color:var(--lime-dark);flex-shrink:0;border:1px solid rgba(168,204,26,0.2);"><i class="fab fa-git-alt"></i></span>
+            Git proficiency & collaborative development
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;background:white;border-radius:14px;padding:0.75rem 1rem;border:1px solid var(--border);box-shadow:var(--shadow-sm);font-size:0.83rem;color:var(--ink-2);">
+            <span style="width:34px;height:34px;border-radius:10px;background:var(--lime-pale);display:flex;align-items:center;justify-content:center;color:var(--lime-dark);flex-shrink:0;border:1px solid rgba(168,204,26,0.2);"><i class="fas fa-lightbulb"></i></span>
+            Proactive learner, open to R&D on new technologies
+          </div>
+        </div>
+
+        <button onclick="openAboutModal()" class="btn-primary" style="border:none;cursor:pointer;">
+          Know More <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+
+      <!-- Right -->
+      <div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <div style="background:white;border-radius:22px;padding:1.8rem 1.4rem;text-align:center;border:1px solid var(--border);box-shadow:var(--shadow-sm);">
+            <div style="font-family:var(--font-display);font-size:2.6rem;font-weight:800;color:var(--ink);letter-spacing:-0.05em;line-height:1;">2.5+</div>
+            <div style="font-size:0.68rem;font-weight:600;color:var(--ink-3);margin-top:6px;letter-spacing:0.04em;text-transform:uppercase;">Years Experience</div>
+          </div>
+          <div style="background:var(--lime);border-radius:22px;padding:1.8rem 1.4rem;text-align:center;border:1px solid transparent;box-shadow:var(--shadow-sm);">
+            <div style="font-family:var(--font-display);font-size:2.6rem;font-weight:800;color:var(--ink);letter-spacing:-0.05em;line-height:1;">15+</div>
+            <div style="font-size:0.68rem;font-weight:600;color:rgba(15,14,12,0.65);margin-top:6px;letter-spacing:0.04em;text-transform:uppercase;">Projects Done</div>
+          </div>
+          <div style="background:var(--ink);border-radius:22px;padding:1.8rem 1.4rem;text-align:center;box-shadow:var(--shadow-sm);">
+            <div style="font-family:var(--font-display);font-size:2.6rem;font-weight:800;color:white;letter-spacing:-0.05em;line-height:1;">5+</div>
+            <div style="font-size:0.68rem;font-weight:600;color:rgba(255,255,255,0.5);margin-top:6px;letter-spacing:0.04em;text-transform:uppercase;">Technologies</div>
+          </div>
+          <div style="background:white;border-radius:22px;padding:1.8rem 1.4rem;text-align:center;border:1.5px solid var(--border-2);box-shadow:var(--shadow-sm);">
+            <div style="font-family:var(--font-display);font-size:2.6rem;font-weight:800;color:var(--ink);letter-spacing:-0.05em;line-height:1;">100%</div>
+            <div style="font-size:0.68rem;font-weight:600;color:var(--ink-3);margin-top:6px;letter-spacing:0.04em;text-transform:uppercase;">Satisfaction</div>
+          </div>
+        </div>
+
+        <!-- Tech strip -->
+        <div style="background:white;border-radius:20px;padding:1.2rem 1.6rem;border:1px solid var(--border);box-shadow:var(--shadow-sm);display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap;margin-top:1rem;">
+          <span style="font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--ink-3);margin-right:0.4rem;">Stack</span>
+          <span style="display:inline-flex;align-items:center;gap:5px;background:var(--bg-soft);border:1px solid var(--border-2);border-radius:30px;padding:4px 12px;font-size:0.68rem;font-weight:600;color:var(--ink-2);"><i class="fab fa-laravel" style="color:#FF2D20"></i> Laravel</span>
+          <span style="display:inline-flex;align-items:center;gap:5px;background:var(--bg-soft);border:1px solid var(--border-2);border-radius:30px;padding:4px 12px;font-size:0.68rem;font-weight:600;color:var(--ink-2);"><i class="fab fa-php" style="color:#777BB4"></i> PHP 8</span>
+          <span style="display:inline-flex;align-items:center;gap:5px;background:var(--bg-soft);border:1px solid var(--border-2);border-radius:30px;padding:4px 12px;font-size:0.68rem;font-weight:600;color:var(--ink-2);"><i class="fas fa-database" style="color:#00758F"></i> MySQL</span>
+          <span style="display:inline-flex;align-items:center;gap:5px;background:var(--bg-soft);border:1px solid var(--border-2);border-radius:30px;padding:4px 12px;font-size:0.68rem;font-weight:600;color:var(--ink-2);"><i class="fab fa-react" style="color:#61DAFB"></i> React</span>
+          <span style="display:inline-flex;align-items:center;gap:5px;background:var(--bg-soft);border:1px solid var(--border-2);border-radius:30px;padding:4px 12px;font-size:0.68rem;font-weight:600;color:var(--ink-2);"><i class="fab fa-js" style="color:#F7DF1E"></i> JavaScript</span>
+          <span style="display:inline-flex;align-items:center;gap:5px;background:var(--bg-soft);border:1px solid var(--border-2);border-radius:30px;padding:4px 12px;font-size:0.68rem;font-weight:600;color:var(--ink-2);"><i class="fab fa-docker" style="color:#2496ED"></i> Docker</span>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1765,32 +1853,44 @@ footer {
       <p class="section-subtitle">Continuous learning through recognized programs.</p>
       <div class="certs-grid">
 
-        <div class="cert-card">
+        <!-- Bachelor Degree -->
+        <div class="cert-card" onclick="openCertModal('degree')" style="cursor:pointer;">
+          <div class="cert-icon"><i class="fas fa-graduation-cap"></i></div>
+          <h3>Bachelor of Science</h3>
+          <p>Computer Science & Engineering</p>
+          <span class="cert-badge">Jun 2022</span>
+        </div>
+
+        <!-- Cybersecurity -->
+        <div class="cert-card" onclick="openCertModal('cyber')" style="cursor:pointer;">
+          <div class="cert-icon"><i class="fas fa-shield-alt"></i></div>
+          <h3>Cybersecurity</h3>
+          <p>Byte Capsule — Batch Topper 🏆</p>
+          <span class="cert-badge">Aug 2023</span>
+        </div>
+
+        <!-- Big Data -->
+        <div class="cert-card" onclick="openCertModal('bigdata')" style="cursor:pointer;">
+          <div class="cert-icon"><i class="fas fa-database"></i></div>
+          <h3>Big Data Technology</h3>
+          <p>IIT, University of Dhaka</p>
+          <span class="cert-badge">Aug 2023</span>
+        </div>
+
+        <!-- Employability -->
+        <div class="cert-card" onclick="openCertModal('employ')" style="cursor:pointer;">
+          <div class="cert-icon"><i class="fas fa-chalkboard-user"></i></div>
+          <h3>Employability Skilling</h3>
+          <p>Wadhwani Foundation — Advanced</p>
+          <span class="cert-badge">Nov 2023</span>
+        </div>
+
+        <!-- Lean PM -->
+        <div class="cert-card" onclick="openCertModal('lean')" style="cursor:pointer;">
           <div class="cert-icon"><i class="fas fa-tasks"></i></div>
           <h3>Lean Project Management</h3>
           <p>LeanPM® Foundation</p>
           <span class="cert-badge">Feb 2026</span>
-        </div>
-
-        <div class="cert-card">
-          <div class="cert-icon"><i class="fas fa-shield-alt"></i></div>
-          <h3>Cybersecurity</h3>
-          <p>Byte Capsule</p>
-          <span class="cert-badge">Oct 2023</span>
-        </div>
-
-        <div class="cert-card">
-          <div class="cert-icon"><i class="fas fa-database"></i></div>
-          <h3>Big Data Technology</h3>
-          <p>IIT, University of Dhaka</p>
-          <span class="cert-badge">May 2023</span>
-        </div>
-
-        <div class="cert-card">
-          <div class="cert-icon"><i class="fas fa-chalkboard-user"></i></div>
-          <h3>Employability Skilling</h3>
-          <p>Wadhwani Foundation</p>
-          <span class="cert-badge">Nov 2023</span>
         </div>
 
       </div>
@@ -1907,12 +2007,94 @@ footer {
   </div>
 </div>
 
+<!-- ABOUT MODAL -->
+<div class="modal-overlay" id="aboutModal">
+  <div class="modal-box" style="max-width:720px;border-radius:32px;">
+    <div style="padding:2rem 2rem 1.6rem;position:relative;background:linear-gradient(135deg,#edfcb2 0%,#f8f7f4 60%);border-bottom:1px solid var(--border);border-radius:32px 32px 0 0;">
+      <span style="display:inline-flex;align-items:center;gap:6px;font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;padding:5px 14px;border-radius:20px;margin-bottom:0.8rem;background:var(--lime);color:var(--ink);border:1px solid rgba(168,204,26,0.4);"><i class="fas fa-code"></i> Full Stack Engineer</span>
+      <h3 style="font-family:var(--font-display);font-size:1.7rem;font-weight:800;letter-spacing:-0.04em;color:var(--ink);margin-bottom:0.2rem;">Imtiaz Ahmed</h3>
+      <p style="font-size:0.82rem;color:var(--ink-3);font-weight:500;">Software Engineer · Mysoftheaven (BD) LTD. · Dhaka, Bangladesh</p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:1rem;">
+        <span style="display:inline-flex;align-items:center;gap:6px;font-size:0.68rem;font-weight:600;padding:5px 13px;border-radius:20px;background:var(--bg-soft);color:var(--ink-2);border:1px solid var(--border-2);"><i class="fas fa-briefcase"></i> 2.5+ Years</span>
+        <span style="display:inline-flex;align-items:center;gap:6px;font-size:0.68rem;font-weight:600;padding:5px 13px;border-radius:20px;background:var(--bg-soft);color:var(--ink-2);border:1px solid var(--border-2);"><i class="fab fa-laravel" style="color:#FF2D20"></i> Laravel Expert</span>
+        <span style="display:inline-flex;align-items:center;gap:6px;font-size:0.68rem;font-weight:600;padding:5px 13px;border-radius:20px;background:var(--bg-soft);color:var(--ink-2);border:1px solid var(--border-2);"><i class="fas fa-shield-alt" style="color:#4fb3e8"></i> Cybersecurity</span>
+        <span style="display:inline-flex;align-items:center;gap:6px;font-size:0.68rem;font-weight:600;padding:5px 13px;border-radius:20px;background:var(--bg-soft);color:var(--ink-2);border:1px solid var(--border-2);"><i class="fas fa-map-marker-alt"></i> Dhaka, BD</span>
+      </div>
+      <button class="modal-close" onclick="closeAboutModal()">✕</button>
+    </div>
+    <div class="modal-body">
+
+      <p class="modal-section-label">About</p>
+      <p class="modal-desc">I have 2.5+ years of experience as a full-stack software engineer and software architect. I am working in a company as a software engineer and have designed and developed responsive websites, e-commerce stores, and web applications. I have strong professional working experience with PHP, PHP Frameworks (Laravel, CakePHP), and also frontend technologies — with a deep understanding of software architecture, software design, maintenance, OOP, and design patterns. Additionally, I have experience in cybersecurity.</p>
+
+      <p class="modal-section-label">Professional Highlights</p>
+      <p class="modal-desc">In my journey as a software engineer, I have successfully contributed to projects that demanded a deep understanding of backend technologies. My ability to architect scalable solutions and optimize code has led to the development of high-performance applications. I am adept at leveraging Laravel's powerful features and crafting efficient algorithms to solve complex problems.</p>
+
+      <p class="modal-section-label">Skills & Expertise</p>
+      <div style="display:flex;flex-direction:column;gap:0.55rem;margin-bottom:1.6rem;">
+        <div style="display:flex;align-items:flex-start;gap:10px;background:var(--bg-soft);border-radius:13px;padding:0.75rem 1rem;border:1px solid var(--border);font-size:0.83rem;color:var(--ink-2);line-height:1.55;">
+          <span style="width:28px;height:28px;border-radius:8px;background:var(--lime-pale);display:flex;align-items:center;justify-content:center;color:var(--lime-dark);flex-shrink:0;"><i class="fas fa-code"></i></span>
+          Proficient in HTML, CSS, JavaScript, PHP, and MySQL — developing responsive websites and web applications from scratch.
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:10px;background:var(--bg-soft);border-radius:13px;padding:0.75rem 1rem;border:1px solid var(--border);font-size:0.83rem;color:var(--ink-2);line-height:1.55;">
+          <span style="width:28px;height:28px;border-radius:8px;background:var(--lime-pale);display:flex;align-items:center;justify-content:center;color:var(--lime-dark);flex-shrink:0;"><i class="fas fa-bolt"></i></span>
+          Performance Optimization — specializing in optimizing applications for speed and efficiency, ensuring an exceptional user experience.
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:10px;background:var(--bg-soft);border-radius:13px;padding:0.75rem 1rem;border:1px solid var(--border);font-size:0.83rem;color:var(--ink-2);line-height:1.55;">
+          <span style="width:28px;height:28px;border-radius:8px;background:var(--lime-pale);display:flex;align-items:center;justify-content:center;color:var(--lime-dark);flex-shrink:0;"><i class="fas fa-expand-arrows-alt"></i></span>
+          Scalability — solutions designed to handle increased loads and growing user bases with ease.
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:10px;background:var(--bg-soft);border-radius:13px;padding:0.75rem 1rem;border:1px solid var(--border);font-size:0.83rem;color:var(--ink-2);line-height:1.55;">
+          <span style="width:28px;height:28px;border-radius:8px;background:var(--lime-pale);display:flex;align-items:center;justify-content:center;color:var(--lime-dark);flex-shrink:0;"><i class="fab fa-git-alt"></i></span>
+          Git Proficiency — reliable version control enabling streamlined collaboration and code management.
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:10px;background:var(--bg-soft);border-radius:13px;padding:0.75rem 1rem;border:1px solid var(--border);font-size:0.83rem;color:var(--ink-2);line-height:1.55;">
+          <span style="width:28px;height:28px;border-radius:8px;background:var(--lime-pale);display:flex;align-items:center;justify-content:center;color:var(--lime-dark);flex-shrink:0;"><i class="fas fa-lightbulb"></i></span>
+          Proactive, fast learner, result-oriented — open to R&D on new ideas and technologies.
+        </div>
+      </div>
+
+      <hr class="modal-divider">
+      <p style="font-size:0.82rem;color:var(--ink-3);line-height:1.75;margin-bottom:1.5rem;font-style:italic;padding-left:1rem;border-left:3px solid var(--lime);">
+        I am enthusiastic about taking on new challenges, collaborating with passionate teams, and contributing to innovative projects. A hardworking, confident, and highly ambitious individual with a strong desire to learn new skills.
+      </p>
+
+      <div class="modal-links">
+        <a href="mailto:sakibimtiaz07@gmail.com" class="modal-link-btn modal-link-primary"><i class="fas fa-envelope"></i> Get In Touch</a>
+        <a href="https://github.com/mrahmedsakib" target="_blank" class="modal-link-btn modal-link-secondary"><i class="fab fa-github"></i> GitHub</a>
+        <a href="https://sites.google.com/view/mrahmedsakib" target="_blank" class="modal-link-btn modal-link-secondary"><i class="fas fa-external-link-alt"></i> Portfolio Site</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CERT MODAL -->
+<div class="modal-overlay" id="certModal">
+  <div class="modal-box" style="max-width:620px;">
+    <div class="modal-header" id="certModalHeader">
+      <span class="modal-type-badge" id="certBadge"></span>
+      <h3 class="modal-project-title" id="certTitle"></h3>
+      <p class="modal-company" id="certOrg"></p>
+      <button class="modal-close" onclick="closeCertModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-meta-row" id="certMeta"></div>
+      <p class="modal-section-label">Details</p>
+      <p class="modal-desc" id="certDesc"></p>
+      <hr class="modal-divider">
+      <div class="modal-links" id="certLinks"></div>
+    </div>
+  </div>
+</div>
+
 <script>
 // ========== TYPING ANIMATION ==========
 const texts = [
   "Software Engineer",
   "Laravel Developer",
   "Full Stack Developer",
+  "Software Architect",
+  "PHP & Laravel Expert",
   "Creating Web Experiences",
   "Writing Clean Code",
   "Solving problems",
@@ -2187,6 +2369,153 @@ document.getElementById('projectModal').addEventListener('click', function(e) {
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') closeModal();
 });
+
+// aboutModal
+function openAboutModal() {
+  document.getElementById('aboutModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeAboutModal() {
+  document.getElementById('aboutModal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('aboutModal').addEventListener('click', function(e) {
+  if (e.target === this) closeAboutModal();
+});
+
+// aboutModal end
+
+// Certifications
+const certs = {
+  degree: {
+    title: "🎓 Bachelor of Science",
+    org: "Computer Science & Engineering · Faculty of Engineering",
+    badge: "Academic Degree",
+    headerBg: "#eff6ff",
+    badgeBg: "#dbeafe", badgeColor: "#1e40af",
+    titleColor: "#1e3a8a", orgColor: "#1d4ed8",
+    meta: [
+      { icon: "📅", label: "Completed June 2022" },
+      { icon: "🏛️", label: "Faculty of Engineering" },
+      { icon: "💻", label: "Computer Science & Engineering" }
+    ],
+    desc: "Successfully completed my Bachelor's degree program in Computer Science and Engineering in June 2022 from the Faculty of Engineering. The program covered core areas of software engineering, algorithms, data structures, database systems, and computer networks.",
+    links: []
+  },
+  cyber: {
+    title: "🛡️ Cybersecurity for Professionals",
+    org: "Byte Capsule · 4th Batch",
+    badge: "🏆 Batch Topper",
+    headerBg: "#fdf4ff",
+    badgeBg: "#fae8ff", badgeColor: "#6b21a8",
+    titleColor: "#581c87", orgColor: "#7e22ce",
+    meta: [
+      { icon: "📅", label: "Aug 2023" },
+      { icon: "⏱️", label: "6-Month Program" },
+      { icon: "🏆", label: "Batch Topper" }
+    ],
+    desc: "Completed the Cybersecurity for Professionals course in August 2023 from the 4th batch of Byte Capsule. The course was a 6-month self-learning program covering cybersecurity fundamentals, ethical hacking, network security, and secure coding practices. Achieved batch topper distinction.",
+    links: [
+      { label: "🔗 View Certificate", url: "#", type: "primary" }
+    ]
+  },
+  bigdata: {
+    title: "📊 Big Data Technology",
+    org: "IIT, University of Dhaka · EDGE Project",
+    badge: "Govt. Program",
+    headerBg: "#f0fdfa",
+    badgeBg: "#ccfbf1", badgeColor: "#065f46",
+    titleColor: "#064e3b", orgColor: "#059669",
+    meta: [
+      { icon: "📅", label: "26 May – 01 Aug 2023" },
+      { icon: "🏛️", label: "University of Dhaka" },
+      { icon: "🌐", label: "BCC · ICT Division" }
+    ],
+    desc: "Successfully completed the training on Big Data Technology under the Hire and Train program of the Enhancing Digital Government & Economy (EDGE) project by the Bangladesh Computer Council (BCC), ICT Division. The program was organized by Mysoftheaven (BD) Ltd. and managed by the Institute of Information Technology (IIT), University of Dhaka — conducted from 26 May 2023 to 01 August 2023.",
+    links: [
+      { label: "🔗 View Certificate", url: "#", type: "primary" }
+    ]
+  },
+  employ: {
+    title: "💼 21st Century Employability Skilling",
+    org: "Wadhwani Foundation · EDGE (BCC)",
+    badge: "Advanced Level",
+    headerBg: "#fffbeb",
+    badgeBg: "#fef3c7", badgeColor: "#92400e",
+    titleColor: "#78350f", orgColor: "#b45309",
+    meta: [
+      { icon: "📅", label: "27 Nov 2023" },
+      { icon: "📈", label: "Advanced Level" },
+      { icon: "🌐", label: "Digital Government & Economy — EDGE" }
+    ],
+    desc: "Completed the 21st Century Employability Skilling Program — Advanced level on 27 November 2023 under the Digital Government and Economy — EDGE program by BCC. The program covered professional skills, digital literacy, workplace communication, and career readiness for the modern tech industry.",
+    links: [
+      { label: "🔗 View Certificate", url: "#", type: "primary" }
+    ]
+  },
+  lean: {
+    title: "📋 Lean Project Management",
+    org: "LeanPM® Foundation",
+    badge: "Professional Cert",
+    headerBg: "#f0fdf4",
+    badgeBg: "#dcfce7", badgeColor: "#166534",
+    titleColor: "#14532d", orgColor: "#15803d",
+    meta: [
+      { icon: "📅", label: "Feb 2026" },
+      { icon: "🏅", label: "LeanPM® Foundation" },
+      { icon: "⚙️", label: "Agile & Lean Methodology" }
+    ],
+    desc: "Completed the LeanPM® Foundation certification in Lean Project Management in February 2026. The certification covers lean principles, agile methodologies, waste elimination, continuous improvement (Kaizen), and applying lean thinking to software project management.",
+    links: [
+      { label: "🔗 View Certificate", url: "#", type: "primary" }
+    ]
+  }
+};
+
+function openCertModal(key) {
+  const c = certs[key];
+  if (!c) return;
+
+  document.getElementById('certModalHeader').style.background = c.headerBg;
+
+  const badge = document.getElementById('certBadge');
+  badge.textContent = c.badge;
+  badge.style.cssText = `background:${c.badgeBg};color:${c.badgeColor};font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;padding:4px 12px;border-radius:20px;margin-bottom:0.7rem;display:inline-block;`;
+
+  const title = document.getElementById('certTitle');
+  title.textContent = c.title;
+  title.style.color = c.titleColor;
+
+  const org = document.getElementById('certOrg');
+  org.textContent = c.org;
+  org.style.color = c.orgColor;
+
+  document.getElementById('certMeta').innerHTML = c.meta.map(m =>
+    `<span class="modal-meta-chip">${m.icon} ${m.label}</span>`
+  ).join('');
+
+  document.getElementById('certDesc').textContent = c.desc;
+
+  document.getElementById('certLinks').innerHTML = c.links.map(l =>
+    `<a href="${l.url}" class="modal-link-btn ${l.type === 'primary' ? 'modal-link-primary' : 'modal-link-secondary'}" target="_blank">${l.label}</a>`
+  ).join('') || '<span style="font-size:0.78rem;color:var(--ink-3);">No external link available.</span>';
+
+  document.getElementById('certModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCertModal() {
+  document.getElementById('certModal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('certModal').addEventListener('click', function(e) {
+  if (e.target === this) closeCertModal();
+});
+
+// Certifications End
 </script>
 </body>
 </html>
