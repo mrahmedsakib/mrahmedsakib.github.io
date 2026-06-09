@@ -24,7 +24,7 @@
   --ink: #0f0e0c;
   --ink-2: #3a3833;
   --ink-3: #7a776f;
-  --ink-4: #b0ad a6;
+  --ink-4: #b0ada6;
   --lime: #c8f135;
   --lime-dark: #a8cc1a;
   --lime-pale: #f0fac0;
@@ -49,7 +49,7 @@ html { scroll-behavior: smooth; }
 
 body {
   font-family: var(--font-body);
-  background: #ffffff;
+  background: var(--bg-card);
   color: var(--ink);
   line-height: 1.55;
   overflow-x: hidden;
@@ -630,7 +630,28 @@ section {
 }
 
 /* ====== PROJECTS ====== */
-#projects { background: var(--bg); }
+#projects {
+  background-image: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1600&fit=crop&auto=format');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden;
+}
+
+#projects::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(248,247,244,0.82);
+  pointer-events: none;
+  z-index: 0;
+}
+
+#projects .section-container {
+  position: relative;
+  z-index: 1;
+}
 
 .projects-grid {
   display: grid;
@@ -1733,9 +1754,9 @@ footer {
       <!-- LSG Portal -->
       <div class="project-card">
         <div class="project-gallery">
-          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=200" alt="Dashboard">
-          <img src="https://images.unsplash.com/photo-1556742412-2e6b8c1a5f8b?w=200" alt="Analytics">
-          <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=200" alt="Users">
+          <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=200&fit=crop" alt="Server">
+          <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=200&fit=crop" alt="Code">
+          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=200&fit=crop" alt="Dashboard">
         </div>
         <div class="project-info">
           <h3 class="project-title">🏛️ LSG Portal</h3>
@@ -1748,9 +1769,9 @@ footer {
       <!-- LDTAX -->
       <div class="project-card">
         <div class="project-gallery">
-          <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=200" alt="Tax">
-          <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=200" alt="Payment">
-          <img src="https://images.unsplash.com/photo-1556741533-f6acd647d2fb?w=200" alt="Reports">
+          <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=200&fit=crop" alt="Fintech">
+          <img src="https://images.unsplash.com/photo-1601597111158-2fceff292cdc?w=200&fit=crop" alt="Payment">
+          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=200&fit=crop" alt="Reports">
         </div>
         <div class="project-info">
           <h3 class="project-title">📑 LDTAX System</h3>
@@ -1763,9 +1784,9 @@ footer {
       <!-- E-commerce -->
       <div class="project-card">
         <div class="project-gallery">
-          <img src="https://images.unsplash.com/photo-1556742412-2e6b8c1a5f8b?w=200" alt="Products">
-          <img src="https://images.unsplash.com/photo-1556741533-f6acd647d2fb?w=200" alt="Cart">
-          <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=200" alt="Checkout">
+          <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=200&fit=crop" alt="Tech Team">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=200&fit=crop" alt="Analytics">
+          <img src="https://images.unsplash.com/photo-1587614382346-4ec70e388b28?w=200&fit=crop" alt="Code">
         </div>
         <div class="project-info">
           <h3 class="project-title">🛍️ E-commerce</h3>
@@ -1778,9 +1799,9 @@ footer {
       <!-- SSTEX Admin -->
       <div class="project-card">
         <div class="project-gallery">
-          <img src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=200" alt="Admin">
-          <img src="https://images.unsplash.com/photo-1556742412-2e6b8c1a5f8b?w=200" alt="Products">
-          <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=200" alt="Settings">
+          <img src="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?w=200&fit=crop" alt="Admin">
+          <img src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?w=200&fit=crop" alt="Code">
+          <img src="https://images.unsplash.com/photo-1555099962-4199c345e5dd?w=200&fit=crop" alt="Dashboard">
         </div>
         <div class="project-info">
           <h3 class="project-title">🏢 SSTEX Admin</h3>
@@ -1793,9 +1814,9 @@ footer {
       <!-- Task Manager -->
       <div class="project-card">
         <div class="project-gallery">
-          <img src="https://images.unsplash.com/photo-1555421689-491a97ff2040?w=200" alt="Tasks">
-          <img src="https://images.unsplash.com/photo-1556742412-2e6b8c1a5f8b?w=200" alt="Board">
-          <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=200" alt="Calendar">
+          <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=200&fit=crop" alt="Kanban">
+          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=200&fit=crop" alt="Team">
+          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=200&fit=crop" alt="Laptop">
         </div>
         <div class="project-info">
           <h3 class="project-title">✅ Task Manager</h3>
@@ -1808,9 +1829,9 @@ footer {
       <!-- Analytics Dashboard -->
       <div class="project-card">
         <div class="project-gallery">
-          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=200" alt="Analytics">
-          <img src="https://images.unsplash.com/photo-1556742412-2e6b8c1a5f8b?w=200" alt="Charts">
-          <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=200" alt="Metrics">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=200&fit=crop" alt="Analytics">
+          <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=200&fit=crop" alt="Charts">
+          <img src="https://images.unsplash.com/photo-1526628953301-3cd81f5c89b2?w=200&fit=crop" alt="Data">
         </div>
         <div class="project-info">
           <h3 class="project-title">📊 Analytics Dashboard</h3>
@@ -2367,10 +2388,14 @@ document.getElementById('projectModal').addEventListener('click', function(e) {
 });
 
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeModal();
+  if (e.key === 'Escape') {
+    closeModal();
+    closeAboutModal();
+    closeCertModal();
+  }
 });
 
-// aboutModal
+// About Modal
 function openAboutModal() {
   document.getElementById('aboutModal').classList.add('active');
   document.body.style.overflow = 'hidden';
@@ -2385,7 +2410,7 @@ document.getElementById('aboutModal').addEventListener('click', function(e) {
   if (e.target === this) closeAboutModal();
 });
 
-// aboutModal end
+// About Modal End
 
 // Certifications
 const certs = {
@@ -2516,6 +2541,7 @@ document.getElementById('certModal').addEventListener('click', function(e) {
 });
 
 // Certifications End
+
 </script>
 </body>
 </html>
