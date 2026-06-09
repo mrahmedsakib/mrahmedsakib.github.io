@@ -814,48 +814,51 @@ section {
   z-index: 0;
 }
 
-/* floating bg icons */
+/* ====== FLOATING TECH ICONS ====== */
 .floating-tech {
   position: absolute;
   inset: 0;
-  z-index: 0;
   pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
 }
 
 .floating-tech i {
   position: absolute;
-  font-size: 32px;
-  color: rgba(15,14,12,0.45);
-  animation: floatTech 18s ease-in-out infinite;
+  font-size: 28px;
+  opacity: 0;
+  animation: techFloat var(--dur, 10s) var(--delay, 0s) ease-in-out infinite;
 }
 
-.floating-tech i:nth-child(odd) { color: rgba(168,204,26,0.48); }
-.floating-tech i:nth-child(1){top:10%;left:6%;}
-.floating-tech i:nth-child(2){top:20%;left:80%;}
-.floating-tech i:nth-child(3){top:40%;left:12%;}
-.floating-tech i:nth-child(4){top:65%;left:88%;}
-.floating-tech i:nth-child(5){top:30%;left:55%;}
-.floating-tech i:nth-child(6){top:75%;left:20%;}
-.floating-tech i:nth-child(7){top:50%;left:72%;}
-.floating-tech i:nth-child(8){top:82%;left:60%;}
-.floating-tech i:nth-child(9){top:15%;left:35%;}
-.floating-tech i:nth-child(10){top:58%;left:42%;}
-.floating-tech i:nth-child(11){top:25%;left:92%;}
-.floating-tech i:nth-child(12){top:85%;left:8%;}
-.floating-tech i:nth-child(13){top:45%;left:28%;}
-.floating-tech i:nth-child(14){top:70%;left:78%;}
-
-@keyframes floatTech {
-  0%,100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-28px) rotate(8deg); }
+@keyframes techFloat {
+  0%   { transform: translateY(0)      rotate(var(--r, 0deg)) scale(0.9); opacity: 0;             }
+  10%  { opacity: var(--op, 0.14);                                                                 }
+  90%  { opacity: var(--op, 0.14);                                                                 }
+  100% { transform: translateY(-700px) rotate(calc(var(--r, 0deg) + 30deg)) scale(1.05); opacity: 0; }
 }
 
-/* section headers inside cert-exp wrapper */
-.cert-exp-wrapper .section-title {
-  color: var(--ink);
+/* Per-icon: position, speed, delay, rotation, opacity */
+.floating-tech i:nth-child(1)  { left:  3%; bottom: -30px; --dur: 11s; --delay: 0.0s; --r: -10deg; --op: 0.20; font-size: 30px; }
+.floating-tech i:nth-child(2)  { left:  9%; bottom: -30px; --dur:  9s; --delay: 2.0s; --r:   8deg; --op: 0.17; font-size: 24px; }
+.floating-tech i:nth-child(3)  { left: 16%; bottom: -30px; --dur: 13s; --delay: 4.5s; --r:  -5deg; --op: 0.18; font-size: 28px; }
+.floating-tech i:nth-child(4)  { left: 24%; bottom: -30px; --dur: 10s; --delay: 1.2s; --r:  12deg; --op: 0.16; font-size: 26px; }
+.floating-tech i:nth-child(5)  { left: 32%; bottom: -30px; --dur: 12s; --delay: 6.0s; --r:  -8deg; --op: 0.17; font-size: 32px; }
+.floating-tech i:nth-child(6)  { left: 40%; bottom: -30px; --dur:  8s; --delay: 3.0s; --r:   5deg; --op: 0.15; font-size: 24px; }
+.floating-tech i:nth-child(7)  { left: 48%; bottom: -30px; --dur: 14s; --delay: 0.5s; --r: -12deg; --op: 0.18; font-size: 28px; }
+.floating-tech i:nth-child(8)  { left: 56%; bottom: -30px; --dur: 10s; --delay: 5.0s; --r:   9deg; --op: 0.16; font-size: 26px; }
+.floating-tech i:nth-child(9)  { left: 64%; bottom: -30px; --dur: 11s; --delay: 2.8s; --r:  -6deg; --op: 0.17; font-size: 30px; }
+.floating-tech i:nth-child(10) { left: 72%; bottom: -30px; --dur:  9s; --delay: 7.0s; --r:  10deg; --op: 0.15; font-size: 24px; }
+.floating-tech i:nth-child(11) { left: 80%; bottom: -30px; --dur: 13s; --delay: 1.8s; --r:  -4deg; --op: 0.16; font-size: 28px; }
+.floating-tech i:nth-child(12) { left: 87%; bottom: -30px; --dur: 10s; --delay: 4.0s; --r:   7deg; --op: 0.15; font-size: 26px; }
+.floating-tech i:nth-child(13) { left: 93%; bottom: -30px; --dur: 12s; --delay: 0.3s; --r: -11deg; --op: 0.17; font-size: 30px; }
+
+/* Ensure sections sit above floating icons */
+.cert-exp-wrapper .section-container {
+  position: relative;
+  z-index: 1;
 }
 
-/* ====== CERTS ====== */
+/* ====== CERTIFICATIONS ====== */
 #certifications { padding: 90px 5%; }
 
 .certs-grid {
@@ -932,7 +935,7 @@ section {
   border: 1px solid rgba(168,204,26,0.3);
 }
 
-/* ====== TIMELINE ====== */
+/* ====== EXPERIENCE TIMELINE ====== */
 #experience { padding: 90px 5%; }
 
 .timeline {
@@ -992,6 +995,7 @@ section {
   letter-spacing: 0.04em;
   text-transform: uppercase;
   margin-bottom: 0.3rem;
+  display: block;
 }
 
 .timeline-title {
@@ -2098,6 +2102,7 @@ footer {
   </section>
 
 </div>
+<!-- END CERT + EXP WRAPPER -->
 
 <!-- CONTACT -->
 <section id="contact">
