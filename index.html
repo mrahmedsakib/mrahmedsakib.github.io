@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 
 <style>
 *, *::before, *::after {
@@ -539,94 +540,124 @@ section {
 }
 
 /* ====== SKILLS ====== */
-#skills {
+
+/* SECTION */
+#skills{
   background: var(--bg-soft);
+  padding: 100px 5%;
 }
 
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
+/* GRID */
+.skills-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:2rem;
+  margin-top:2.5rem;
 }
 
-.skill-card {
-  background: white;
-  border-radius: var(--r-lg);
-  padding: 2rem;
-  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+/* CARD */
+.skill-card{
+  background:white;
+  border-radius:22px;
+  padding:2rem;
+  border:1px solid var(--border);
   box-shadow: var(--shadow-sm);
-  border: 1px solid var(--border);
-  position: relative;
-  overflow: hidden;
+  position:relative;
+  overflow:hidden;
+  transition:0.35s ease;
 }
 
-.skill-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
+/* SOFT TOP ACCENT */
+.skill-card::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:4px;
   background: linear-gradient(90deg, var(--lime), var(--sky));
   transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s;
+  transform-origin:left;
+  transition:0.35s ease;
 }
 
-.skill-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-md);
-  border-color: rgba(200,241,53,0.4);
+.skill-card:hover{
+  transform: translateY(-12px);
+  box-shadow: 0 22px 50px rgba(0,0,0,0.12);
 }
 
-.skill-card:hover::before { transform: scaleX(1); }
+.skill-card:hover::before{
+  transform: scaleX(1);
+}
 
-.skill-icon {
-  width: 52px;
-  height: 52px;
-  border-radius: 14px;
+/* HEADER */
+.skill-header{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:1rem;
+}
+
+/* ICON */
+.skill-icon{
+  width:54px;
+  height:54px;
+  border-radius:16px;
   background: var(--bg-soft);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  margin-bottom: 1.1rem;
-  color: var(--ink-2);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1.6rem;
+  transition:0.3s ease;
 }
 
-.skill-card h3 {
+.skill-card:hover .skill-icon{
+  transform: scale(1.08) rotate(2deg);
+}
+
+/* TITLE */
+.skill-card h3{
   font-family: var(--font-display);
-  font-size: 1.05rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  margin-bottom: 0.3rem;
+  font-size:1.05rem;
+  font-weight:700;
   color: var(--ink);
+  letter-spacing:-0.02em;
 }
 
-.skill-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 1rem;
+/* TAGS */
+.skill-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:0.5rem;
+  margin-top:1rem;
 }
 
-.skill-tag {
+/* TAG */
+.skill-tag{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:5px 12px;
+  border-radius:999px;
+  font-size:0.72rem;
+  font-weight:600;
   background: var(--bg-soft);
-  padding: 4px 12px;
-  border-radius: 30px;
-  font-size: 0.68rem;
+  border:1px solid var(--border-2);
   color: var(--ink-2);
-  font-weight: 600;
-  border: 1px solid var(--border-2);
-  letter-spacing: 0.01em;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
+  transition:0.25s ease;
 }
 
-.skill-tag i {
-  font-size: 0.7rem;
-  opacity: 0.75;
+/* HOVER */
+.skill-tag:hover{
+  background:white;
+  transform: translateY(-2px);
+  box-shadow:0 6px 14px rgba(0,0,0,0.06);
+}
+
+/* ICON SIZE FIX */
+.skill-tag i,
+.skill-icon i{
+  font-size:16px;
 }
 
 /* ====== PROJECTS ====== */
@@ -1543,6 +1574,43 @@ footer {
     gap: 2rem;
   }
 }
+
+.tech-strip{
+  background:white;
+  border-radius:20px;
+  padding:1.2rem 1.6rem;
+  border:1px solid var(--border);
+  box-shadow:var(--shadow-sm);
+  display:flex;
+  flex-wrap:wrap;
+  gap:0.6rem;
+  margin-top:1rem;
+}
+
+.pill{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background:var(--bg-soft);
+  border:1px solid var(--border-2);
+  border-radius:30px;
+  padding:5px 12px;
+  font-size:0.68rem;
+  font-weight:600;
+  color:var(--ink-2);
+  transition:0.2s;
+}
+
+.pill i{
+  font-size:14px;
+}
+
+.pill:hover{
+  transform:translateY(-2px);
+  box-shadow:0 6px 14px rgba(0,0,0,0.08);
+}
+
+/* ABOUT */
 </style>
 </head>
 <body>
@@ -1686,14 +1754,62 @@ footer {
         </div>
 
         <!-- Tech strip -->
-        <div style="background:white;border-radius:20px;padding:1.2rem 1.6rem;border:1px solid var(--border);box-shadow:var(--shadow-sm);display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap;margin-top:1rem;">
-          <span style="font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--ink-3);margin-right:0.4rem;">Stack</span>
-          <span style="display:inline-flex;align-items:center;gap:5px;background:var(--bg-soft);border:1px solid var(--border-2);border-radius:30px;padding:4px 12px;font-size:0.68rem;font-weight:600;color:var(--ink-2);"><i class="fab fa-laravel" style="color:#FF2D20"></i> Laravel</span>
-          <span style="display:inline-flex;align-items:center;gap:5px;background:var(--bg-soft);border:1px solid var(--border-2);border-radius:30px;padding:4px 12px;font-size:0.68rem;font-weight:600;color:var(--ink-2);"><i class="fab fa-php" style="color:#777BB4"></i> PHP 8</span>
-          <span style="display:inline-flex;align-items:center;gap:5px;background:var(--bg-soft);border:1px solid var(--border-2);border-radius:30px;padding:4px 12px;font-size:0.68rem;font-weight:600;color:var(--ink-2);"><i class="fas fa-database" style="color:#00758F"></i> MySQL</span>
-          <span style="display:inline-flex;align-items:center;gap:5px;background:var(--bg-soft);border:1px solid var(--border-2);border-radius:30px;padding:4px 12px;font-size:0.68rem;font-weight:600;color:var(--ink-2);"><i class="fab fa-react" style="color:#61DAFB"></i> React</span>
-          <span style="display:inline-flex;align-items:center;gap:5px;background:var(--bg-soft);border:1px solid var(--border-2);border-radius:30px;padding:4px 12px;font-size:0.68rem;font-weight:600;color:var(--ink-2);"><i class="fab fa-js" style="color:#F7DF1E"></i> JavaScript</span>
-          <span style="display:inline-flex;align-items:center;gap:5px;background:var(--bg-soft);border:1px solid var(--border-2);border-radius:30px;padding:4px 12px;font-size:0.68rem;font-weight:600;color:var(--ink-2);"><i class="fab fa-docker" style="color:#2496ED"></i> Docker</span>
+        <div class="tech-strip">
+
+          <!-- IDE -->
+          <span class="pill"><i class="devicon-vscode-plain colored"></i> VS Code</span>
+
+          <!-- Backend -->
+          <span class="pill"><i class="devicon-laravel-plain colored"></i> Laravel</span>
+          <span class="pill"><i class="devicon-cakephp-plain colored"></i> CakePHP</span>
+          <span class="pill"><i class="devicon-php-plain colored"></i> PHP</span>
+          <span class="pill"><i class="devicon-mysql-plain colored"></i> MySQL</span>
+          <span class="pill"><i class="devicon-python-plain colored"></i> Python</span>
+          <span class="pill"><i class="devicon-java-plain colored"></i> Java</span>
+
+          <!-- Frontend -->
+          <span class="pill"><i class="devicon-react-original colored"></i> React</span>
+          <span class="pill"><i class="devicon-javascript-plain colored"></i> JavaScript</span>
+          <span class="pill"><i class="devicon-jquery-plain colored"></i> jQuery</span>
+          <span class="pill"><i class="devicon-html5-plain colored"></i> HTML5</span>
+          <span class="pill"><i class="devicon-css3-plain colored"></i> CSS3</span>
+          <span class="pill"><i class="devicon-bootstrap-plain colored"></i> Bootstrap</span>
+
+          <!-- Data / Config -->
+          <span class="pill"><i class="fas fa-code-branch"></i> JSON</span>
+          <span class="pill"><i class="fa-brands fa-npm"></i> NPM</span>
+
+          <!-- Dev Tools -->
+          <span class="pill"><i class="fa-solid fa-paper-plane"></i> Postman</span>
+          <span class="pill"><i class="fas fa-terminal"></i> PowerShell</span>
+          <span class="pill"><i class="fas fa-terminal"></i> Bash</span>
+          <span class="pill"><i class="fa-solid fa-box"></i> Composer</span>
+          <span class="pill"><i class="devicon-git-plain colored"></i> Git</span>
+          <span class="pill"><i class="devicon-github-original"></i> GitHub</span>
+
+          <!-- DevOps -->
+          <span class="pill"><i class="devicon-docker-plain colored"></i> Docker</span>
+          <span class="pill"><i class="devicon-linux-plain colored"></i> Linux</span>
+          <span class="pill"><i class="devicon-ubuntu-plain colored"></i> Ubuntu</span>
+          <span class="pill"><i class="devicon-debian-plain colored"></i> Debian</span>
+
+          <!-- Design Tools -->
+          <span class="pill"><i class="devicon-figma-plain colored"></i> Figma</span>
+          <span class="pill"><i class="fas fa-palette"></i> Canva</span>
+          <span class="pill"><i class="fas fa-pen-nib"></i> Illustrator</span>
+
+          <!-- Web / Browser -->
+          <span class="pill"><i class="devicon-google-plain"></i> Google</span>
+          <span class="pill"><i class="devicon-chrome-plain colored"></i> Chrome</span>
+          <span class="pill"><i class="fab fa-stack-overflow"></i> StackOverflow</span>
+
+          <!-- Social -->
+          <span class="pill"><i class="devicon-linkedin-plain"></i> LinkedIn</span>
+
+          <!-- Languages -->
+          <span class="pill"><i class="devicon-c-plain"></i> C</span>
+          <span class="pill"><i class="devicon-cplusplus-plain"></i> C++</span>
+
         </div>
       </div>
 
@@ -1704,41 +1820,65 @@ footer {
 <!-- SKILLS -->
 <section id="skills">
   <div class="section-container">
+
     <p class="section-eyebrow">Expertise</p>
     <h2 class="section-title">What I <span>Do Best</span></h2>
-    <p class="section-subtitle">Turning complex problems into elegant, performant solutions.</p>
+    <p class="section-subtitle">Turning complex problems into elegant, scalable systems.</p>
+
     <div class="skills-grid">
-      <div class="skill-card">
-        <div class="skill-icon"><i class="fab fa-laravel" style="color:#FF2D20;"></i></div>
-        <h3>Backend Architecture</h3>
+
+      <!-- BACKEND -->
+      <div class="skill-card backend">
+        <div class="skill-header">
+          <div class="skill-icon">
+            <i class="devicon-laravel-plain colored"></i>
+          </div>
+          <h3>Backend Architecture</h3>
+        </div>
+
         <div class="skill-tags">
-          <span class="skill-tag"><i class="fab fa-laravel" style="color:#FF2D20;"></i> Laravel</span>
-          <span class="skill-tag"><i class="fas fa-birthday-cake" style="color:#f0704a;"></i> CakePHP</span>
-          <span class="skill-tag"><i class="fab fa-php" style="color:#777BB4;"></i> PHP 8</span>
-          <span class="skill-tag"><i class="fas fa-database" style="color:#00758F;"></i> MySQL</span>
-          <span class="skill-tag"><i class="fas fa-plug" style="color:#a8cc1a;"></i> REST API</span>
+          <span class="skill-tag"><i class="devicon-laravel-plain colored"></i> Laravel</span>
+          <span class="skill-tag"><i class="devicon-cakephp-plain colored"></i> CakePHP</span>
+          <span class="skill-tag"><i class="devicon-php-plain colored"></i> PHP 8</span>
+          <span class="skill-tag"><i class="devicon-mysql-plain colored"></i> MySQL</span>
+          <span class="skill-tag"><i class="fas fa-plug"></i> REST API</span>
         </div>
       </div>
-      <div class="skill-card">
-        <div class="skill-icon"><i class="fab fa-react" style="color:#61DAFB;"></i></div>
-        <h3>Frontend Craft</h3>
+
+      <!-- FRONTEND -->
+      <div class="skill-card frontend">
+        <div class="skill-header">
+          <div class="skill-icon">
+            <i class="devicon-react-original colored"></i>
+          </div>
+          <h3>Frontend Craft</h3>
+        </div>
+
         <div class="skill-tags">
-          <span class="skill-tag"><i class="fab fa-js" style="color:#F7DF1E;"></i> JavaScript</span>
-          <span class="skill-tag"><i class="fab fa-react" style="color:#61DAFB;"></i> React</span>
-          <span class="skill-tag"><i class="fab fa-css3-alt" style="color:#38BDF8;"></i> Tailwind</span>
-          <span class="skill-tag"><i class="fab fa-bootstrap" style="color:#7952B3;"></i> Bootstrap</span>
+          <span class="skill-tag"><i class="devicon-javascript-plain colored"></i> JavaScript</span>
+          <span class="skill-tag"><i class="devicon-react-original colored"></i> React</span>
+          <span class="skill-tag"><i class="devicon-tailwindcss-plain colored"></i> Tailwind</span>
+          <span class="skill-tag"><i class="devicon-bootstrap-plain colored"></i> Bootstrap</span>
         </div>
       </div>
-      <div class="skill-card">
-        <div class="skill-icon"><i class="fas fa-cloud" style="color:#4fb3e8;"></i></div>
-        <h3>DevOps & Tools</h3>
+
+      <!-- DEVOPS -->
+      <div class="skill-card devops">
+        <div class="skill-header">
+          <div class="skill-icon">
+            <i class="devicon-docker-plain colored"></i>
+          </div>
+          <h3>DevOps & Infrastructure</h3>
+        </div>
+
         <div class="skill-tags">
-          <span class="skill-tag"><i class="fab fa-git-alt" style="color:#F05032;"></i> Git</span>
-          <span class="skill-tag"><i class="fab fa-docker" style="color:#2496ED;"></i> Docker</span>
-          <span class="skill-tag"><i class="fab fa-linux" style="color:#FCC624;"></i> Linux</span>
-          <span class="skill-tag"><i class="fab fa-aws" style="color:#FF9900;"></i> AWS</span>
+          <span class="skill-tag"><i class="devicon-git-plain colored"></i> Git</span>
+          <span class="skill-tag"><i class="devicon-docker-plain colored"></i> Docker</span>
+          <span class="skill-tag"><i class="devicon-linux-plain colored"></i> Linux</span>
+          <span class="skill-tag"><i class="devicon-amazonwebservices-original colored"></i> AWS</span>
         </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -1799,9 +1939,10 @@ footer {
       <!-- SSTEX Admin -->
       <div class="project-card">
         <div class="project-gallery">
-          <img src="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?w=200&fit=crop" alt="Admin">
-          <img src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?w=200&fit=crop" alt="Code">
-          <img src="https://images.unsplash.com/photo-1555099962-4199c345e5dd?w=200&fit=crop" alt="Dashboard">
+            <img src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=600&fit=crop&auto=format" alt="Quality Inspection">
+            <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&fit=crop&auto=format" alt="Production Management">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&fit=crop&auto=format" alt="Reports & Analytics">
+            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&fit=crop&auto=format" alt="Frontend UI Design">
         </div>
         <div class="project-info">
           <h3 class="project-title">🏢 SSTEX Admin</h3>
@@ -1850,20 +1991,28 @@ footer {
 
   <!-- floating bg icons -->
   <div class="floating-tech">
-    <i class="fab fa-laravel"></i>
-    <i class="fab fa-php"></i>
-    <i class="fas fa-database"></i>
-    <i class="fas fa-code"></i>
-    <i class="fab fa-js"></i>
-    <i class="fab fa-react"></i>
-    <i class="fab fa-bootstrap"></i>
-    <i class="fab fa-git-alt"></i>
-    <i class="fab fa-docker"></i>
-    <i class="fab fa-linux"></i>
-    <i class="fab fa-aws"></i>
+
+    <!-- Backend -->
+    <i class="devicon-laravel-plain colored"></i>
+    <i class="devicon-php-plain colored"></i>
+    <i class="devicon-mysql-plain colored"></i>
+
+    <!-- Core Dev -->
+    <i class="devicon-javascript-plain colored"></i>
+    <i class="devicon-react-original colored"></i>
+    <i class="devicon-bootstrap-plain colored"></i>
+
+    <!-- DevOps -->
+    <i class="devicon-git-plain colored"></i>
+    <i class="devicon-docker-plain colored"></i>
+    <i class="devicon-linux-plain colored"></i>
+    <i class="devicon-amazonwebservices-original colored"></i>
+
+    <!-- Generic fallback (still useful) -->
     <i class="fas fa-server"></i>
     <i class="fas fa-network-wired"></i>
     <i class="fas fa-layer-group"></i>
+
   </div>
 
   <!-- Certifications -->
@@ -2265,6 +2414,13 @@ const projects = {
     title: "🏢 SSTEX Admin Panel",
     company: "SSTEX GROUP BD",
     badge: "Web Application",
+
+    images: [
+      "images/sstex-admin-dashboard.jpg",
+      "images/sstex-home-page.jpg"
+    ],
+
+
     headerBg: "#f0fdf4",
     badgeBg: "#dcfce7",
     badgeColor: "#166534",
