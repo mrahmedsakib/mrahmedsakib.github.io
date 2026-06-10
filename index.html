@@ -1,2932 +1,680 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<meta name="description" content="Imtiaz Ahmed - Creative Full Stack Developer Portfolio">
-<title>Imtiaz Ahmed | Software Engineer</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
-
-<style>
-*, *::before, *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-:root {
-  --bg: #f8f7f4;
-  --bg-soft: #f1ede8;
-  --bg-card: #ffffff;
-  --ink: #0f0e0c;
-  --ink-2: #3a3833;
-  --ink-3: #7a776f;
-  --ink-4: #b0ada6;
-  --lime: #c8f135;
-  --lime-dark: #a8cc1a;
-  --lime-pale: #f0fac0;
-  --gold: #e8c547;
-  --coral: #f0704a;
-  --sky: #4fb3e8;
-  --border: rgba(15,14,12,0.08);
-  --border-2: rgba(15,14,12,0.14);
-  --shadow-sm: 0 1px 3px rgba(15,14,12,0.06);
-  --shadow: 0 4px 16px rgba(15,14,12,0.07);
-  --shadow-md: 0 8px 32px rgba(15,14,12,0.10);
-  --shadow-lg: 0 20px 60px rgba(15,14,12,0.12);
-  --r-sm: 14px;
-  --r: 22px;
-  --r-lg: 32px;
-  --r-xl: 48px;
-  --font-display: 'Syne', sans-serif;
-  --font-body: 'DM Sans', sans-serif;
-}
-
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: var(--font-body);
-  background: var(--bg-card);
-  color: var(--ink);
-  line-height: 1.55;
-  overflow-x: hidden;
-}
-
-::selection { background: var(--lime); color: var(--ink); }
-
-::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: var(--bg-soft); }
-::-webkit-scrollbar-thumb { background: var(--ink); border-radius: 10px; }
-
-/* ====== NOISE OVERLAY ====== */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0.025;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-}
-
-/* ====== NAV ====== */
-nav {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  max-width: 1200px;
-  background: rgba(248,247,244,0.88);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-radius: 60px;
-  padding: 0.7rem 1.6rem;
-  z-index: 1000;
-  transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
-  border: 1px solid var(--border-2);
-  box-shadow: var(--shadow-sm);
-}
-
-nav.scrolled {
-  top: 10px;
-  box-shadow: var(--shadow);
-}
-
-.nav-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo {
-  font-family: var(--font-display);
-  font-size: 1.25rem;
-  font-weight: 800;
-  color: var(--ink);
-  letter-spacing: -0.03em;
-  position: relative;
-}
-
-.logo::after {
-  content: '.';
-  color: var(--lime-dark);
-}
-
-.nav-links {
-  display: flex;
-  gap: 2rem;
-  list-style: none;
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: var(--ink-3);
-  font-weight: 500;
-  font-size: 0.82rem;
-  letter-spacing: 0.01em;
-  transition: color 0.2s;
-  position: relative;
-}
-
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  bottom: -3px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--lime-dark);
-  border-radius: 2px;
-  transition: width 0.2s;
-}
-
-.nav-links a:hover { color: var(--ink); }
-.nav-links a:hover::after { width: 100%; }
-
-.menu-btn {
-  display: none;
-  font-size: 1.2rem;
-  cursor: pointer;
-  color: var(--ink);
-  background: none;
-  border: none;
-}
-
-/* ====== HERO ====== */
-.hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  padding: 120px 5% 80px;
-  position: relative;
-  overflow: clip;
-}
-
-/* big decorative bg text */
-.hero-bg-text {
-  position: absolute;
-  bottom: -2%;
-  left: -2%;
-  font-family: var(--font-display);
-  font-size: clamp(65px, 10vw, 130px);
-  font-weight: 800;
-  color: transparent;
-  -webkit-text-stroke: 1.5px rgba(15,14,12,0.055);
-  letter-spacing: -0.04em;
-  line-height: 1;
-  pointer-events: none;
-  user-select: none;
-  white-space: nowrap;
-  width: max-content;
-}
-
-/* floating accent shapes */
-.hero-shape-1 {
-  position: absolute;
-  top: 15%;
-  right: 5%;
-  width: 420px;
-  height: 420px;
-  border-radius: 40% 60% 55% 45% / 50% 40% 60% 50%;
-  background: linear-gradient(135deg, #d4f97c 0%, #b8e832 60%, #96cc00 100%);
-  opacity: 0.18;
-  animation: morphBlob 12s ease-in-out infinite;
-  pointer-events: none;
-}
-
-.hero-shape-2 {
-  position: absolute;
-  top: 60%;
-  left: -5%;
-  width: 220px;
-  height: 220px;
-  border-radius: 60% 40% 45% 55% / 40% 60% 40% 60%;
-  background: linear-gradient(135deg, var(--coral), var(--gold));
-  opacity: 0.10;
-  animation: morphBlob 16s ease-in-out infinite reverse;
-  pointer-events: none;
-}
-
-@keyframes morphBlob {
-  0%,100% { border-radius: 40% 60% 55% 45% / 50% 40% 60% 50%; transform: rotate(0deg); }
-  33% { border-radius: 60% 40% 35% 65% / 40% 65% 35% 60%; transform: rotate(4deg); }
-  66% { border-radius: 35% 65% 60% 40% / 65% 35% 65% 35%; transform: rotate(-4deg); }
-}
-
-.hero-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 0.85fr;
-  gap: 4rem;
-  align-items: center;
-  position: relative;
-  z-index: 2;
-  width: 100%;
-}
-
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.68rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 2.5px;
-  color: var(--ink-2);
-  margin-bottom: 1.4rem;
-  padding: 6px 16px 6px 8px;
-  background: white;
-  border-radius: 30px;
-  border: 1px solid var(--border-2);
-  box-shadow: var(--shadow-sm);
-}
-
-.hero-badge-dot {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: var(--lime);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.55rem;
-  animation: pulse-dot 2s ease infinite;
-}
-
-@keyframes pulse-dot {
-  0%,100% { box-shadow: 0 0 0 0 rgba(200,241,53,0.5); }
-  50% { box-shadow: 0 0 0 6px rgba(200,241,53,0); }
-}
-
-.hero h1 {
-  font-family: var(--font-display);
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
-  font-weight: 800;
-  line-height: 0.9;
-  letter-spacing: -0.04em;
-  margin-bottom: 1rem;
-  color: var(--ink);
-  white-space: nowrap;
-}
-
-.hero h1 .highlight {
-  position: relative;
-  display: inline-block;
-  color: var(--ink);
-}
-
-.hero h1 .highlight::after {
-  content: '';
-  position: absolute;
-  bottom: 4px;
-  left: 0;
-  width: 100%;
-  height: 12px;
-  background: var(--lime);
-  border-radius: 4px;
-  z-index: -1;
-  transform: skewX(-3deg);
-}
-
-/* ===== TYPING TEXT ===== */
-.typing-wrapper {
-  min-height: 40px;
-  display: flex;
-  align-items: center;
-  margin-bottom: 0.8rem;
-}
-
-#typed-text {
-  font-size: 1.05rem;
-  font-weight: 500;
-  color: var(--ink-3);
-  display: inline-block;
-  white-space: nowrap;
-  border-right: 2.5px solid var(--lime-dark);
-  padding-right: 6px;
-  min-height: 1.2em;
-  letter-spacing: 0.01em;
-}
-
-@keyframes blink {
-  0%, 100% { border-color: var(--lime-dark); }
-  50% { border-color: transparent; }
-}
-
-#typed-text { animation: blink 1s step-end infinite; }
-
-.hero-desc {
-  color: var(--ink-3);
-  margin: 1rem 0 1.5rem;
-  line-height: 1.7;
-  font-size: 0.95rem;
-  max-width: 500px;
-}
-
-.hero-stats {
-  display: flex;
-  gap: 0;
-  margin: 1.8rem 0;
-  background: white;
-  border-radius: var(--r);
-  border: 1px solid var(--border-2);
-  overflow: hidden;
-  width: fit-content;
-  box-shadow: var(--shadow-sm);
-}
-
-.hero-stat-item {
-  padding: 1rem 1.6rem;
-  text-align: center;
-  position: relative;
-}
-
-.hero-stat-item:not(:last-child)::after {
-  content: '';
-  position: absolute;
-  right: 0;
-  top: 20%;
-  height: 60%;
-  width: 1px;
-  background: var(--border-2);
-}
-
-.stat-value {
-  font-family: var(--font-display);
-  font-size: 2rem;
-  font-weight: 800;
-  color: var(--ink);
-  letter-spacing: -0.04em;
-  line-height: 1;
-  display: block;
-}
-
-.stat-label {
-  font-size: 0.68rem;
-  color: var(--ink-3);
-  font-weight: 500;
-  margin-top: 2px;
-  letter-spacing: 0.03em;
-}
-
-.btn-group {
-  display: flex;
-  gap: 0.9rem;
-  flex-wrap: wrap;
-}
-
-.btn-primary {
-  background: var(--ink);
-  color: white;
-  padding: 13px 28px;
-  border-radius: 40px;
-  text-decoration: none;
-  font-family: var(--font-body);
-  font-weight: 600;
-  font-size: 0.88rem;
-  transition: all 0.25s;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  border: none;
-  cursor: pointer;
-  letter-spacing: 0.01em;
-}
-
-.btn-primary:hover {
-  background: var(--ink-2);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(15,14,12,0.2);
-}
-
-.btn-outline {
-  border: 1.5px solid var(--border-2);
-  background: white;
-  padding: 12px 28px;
-  border-radius: 40px;
-  text-decoration: none;
-  color: var(--ink);
-  font-family: var(--font-body);
-  font-weight: 500;
-  font-size: 0.88rem;
-  transition: all 0.25s;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  box-shadow: var(--shadow-sm);
-}
-
-.btn-outline:hover {
-  border-color: var(--ink);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow);
-}
-
-.profile-wrapper {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  position: relative;
-}
-
-.profile-frame {
-  position: relative;
-  width: 370px;
-  height: 370px;
-}
-
-.profile-img {
-  width: 100%;
-  height: 100%;
-  border-radius: 40% 60% 55% 45% / 50% 40% 60% 50%;
-  object-fit: cover;
-  border: 4px solid white;
-  box-shadow: var(--shadow-lg);
-  animation: morphFrame 14s ease-in-out infinite;
-  display: block;
-}
-
-@keyframes morphFrame {
-  0%,100% { border-radius: 40% 60% 55% 45% / 50% 40% 60% 50%; }
-  33% { border-radius: 60% 40% 40% 60% / 45% 60% 40% 55%; }
-  66% { border-radius: 45% 55% 60% 40% / 60% 40% 55% 45%; }
-}
-
-/* floating chips on profile */
-.profile-chip {
-  position: absolute;
-  background: white;
-  border-radius: 30px;
-  padding: 7px 14px;
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: var(--ink);
-  box-shadow: var(--shadow-md);
-  border: 1px solid var(--border-2);
-  white-space: nowrap;
-  letter-spacing: 0.01em;
-}
-
-.chip-1 { bottom: 20px; left: -20px; }
-.chip-2 { top: 30px; right: -20px; }
-.chip-3 { top: 50%; right: -30px; transform: translateY(-50%); }
-
-.chip-dot {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  margin-right: 5px;
-}
-
-/* ====== SECTION BASE ====== */
-section {
-  padding: 90px 5%;
-}
-
-.section-container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.section-eyebrow {
-  font-size: 0.65rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  color: var(--lime-dark);
-  margin-bottom: 0.7rem;
-}
-
-.section-title {
-  font-family: var(--font-display);
-  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-  font-weight: 700;
-  letter-spacing: -0.04em;
-  margin-bottom: 0.5rem;
-  color: var(--ink);
-  text-align: left;
-}
-
-.section-title span {
-  position: relative;
-  display: inline-block;
-}
-
-.section-title span::after {
-  content: '';
-  position: absolute;
-  bottom: 2px;
-  left: 0;
-  width: 100%;
-  height: 8px;
-  background: var(--lime);
-  border-radius: 3px;
-  z-index: -1;
-  transform: skewX(-2deg);
-}
-
-.section-subtitle {
-  color: var(--ink-3);
-  font-size: 0.9rem;
-  margin-bottom: 3rem;
-  max-width: 480px;
-}
-
-/* ====== SKILLS ====== */
-
-/* SECTION */
-#skills{
-  background: var(--bg-soft);
-  padding: 100px 5%;
-}
-
-/* GRID */
-.skills-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:2rem;
-  margin-top:2.5rem;
-}
-
-/* CARD */
-.skill-card{
-  background:white;
-  border-radius:22px;
-  padding:2rem;
-  border:1px solid var(--border);
-  box-shadow: var(--shadow-sm);
-  position:relative;
-  overflow:hidden;
-  transition:0.35s ease;
-}
-
-/* SOFT TOP ACCENT */
-.skill-card::before{
-  content:'';
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:4px;
-  background: linear-gradient(90deg, var(--lime), var(--sky));
-  transform: scaleX(0);
-  transform-origin:left;
-  transition:0.35s ease;
-}
-
-.skill-card:hover{
-  transform: translateY(-12px);
-  box-shadow: 0 22px 50px rgba(0,0,0,0.12);
-}
-
-.skill-card:hover::before{
-  transform: scaleX(1);
-}
-
-/* HEADER */
-.skill-header{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  margin-bottom:1rem;
-}
-
-/* ICON */
-.skill-icon{
-  width:54px;
-  height:54px;
-  border-radius:16px;
-  background: var(--bg-soft);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:1.6rem;
-  transition:0.3s ease;
-}
-
-.skill-card:hover .skill-icon{
-  transform: scale(1.08) rotate(2deg);
-}
-
-/* TITLE */
-.skill-card h3{
-  font-family: var(--font-display);
-  font-size:1.05rem;
-  font-weight:700;
-  color: var(--ink);
-  letter-spacing:-0.02em;
-}
-
-/* TAGS */
-.skill-tags{
-  display:flex;
-  flex-wrap:wrap;
-  gap:0.5rem;
-  margin-top:1rem;
-}
-
-/* TAG */
-.skill-tag{
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  padding:5px 12px;
-  border-radius:999px;
-  font-size:0.72rem;
-  font-weight:600;
-  background: var(--bg-soft);
-  border:1px solid var(--border-2);
-  color: var(--ink-2);
-  transition:0.25s ease;
-}
-
-/* HOVER */
-.skill-tag:hover{
-  background:white;
-  transform: translateY(-2px);
-  box-shadow:0 6px 14px rgba(0,0,0,0.06);
-}
-
-/* ICON SIZE FIX */
-.skill-tag i,
-.skill-icon i{
-  font-size:16px;
-}
-
-/* ====== PROJECTS ====== */
-#projects {
-  background-image: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1600&fit=crop&auto=format');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  position: relative;
-  overflow: hidden;
-}
-
-#projects::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(248,247,244,0.82);
-  pointer-events: none;
-  z-index: 0;
-}
-
-#projects .section-container {
-  position: relative;
-  z-index: 1;
-}
-
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-  gap: 1.8rem;
-}
-
-.project-card {
-  background: white;
-  border-radius: var(--r-lg);
-  overflow: hidden;
-  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
-  box-shadow: var(--shadow-sm);
-  border: 1px solid var(--border);
-}
-
-.project-card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-lg);
-  border-color: rgba(200,241,53,0.35);
-}
-
-.project-gallery {
-  display: flex;
-  gap: 8px;
-  padding: 12px;
-  background: var(--bg-soft);
-  overflow-x: auto;
-}
-
-.project-gallery::-webkit-scrollbar { height: 3px; }
-.project-gallery::-webkit-scrollbar-thumb { background: var(--border-2); border-radius: 2px; }
-
-.project-gallery img {
-  width: 120px;
-  height: 85px;
-  object-fit: cover;
-  border-radius: var(--r-sm);
-  cursor: pointer;
-  border: 2px solid white;
-  transition: all 0.2s;
-  flex-shrink: 0;
-}
-
-.project-gallery img:hover {
-  transform: scale(1.04);
-  border-color: var(--lime-dark);
-}
-
-.project-info { padding: 1.4rem; }
-
-.project-title {
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  margin-bottom: 0.5rem;
-  color: var(--ink);
-}
-
-.project-desc {
-  color: var(--ink-3);
-  font-size: 0.8rem;
-  margin-bottom: 0.9rem;
-  line-height: 1.6;
-}
-
-.project-tech {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  margin-bottom: 1.1rem;
-}
-
-.project-tech span {
-  background: var(--lime-pale);
-  padding: 3px 10px;
-  border-radius: 20px;
-  font-size: 0.65rem;
-  color: #557a00;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-}
-
-.project-link {
-  color: var(--ink);
-  text-decoration: none;
-  font-size: 0.8rem;
-  font-weight: 700;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  cursor: pointer;
-  background: none;
-  border: none;
-  font-family: var(--font-body);
-  padding: 7px 14px;
-  background: var(--bg-soft);
-  border-radius: 30px;
-  border: 1px solid var(--border-2);
-  transition: all 0.2s;
-  letter-spacing: 0.01em;
-}
-
-.project-link:hover {
-  background: var(--ink);
-  color: white;
-  border-color: var(--ink);
-  gap: 10px;
-}
-
-
-/* ==========================================
-   CERTIFICATIONS PREMIUM ACADEMIC ANIMATION
-========================================== */
-
-#certifications{
-  position: relative;
-  overflow: hidden;
-  padding: 90px 5%;
-  isolation: isolate;
-}
-
-/* Premium Background Glow */
-/* #certifications::before{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:
-    radial-gradient(circle at 15% 20%, rgba(200,241,53,.18), transparent 280px),
-    radial-gradient(circle at 85% 75%, rgba(255,212,74,.15), transparent 320px),
-    radial-gradient(circle at 50% 50%, rgba(139,211,255,.08), transparent 350px);
-  animation: academicGlow 12s ease-in-out infinite alternate;
-  z-index:0;
-} */
-
-/* #certifications::after{
-  content:'';
-  position:absolute;
-  inset:0;
-  background-image:
-    linear-gradient(rgba(15,14,12,.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(15,14,12,.03) 1px, transparent 1px);
-  background-size:40px 40px;
-  z-index:0;
-} */
-
-@keyframes academicGlow{
-  from{
-    transform:translateX(-40px);
-  }
-  to{
-    transform:translateX(40px);
-  }
-}
-
-/* ==========================================
-   FLOATING ACADEMIC ICONS
-========================================== */
-
-.academic-floating{
-  position:absolute;
-  inset:0;
-  overflow:hidden;
-  pointer-events:none;
-  z-index:1;
-}
-
-.academic-floating i{
-  position:absolute;
-  opacity:0;
-  font-size:42px;
-  animation: floatAcademic linear infinite;
-}
-
-/* Lime Icons */
-.academic-floating i:nth-child(1),
-.academic-floating i:nth-child(4),
-.academic-floating i:nth-child(7){
-  color:#c8f135;
-  filter:
-    drop-shadow(0 0 8px rgba(200,241,53,.55))
-    drop-shadow(0 0 20px rgba(200,241,53,.35));
-}
-
-/* Gold Icons */
-.academic-floating i:nth-child(2),
-.academic-floating i:nth-child(5),
-.academic-floating i:nth-child(8){
-  color:#ffd54a;
-  filter:
-    drop-shadow(0 0 8px rgba(255,213,74,.55))
-    drop-shadow(0 0 20px rgba(255,213,74,.35));
-}
-
-/* Blue Icons */
-.academic-floating i:nth-child(3),
-.academic-floating i:nth-child(6){
-  color:#8bd3ff;
-  filter:
-    drop-shadow(0 0 8px rgba(139,211,255,.55))
-    drop-shadow(0 0 20px rgba(139,211,255,.35));
-}
-
-/* Position */
-
-.academic-floating i:nth-child(1){
-  left:5%;
-  bottom:-60px;
-  animation-duration:14s;
-}
-
-.academic-floating i:nth-child(2){
-  left:18%;
-  bottom:-60px;
-  animation-duration:18s;
-  animation-delay:2s;
-}
-
-.academic-floating i:nth-child(3){
-  left:30%;
-  bottom:-60px;
-  animation-duration:16s;
-  animation-delay:5s;
-}
-
-.academic-floating i:nth-child(4){
-  left:44%;
-  bottom:-60px;
-  animation-duration:20s;
-  animation-delay:1s;
-}
-
-.academic-floating i:nth-child(5){
-  left:58%;
-  bottom:-60px;
-  animation-duration:17s;
-  animation-delay:4s;
-}
-
-.academic-floating i:nth-child(6){
-  left:72%;
-  bottom:-60px;
-  animation-duration:15s;
-  animation-delay:6s;
-}
-
-.academic-floating i:nth-child(7){
-  left:85%;
-  bottom:-60px;
-  animation-duration:19s;
-  animation-delay:3s;
-}
-
-.academic-floating i:nth-child(8){
-  left:95%;
-  bottom:-60px;
-  animation-duration:16s;
-  animation-delay:7s;
-}
-
-/* Floating Animation */
-
-@keyframes floatAcademic{
-
-  0%{
-    transform:
-      translateY(0)
-      rotate(0deg)
-      scale(.8);
-    opacity:0;
-  }
-
-  10%{
-    opacity:.35;
-  }
-
-  30%{
-    opacity:.45;
-  }
-
-  50%{
-    transform:
-      translateY(-350px)
-      rotate(12deg)
-      translateX(30px)
-      scale(1);
-    opacity:.50;
-  }
-
-  70%{
-    opacity:.40;
-  }
-
-  90%{
-    opacity:.30;
-  }
-
-  100%{
-    transform:
-      translateY(-850px)
-      rotate(25deg)
-      translateX(-30px)
-      scale(1.1);
-    opacity:0;
-  }
-}
-
-/* ==========================================
-   CONTENT ABOVE ANIMATION
-========================================== */
-
-#certifications .section-container{
-  position:relative;
-  z-index:3;
-}
-
-.certs-grid{
-  position:relative;
-  z-index:3;
-}
-
-
-/* ====== CERT + EXP WRAPPER ====== */
-.cert-exp-wrapper {
-  position: relative;
-  overflow: hidden;
-  padding: 0;
-  background: #f5f4f1;
-  isolation: isolate;
-}
-
-/* Subtle dot grid bg */
-/* .cert-exp-wrapper::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(circle, rgba(15,14,12,0.08) 1px, transparent 1px);
-  background-size: 28px 28px;
-  pointer-events: none;
-  z-index: 0;
-} */
-
-/* ====== FLOATING TECH ICONS ====== */
-.floating-tech {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  overflow: hidden;
-  z-index: 0;
-}
-
-.floating-tech i {
-  position: absolute;
-  font-size: 28px;
-  opacity: 0;
-  animation: techFloat var(--dur, 10s) var(--delay, 0s) ease-in-out infinite;
-}
-
-@keyframes techFloat {
-  0%   { transform: translateY(0)      rotate(var(--r, 0deg)) scale(0.9); opacity: 0;             }
-  10%  { opacity: var(--op, 0.14);                                                                 }
-  90%  { opacity: var(--op, 0.14);                                                                 }
-  100% { transform: translateY(-700px) rotate(calc(var(--r, 0deg) + 30deg)) scale(1.05); opacity: 0; }
-}
-
-/* Per-icon: position, speed, delay, rotation, opacity */
-.floating-tech i:nth-child(1)  { left:  3%; bottom: -30px; --dur: 11s; --delay: 0.0s; --r: -10deg; --op: 0.20; font-size: 30px; }
-.floating-tech i:nth-child(2)  { left:  9%; bottom: -30px; --dur:  9s; --delay: 2.0s; --r:   8deg; --op: 0.17; font-size: 24px; }
-.floating-tech i:nth-child(3)  { left: 16%; bottom: -30px; --dur: 13s; --delay: 4.5s; --r:  -5deg; --op: 0.18; font-size: 28px; }
-.floating-tech i:nth-child(4)  { left: 24%; bottom: -30px; --dur: 10s; --delay: 1.2s; --r:  12deg; --op: 0.16; font-size: 26px; }
-.floating-tech i:nth-child(5)  { left: 32%; bottom: -30px; --dur: 12s; --delay: 6.0s; --r:  -8deg; --op: 0.17; font-size: 32px; }
-.floating-tech i:nth-child(6)  { left: 40%; bottom: -30px; --dur:  8s; --delay: 3.0s; --r:   5deg; --op: 0.15; font-size: 24px; }
-.floating-tech i:nth-child(7)  { left: 48%; bottom: -30px; --dur: 14s; --delay: 0.5s; --r: -12deg; --op: 0.18; font-size: 28px; }
-.floating-tech i:nth-child(8)  { left: 56%; bottom: -30px; --dur: 10s; --delay: 5.0s; --r:   9deg; --op: 0.16; font-size: 26px; }
-.floating-tech i:nth-child(9)  { left: 64%; bottom: -30px; --dur: 11s; --delay: 2.8s; --r:  -6deg; --op: 0.17; font-size: 30px; }
-.floating-tech i:nth-child(10) { left: 72%; bottom: -30px; --dur:  9s; --delay: 7.0s; --r:  10deg; --op: 0.15; font-size: 24px; }
-.floating-tech i:nth-child(11) { left: 80%; bottom: -30px; --dur: 13s; --delay: 1.8s; --r:  -4deg; --op: 0.16; font-size: 28px; }
-.floating-tech i:nth-child(12) { left: 87%; bottom: -30px; --dur: 10s; --delay: 4.0s; --r:   7deg; --op: 0.15; font-size: 26px; }
-.floating-tech i:nth-child(13) { left: 93%; bottom: -30px; --dur: 12s; --delay: 0.3s; --r: -11deg; --op: 0.17; font-size: 30px; }
-
-/* Ensure sections sit above floating icons */
-.cert-exp-wrapper .section-container {
-  position: relative;
-  z-index: 1;
-}
-
-/* ====== CERTIFICATIONS ====== */
-#certifications { padding: 90px 5%; }
-
-.certs-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1.5rem;
-  position: relative;
-  z-index: 2;
-}
-
-.cert-card {
-  padding: 1.8rem;
-  border-radius: var(--r-lg);
-  background: white;
-  border: 1px solid rgba(15,14,12,0.10);
-  color: var(--ink);
-  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
-  position: relative;
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
-}
-
-.cert-card::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--lime), var(--gold));
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s;
-}
-
-.cert-card:hover {
-  transform: translateY(-8px) scale(1.01);
-  box-shadow: var(--shadow-md);
-  border-color: rgba(200,241,53,0.5);
-}
-
-.cert-card:hover::after { transform: scaleX(1); }
-
-.cert-icon {
-  font-size: 2rem;
-  margin-bottom: 0.9rem;
-  color: var(--lime-dark);
-}
-
-.cert-card h3 {
-  font-family: var(--font-display);
-  font-size: 0.95rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  margin-bottom: 0.3rem;
-  color: var(--ink);
-}
-
-.cert-card p {
-  font-size: 0.78rem;
-  color: var(--ink-3);
-}
-
-.cert-badge {
-  display: inline-block;
-  margin-top: 0.8rem;
-  font-size: 0.62rem;
-  font-weight: 700;
-  padding: 4px 12px;
-  border-radius: 20px;
-  background: var(--lime-pale);
-  color: #557a00;
-  letter-spacing: 0.04em;
-  border: 1px solid rgba(168,204,26,0.3);
-}
-
-/* ====== EXPERIENCE TIMELINE ====== */
-#experience { padding: 90px 5%; }
-
-.timeline {
-  max-width: 680px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 2;
-}
-
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 2px;
-  height: 100%;
-  background: var(--border-2);
-}
-
-.timeline-item {
-  position: relative;
-  padding-left: 2.2rem;
-  margin-bottom: 2.2rem;
-}
-
-.timeline-dot {
-  position: absolute;
-  left: -6px;
-  top: 18px;
-  width: 14px;
-  height: 14px;
-  background: var(--lime);
-  border-radius: 50%;
-  border: 2.5px solid var(--ink);
-  box-shadow: 0 0 0 4px rgba(200,241,53,0.3);
-}
-
-.timeline-content {
-  background: white;
-  border-radius: var(--r);
-  padding: 1.6rem;
-  border: 1px solid var(--border-2);
-  box-shadow: var(--shadow-sm);
-  transition: all 0.3s;
-}
-
-.timeline-item:hover .timeline-content {
-  transform: translateX(6px);
-  box-shadow: var(--shadow);
-  border-color: rgba(200,241,53,0.4);
-}
-
-.timeline-date {
-  font-size: 0.68rem;
-  font-weight: 700;
-  color: var(--lime-dark);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  margin-bottom: 0.3rem;
-  display: block;
-}
-
-.timeline-title {
-  font-family: var(--font-display);
-  font-size: 1.05rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  margin-bottom: 0.25rem;
-  color: var(--ink);
-}
-
-.timeline-company {
-  font-size: 0.78rem;
-  color: var(--ink-3);
-  font-weight: 500;
-}
-
-/* ====== CONTACT ====== */
-#contact { background: var(--bg); }
-
-.contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-}
-
-.contact-info {
-  background: var(--ink);
-  border-radius: var(--r-lg);
-  padding: 2.4rem;
-  color: white;
-  position: relative;
-  overflow: hidden;
-}
-
-.contact-info::before {
-  content: '';
-  position: absolute;
-  bottom: -30px;
-  right: -30px;
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  background: var(--lime);
-  opacity: 0.12;
-}
-
-.contact-info-title {
-  font-family: var(--font-display);
-  font-size: 1.6rem;
-  font-weight: 700;
-  letter-spacing: -0.04em;
-  margin-bottom: 0.4rem;
-}
-
-.contact-info-sub {
-  font-size: 0.82rem;
-  opacity: 0.6;
-  margin-bottom: 2rem;
-}
-
-.contact-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  margin-bottom: 1.4rem;
-}
-
-.contact-icon {
-  width: 44px;
-  height: 44px;
-  background: rgba(255,255,255,0.1);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--lime);
-  font-size: 1rem;
-  flex-shrink: 0;
-  border: 1px solid rgba(255,255,255,0.1);
-}
-
-.contact-item strong {
-  display: block;
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  opacity: 0.55;
-  margin-bottom: 2px;
-  font-weight: 600;
-}
-
-.contact-item span {
-  font-size: 0.88rem;
-  opacity: 0.9;
-}
-
-.contact-form {
-  background: white;
-  border-radius: var(--r-lg);
-  padding: 2.4rem;
-  box-shadow: var(--shadow);
-  border: 1px solid var(--border);
-}
-
-.contact-form-title {
-  font-family: var(--font-display);
-  font-size: 1.2rem;
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  margin-bottom: 1.5rem;
-  color: var(--ink);
-}
-
-.form-group {
-  margin-bottom: 1rem;
-}
-
-.form-group label {
-  display: block;
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: var(--ink-3);
-  margin-bottom: 0.4rem;
-}
-
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 12px 16px;
-  background: var(--bg-soft);
-  border: 1.5px solid transparent;
-  border-radius: var(--r-sm);
-  font-family: var(--font-body);
-  font-size: 0.88rem;
-  color: var(--ink);
-  transition: all 0.2s;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-  outline: none;
-  border-color: var(--lime-dark);
-  background: white;
-  box-shadow: 0 0 0 4px rgba(200,241,53,0.15);
-}
-
-.form-group textarea {
-  min-height: 110px;
-  resize: vertical;
-}
-
-/* ====== FOOTER ====== */
-footer {
-  background: var(--ink);
-  padding: 2rem 5%;
-  color: white;
-}
-
-.footer-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.footer-logo {
-  font-family: var(--font-display);
-  font-size: 1.2rem;
-  font-weight: 800;
-  color: white;
-  letter-spacing: -0.03em;
-}
-
-.footer-logo::after {
-  content: '.';
-  color: var(--lime);
-}
-
-.footer-copy {
-  font-size: 0.78rem;
-  opacity: 0.45;
-}
-
-.social-links {
-  display: flex;
-  gap: 0.6rem;
-}
-
-.social-links a {
-  width: 38px;
-  height: 38px;
-  background: rgba(255,255,255,0.07);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: rgba(255,255,255,0.6);
-  transition: all 0.2s;
-  text-decoration: none;
-  border: 1px solid rgba(255,255,255,0.1);
-}
-
-.social-links a:hover {
-  background: var(--lime);
-  color: var(--ink);
-  border-color: var(--lime);
-  transform: translateY(-3px);
-}
-
-/* ====== MODAL ====== */
-.modal-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(15,14,12,0.6);
-  z-index: 9999;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  animation: fadeOverlay 0.2s ease;
-}
-
-.modal-overlay.active { display: flex; }
-
-@keyframes fadeOverlay {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.modal-box {
-  background: white;
-  border-radius: var(--r-xl);
-  max-width: 680px;
-  width: 100%;
-  max-height: 90vh;
-  overflow-y: auto;
-  box-shadow: 0 40px 100px rgba(15,14,12,0.3);
-  animation: slideUp 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-  border: 1px solid var(--border-2);
-}
-
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(40px) scale(0.95); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-.modal-box::-webkit-scrollbar { width: 4px; }
-.modal-box::-webkit-scrollbar-thumb { background: var(--border-2); border-radius: 4px; }
-
-.modal-header {
-  padding: 2rem 2rem 1.6rem;
-  position: relative;
-  border-bottom: 1px solid var(--border);
-}
-
-.modal-type-badge {
-  display: inline-block;
-  font-size: 0.6rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  padding: 4px 12px;
-  border-radius: 20px;
-  margin-bottom: 0.7rem;
-}
-
-.modal-project-title {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  margin-bottom: 0.25rem;
-}
-
-.modal-company {
-  font-size: 0.8rem;
-  font-weight: 500;
-  opacity: 0.65;
-}
-
-.modal-close {
-  position: absolute;
-  top: 1.4rem;
-  right: 1.4rem;
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  background: var(--bg-soft);
-  border: 1px solid var(--border-2);
-  cursor: pointer;
-  font-size: 0.85rem;
-  color: var(--ink-3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s;
-}
-
-.modal-close:hover {
-  background: var(--ink);
-  color: white;
-  border-color: var(--ink);
-}
-
-.modal-body { padding: 1.8rem 2rem 2.2rem; }
-
-.modal-meta-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 1.5rem;
-}
-
-.modal-meta-chip {
-  font-size: 0.68rem;
-  padding: 5px 12px;
-  border-radius: 20px;
-  background: var(--bg-soft);
-  color: var(--ink-2);
-  border: 1px solid var(--border-2);
-  font-weight: 500;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.modal-section-label {
-  font-size: 0.6rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: var(--ink-3);
-  margin-bottom: 0.55rem;
-}
-
-.modal-desc {
-  font-size: 0.84rem;
-  line-height: 1.75;
-  color: var(--ink-2);
-  margin-bottom: 1.5rem;
-}
-
-.modal-tech-wrap {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 1.6rem;
-}
-
-.modal-tech-chip {
-  font-size: 0.65rem;
-  font-weight: 600;
-  padding: 4px 12px;
-  border-radius: 20px;
-  letter-spacing: 0.02em;
-}
-
-.modal-divider {
-  border: none;
-  border-top: 1px solid var(--border);
-  margin: 1.4rem 0;
-}
-
-.modal-links {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.modal-link-btn {
-  font-size: 0.78rem;
-  font-weight: 600;
-  padding: 10px 22px;
-  border-radius: 30px;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  transition: all 0.2s;
-  cursor: pointer;
-  border: none;
-  font-family: var(--font-body);
-  letter-spacing: 0.01em;
-}
-
-.modal-link-primary {
-  background: var(--ink);
-  color: white;
-}
-
-.modal-link-primary:hover {
-  background: var(--ink-2);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(15,14,12,0.2);
-}
-
-.modal-link-secondary {
-  background: white;
-  color: var(--ink);
-  border: 1.5px solid var(--border-2) !important;
-  box-shadow: var(--shadow-sm);
-}
-
-.modal-link-secondary:hover {
-  border-color: var(--ink) !important;
-  transform: translateY(-2px);
-}
-
-/* ====== ANIMATIONS ====== */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(28px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.fade-up { animation: fadeUp 0.5s ease forwards; }
-
-/* ====== RESPONSIVE ====== */
-@media (max-width: 900px) {
-  .menu-btn { display: block; }
-
-  .nav-links {
-    position: fixed;
-    top: 72px;
-    left: 5%;
-    width: 90%;
-    background: white;
-    flex-direction: column;
-    align-items: center;
-    padding: 1.5rem;
-    gap: 1rem;
-    transition: all 0.3s;
-    border-radius: var(--r-xl);
-    box-shadow: var(--shadow-lg);
-    border: 1px solid var(--border-2);
-    transform: translateY(-16px);
-    opacity: 0;
-    pointer-events: none;
-  }
-
-  .nav-links.active {
-    transform: translateY(0);
-    opacity: 1;
-    pointer-events: all;
-  }
-
-  .hero { padding: 100px 5% 60px; }
-
-  .hero-container {
-    grid-template-columns: 1fr;
-    text-align: center;
-    gap: 2.5rem;
-  }
-
-  .hero h1 { font-size: 3rem; }
-  .hero-stats { justify-content: center; }
-  .btn-group { justify-content: center; }
-  .profile-wrapper { justify-content: center; }
-  .profile-frame { width: 300px; height: 300px; }
-  .chip-1 { left: 0; }
-  .chip-2 { right: 0; }
-  .chip-3 { right: -10px; }
-
-  .hero-desc { margin: 1rem auto 1.5rem; }
-
-  .section-title { text-align: center; }
-  .section-eyebrow { text-align: center; }
-  .section-subtitle { text-align: center; margin-inline: auto; }
-
-  .projects-grid {
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  }
-
-  .contact-grid { grid-template-columns: 1fr; }
-
-  .modal-overlay { padding: 0.75rem; align-items: flex-end; }
-  .modal-box {
-    border-radius: 28px 28px 20px 20px;
-    max-height: 88vh;
-  }
-  .modal-header { padding: 1.5rem 1.6rem 1.3rem; }
-  .modal-body { padding: 1.4rem 1.6rem 2rem; }
-}
-
-@media (max-width: 640px) {
-  nav { top: 12px; padding: 0.7rem 1.4rem; width: 94%; }
-  .logo { font-size: 1.1rem; }
-  .hero { padding: 90px 4% 50px; }
-  .hero h1 { font-size: 2.4rem; }
-  .hero-desc { font-size: 0.88rem; }
-  .hero-stats { gap: 0; width: 100%; }
-  .hero-stat-item { flex: 1; }
-  .stat-value { font-size: 1.6rem; }
-  .btn-primary, .btn-outline { padding: 11px 22px; font-size: 0.84rem; }
-  .profile-frame { width: 260px; height: 260px; }
-  section { padding: 60px 4%; }
-  .section-title { font-size: 1.8rem; }
-  .skills-grid { grid-template-columns: 1fr; gap: 1.2rem; }
-  .skill-card { padding: 1.5rem; }
-  .projects-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-  .project-gallery img { width: 105px; height: 75px; }
-  .project-info { padding: 1.2rem; }
-  .certs-grid { grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
-  .cert-card { padding: 1.3rem 1rem; }
-  .cert-card h3 { font-size: 0.82rem; }
-  .cert-card p { font-size: 0.73rem; }
-  .timeline-title { font-size: 0.95rem; }
-  .contact-info, .contact-form { padding: 1.6rem; }
-  .footer-content { flex-direction: column; text-align: center; gap: 0.8rem; }
-  .modal-overlay { padding: 0; align-items: flex-end; }
-  .modal-box { border-radius: 28px 28px 0 0; max-height: 92vh; width: 100%; }
-  .modal-project-title { font-size: 1.25rem; }
-  .modal-header { padding: 1.3rem 1.4rem 1.1rem; }
-  .modal-body { padding: 1.3rem 1.4rem 2rem; }
-  .modal-close { top: 1rem; right: 1rem; }
-  .modal-meta-chip { font-size: 0.63rem; padding: 3px 10px; }
-  .modal-link-btn { padding: 9px 18px; font-size: 0.73rem; }
-}
-
-@media (max-width: 480px) {
-  nav { top: 10px; padding: 0.65rem 1.2rem; width: 96%; }
-  .hero { padding: 80px 4% 40px; }
-  .hero h1 { font-size: 2rem; letter-spacing: -0.03em; }
-  .hero-badge { font-size: 0.6rem; letter-spacing: 1.5px; }
-  .hero-stats { flex-wrap: wrap; }
-  .stat-value { font-size: 1.45rem; }
-  .stat-label { font-size: 0.64rem; }
-  .btn-group { flex-direction: column; align-items: center; gap: 0.7rem; }
-  .btn-primary, .btn-outline { width: 100%; max-width: 260px; justify-content: center; }
-  .profile-frame { width: 210px; height: 210px; }
-  .profile-chip { display: none; }
-  section { padding: 50px 4%; }
-  .section-title { font-size: 1.55rem; }
-  .project-gallery img { width: 90px; height: 65px; border-radius: 10px; }
-  .project-title { font-size: 1rem; }
-  .project-desc { font-size: 0.74rem; }
-  .certs-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
-  .cert-card { padding: 1.1rem 0.8rem; }
-  .cert-icon { font-size: 1.7rem; }
-  .cert-card h3 { font-size: 0.76rem; }
-  .timeline-item { padding-left: 1.6rem; margin-bottom: 1.6rem; }
-  .contact-info, .contact-form { padding: 1.3rem; }
-  .contact-icon { width: 40px; height: 40px; font-size: 0.95rem; flex-shrink: 0; }
-  .modal-meta-row { gap: 6px; }
-  .modal-tech-wrap { gap: 5px; }
-  .modal-tech-chip { font-size: 0.62rem; padding: 3px 9px; }
-  .modal-links { flex-direction: column; gap: 8px; }
-  .modal-link-btn { width: 100%; justify-content: center; padding: 10px 18px; }
-}
-
-@media (max-width: 360px) {
-  .hero h1 { font-size: 1.75rem; }
-  .hero-stats { gap: 0; }
-  .stat-value { font-size: 1.3rem; }
-  .certs-grid { grid-template-columns: 1fr; }
-  .cert-card {
-    padding: 1.2rem;
-    text-align: left;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  .cert-icon { margin-bottom: 0; flex-shrink: 0; }
-  .cert-badge { display: block; margin-top: 0.3rem; text-align: left; }
-  .modal-project-title { font-size: 1.05rem; }
-  nav { padding: 0.6rem 1rem; }
-}
-
-/* ABOUT */
-@media (max-width: 768px) {
-  #about .section-container > div {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-}
-
-.tech-strip{
-  background:white;
-  border-radius:20px;
-  padding:1.2rem 1.6rem;
-  border:1px solid var(--border);
-  box-shadow:var(--shadow-sm);
-  display:flex;
-  flex-wrap:wrap;
-  gap:0.6rem;
-  margin-top:1rem;
-}
-
-.pill{
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  background:var(--bg-soft);
-  border:1px solid var(--border-2);
-  border-radius:30px;
-  padding:5px 12px;
-  font-size:0.68rem;
-  font-weight:600;
-  color:var(--ink-2);
-  transition:0.2s;
-}
-
-.pill i{
-  font-size:14px;
-}
-
-.pill:hover{
-  transform:translateY(-2px);
-  box-shadow:0 6px 14px rgba(0,0,0,0.08);
-}
-
-/* ABOUT */
-</style>
-</head>
-<body>
-
-<!-- NAV -->
-<nav id="navbar">
-  <div class="nav-container">
-    <div class="logo">Imtiaz Ahmed</div>
-    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">
-      <i class="fas fa-bars"></i>
-    </button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Work</a></li>
-      <li><a href="#certifications">Certificates</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#contact">Connect</a></li>
-    </ul>
-  </div>
-</nav>
-
-<!-- HERO -->
-<section id="home" class="hero">
-  <div class="hero-bg-text">DEVELOPER</div>
-  <div class="hero-shape-1"></div>
-  <div class="hero-shape-2"></div>
-
-  <div class="hero-container">
-    <div>
-      <div class="hero-badge">
-        <span class="hero-badge-dot">✦</span>
-        FULL STACK DEVELOPER | SOFTWARE ARCHITECT
-      </div>
-      <h1>Imtiaz <span class="highlight">Ahmed</span></h1>
-      <div class="typing-wrapper">
-        <span id="typed-text"></span>
-      </div>
-      <p class="hero-desc">
-        Full-stack software engineer with 2.5+ years building responsive websites, e-commerce stores & web applications. Specialized in Laravel, CakePHP, PHP, and modern JavaScript — with a strong grasp of software architecture, OOP, and design patterns.
-      </p>
-      <div class="hero-stats">
-        <div class="hero-stat-item">
-          <span class="stat-value">2.5+</span>
-          <div class="stat-label">Years</div>
-        </div>
-        <div class="hero-stat-item">
-          <span class="stat-value">15+</span>
-          <div class="stat-label">Projects</div>
-        </div>
-        <div class="hero-stat-item">
-          <span class="stat-value">100%</span>
-          <div class="stat-label">Satisfaction</div>
-        </div>
-      </div>
-      <div class="btn-group">
-        <a href="#projects" class="btn-primary">See My Work →</a>
-        <a href="#contact" class="btn-outline">Let's Talk</a>
-      </div>
-    </div>
-    <div class="profile-wrapper">
-      <div class="profile-frame">
-        <img class="profile-img" src="images/dsfsgd.png" alt="Imtiaz Ahmed">
-        <div class="profile-chip chip-1">
-          <span class="chip-dot" style="background:var(--lime);"></span>Available for work
-        </div>
-        <div class="profile-chip chip-2">
-          <span class="chip-dot" style="background:var(--coral);"></span>Laravel Expert
-        </div>
-        <div class="profile-chip chip-3">
-          <span class="chip-dot" style="background:var(--sky);"></span>Full Stack Dev
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about" style="background:var(--bg);padding:90px 5%;position:relative;overflow:hidden;">
-  <div class="section-container">
-    <p class="section-eyebrow">About Me</p>
-    <h2 class="section-title">Who I <span>Am</span></h2>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;margin-top:2rem;">
-
-      <!-- Left -->
-      <div>
-        <p style="color:var(--ink-2);font-size:1rem;font-weight:500;line-height:1.8;margin-bottom:1rem;">
-          I'm a passionate full-stack software engineer and software architect with <strong>2.5+ years</strong> of hands-on experience.
-        </p>
-        <p style="color:var(--ink-3);font-size:0.875rem;line-height:1.8;margin-bottom:0.8rem;">
-          I design and develop responsive websites, e-commerce stores, and web applications. Strong professional experience in <strong>PHP, Laravel, CakePHP</strong>, and modern frontend technologies — with a deep understanding of software architecture, OOP, and design patterns.
-        </p>
-        <p style="color:var(--ink-3);font-size:0.875rem;line-height:1.8;margin-bottom:1.8rem;">
-          I also have experience in cybersecurity, and I'm always open to R&D on new ideas and technologies.
-        </p>
-
-        <div style="display:flex;flex-direction:column;gap:0.6rem;margin-bottom:2rem;">
-          <div style="display:flex;align-items:center;gap:12px;background:white;border-radius:14px;padding:0.75rem 1rem;border:1px solid var(--border);box-shadow:var(--shadow-sm);font-size:0.83rem;color:var(--ink-2);transition:all 0.25s;">
-            <span style="width:34px;height:34px;border-radius:10px;background:var(--lime-pale);display:flex;align-items:center;justify-content:center;color:var(--lime-dark);flex-shrink:0;border:1px solid rgba(168,204,26,0.2);"><i class="fas fa-bolt"></i></span>
-            Performance optimization & scalable architecture
-          </div>
-          <div style="display:flex;align-items:center;gap:12px;background:white;border-radius:14px;padding:0.75rem 1rem;border:1px solid var(--border);box-shadow:var(--shadow-sm);font-size:0.83rem;color:var(--ink-2);">
-            <span style="width:34px;height:34px;border-radius:10px;background:var(--lime-pale);display:flex;align-items:center;justify-content:center;color:var(--lime-dark);flex-shrink:0;border:1px solid rgba(168,204,26,0.2);"><i class="fas fa-shield-alt"></i></span>
-            Cybersecurity awareness & secure coding practices
-          </div>
-          <div style="display:flex;align-items:center;gap:12px;background:white;border-radius:14px;padding:0.75rem 1rem;border:1px solid var(--border);box-shadow:var(--shadow-sm);font-size:0.83rem;color:var(--ink-2);">
-            <span style="width:34px;height:34px;border-radius:10px;background:var(--lime-pale);display:flex;align-items:center;justify-content:center;color:var(--lime-dark);flex-shrink:0;border:1px solid rgba(168,204,26,0.2);"><i class="fab fa-git-alt"></i></span>
-            Git proficiency & collaborative development
-          </div>
-          <div style="display:flex;align-items:center;gap:12px;background:white;border-radius:14px;padding:0.75rem 1rem;border:1px solid var(--border);box-shadow:var(--shadow-sm);font-size:0.83rem;color:var(--ink-2);">
-            <span style="width:34px;height:34px;border-radius:10px;background:var(--lime-pale);display:flex;align-items:center;justify-content:center;color:var(--lime-dark);flex-shrink:0;border:1px solid rgba(168,204,26,0.2);"><i class="fas fa-lightbulb"></i></span>
-            Proactive learner, open to R&D on new technologies
-          </div>
-        </div>
-
-        <button onclick="openAboutModal()" class="btn-primary" style="border:none;cursor:pointer;">
-          Know More <i class="fas fa-arrow-right"></i>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="description" content="Imtiaz Ahmed - Creative Full Stack Developer Portfolio">
+    <title>Imtiaz Ahmed | Software Engineer</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+
+    <!-- Devicon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- CSS file -->
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav id="navbar">
+      <div class="nav-container">
+        <div class="logo">Imtiaz Ahmed</div>
+        <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">
+          <i class="fas fa-bars"></i>
         </button>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Work</a></li>
+          <li><a href="#certifications">Certificates</a></li>
+          <li><a href="#experience">Experience</a></li>
+        </ul>
       </div>
+    </nav>
+    <a href="#contact" class="nav-hire-float">Hire Me</a>
 
-      <!-- Right -->
-      <div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
-          <div style="background:white;border-radius:22px;padding:1.8rem 1.4rem;text-align:center;border:1px solid var(--border);box-shadow:var(--shadow-sm);">
-            <div style="font-family:var(--font-display);font-size:2.6rem;font-weight:800;color:var(--ink);letter-spacing:-0.05em;line-height:1;">2.5+</div>
-            <div style="font-size:0.68rem;font-weight:600;color:var(--ink-3);margin-top:6px;letter-spacing:0.04em;text-transform:uppercase;">Years Experience</div>
+    <!-- HERO -->
+    <section id="home" class="hero">
+      <div class="hero-bg-text">DEVELOPER</div>
+      <div class="hero-shape-1"></div>
+      <div class="hero-shape-2"></div>
+
+      <div class="hero-container">
+        <div>
+          <div class="hero-badge">
+            <span class="hero-badge-dot">✦</span>
+            FULL STACK DEVELOPER | SOFTWARE ARCHITECT
           </div>
-          <div style="background:var(--lime);border-radius:22px;padding:1.8rem 1.4rem;text-align:center;border:1px solid transparent;box-shadow:var(--shadow-sm);">
-            <div style="font-family:var(--font-display);font-size:2.6rem;font-weight:800;color:var(--ink);letter-spacing:-0.05em;line-height:1;">15+</div>
-            <div style="font-size:0.68rem;font-weight:600;color:rgba(15,14,12,0.65);margin-top:6px;letter-spacing:0.04em;text-transform:uppercase;">Projects Done</div>
+          <h1>Imtiaz <span class="highlight">Ahmed</span></h1>
+          <div class="typing-wrapper">
+            <span id="typed-text"></span>
           </div>
-          <div style="background:var(--ink);border-radius:22px;padding:1.8rem 1.4rem;text-align:center;box-shadow:var(--shadow-sm);">
-            <div style="font-family:var(--font-display);font-size:2.6rem;font-weight:800;color:white;letter-spacing:-0.05em;line-height:1;">5+</div>
-            <div style="font-size:0.68rem;font-weight:600;color:rgba(255,255,255,0.5);margin-top:6px;letter-spacing:0.04em;text-transform:uppercase;">Technologies</div>
+          <p class="hero-desc">
+            Full-stack software engineer with 2.5+ years building responsive websites, e-commerce stores & web applications. Specialized in Laravel, CakePHP, PHP, and modern JavaScript — with a strong grasp of software architecture, OOP, and design patterns.
+          </p>
+          <div class="hero-stats">
+            <div class="hero-stat-item">
+              <span class="stat-value">2.5+</span>
+              <div class="stat-label">Years</div>
+            </div>
+            <div class="hero-stat-item">
+              <span class="stat-value">15+</span>
+              <div class="stat-label">Projects</div>
+            </div>
+            <div class="hero-stat-item">
+              <span class="stat-value">100%</span>
+              <div class="stat-label">Satisfaction</div>
+            </div>
           </div>
-          <div style="background:white;border-radius:22px;padding:1.8rem 1.4rem;text-align:center;border:1.5px solid var(--border-2);box-shadow:var(--shadow-sm);">
-            <div style="font-family:var(--font-display);font-size:2.6rem;font-weight:800;color:var(--ink);letter-spacing:-0.05em;line-height:1;">100%</div>
-            <div style="font-size:0.68rem;font-weight:600;color:var(--ink-3);margin-top:6px;letter-spacing:0.04em;text-transform:uppercase;">Satisfaction</div>
-          </div>
-        </div>
-
-        <!-- Tech strip -->
-        <div class="tech-strip">
-
-          <!-- IDE -->
-          <span class="pill"><i class="devicon-vscode-plain colored"></i> VS Code</span>
-
-          <!-- Backend -->
-          <span class="pill"><i class="devicon-laravel-plain colored"></i> Laravel</span>
-          <span class="pill"><i class="devicon-cakephp-plain colored"></i> CakePHP</span>
-          <span class="pill"><i class="devicon-php-plain colored"></i> PHP</span>
-          <span class="pill"><i class="devicon-mysql-plain colored"></i> MySQL</span>
-          <span class="pill"><i class="devicon-python-plain colored"></i> Python</span>
-          <span class="pill"><i class="devicon-java-plain colored"></i> Java</span>
-
-          <!-- Frontend -->
-          <span class="pill"><i class="devicon-react-original colored"></i> React</span>
-          <span class="pill"><i class="devicon-javascript-plain colored"></i> JavaScript</span>
-          <span class="pill"><i class="devicon-jquery-plain colored"></i> jQuery</span>
-          <span class="pill"><i class="devicon-html5-plain colored"></i> HTML5</span>
-          <span class="pill"><i class="devicon-css3-plain colored"></i> CSS3</span>
-          <span class="pill"><i class="devicon-bootstrap-plain colored"></i> Bootstrap</span>
-
-          <!-- Data / Config -->
-          <span class="pill"><i class="fas fa-code-branch"></i> JSON</span>
-          <span class="pill"><i class="fa-brands fa-npm"></i> NPM</span>
-
-          <!-- Dev Tools -->
-          <span class="pill"><i class="fa-solid fa-paper-plane"></i> Postman</span>
-          <span class="pill"><i class="fas fa-terminal"></i> PowerShell</span>
-          <span class="pill"><i class="fas fa-terminal"></i> Bash</span>
-          <span class="pill"><i class="fa-solid fa-box"></i> Composer</span>
-          <span class="pill"><i class="devicon-git-plain colored"></i> Git</span>
-          <span class="pill"><i class="devicon-github-original"></i> GitHub</span>
-
-          <!-- DevOps -->
-          <span class="pill"><i class="devicon-docker-plain colored"></i> Docker</span>
-          <span class="pill"><i class="devicon-linux-plain colored"></i> Linux</span>
-          <span class="pill"><i class="devicon-ubuntu-plain colored"></i> Ubuntu</span>
-          <span class="pill"><i class="devicon-debian-plain colored"></i> Debian</span>
-
-          <!-- Design Tools -->
-          <span class="pill"><i class="devicon-figma-plain colored"></i> Figma</span>
-          <span class="pill"><i class="fas fa-palette"></i> Canva</span>
-          <span class="pill"><i class="fas fa-pen-nib"></i> Illustrator</span>
-
-          <!-- Web / Browser -->
-          <span class="pill"><i class="devicon-google-plain"></i> Google</span>
-          <span class="pill"><i class="devicon-chrome-plain colored"></i> Chrome</span>
-          <span class="pill"><i class="fab fa-stack-overflow"></i> StackOverflow</span>
-
-          <!-- Social -->
-          <span class="pill"><i class="devicon-linkedin-plain"></i> LinkedIn</span>
-
-          <!-- Languages -->
-          <span class="pill"><i class="devicon-c-plain"></i> C</span>
-          <span class="pill"><i class="devicon-cplusplus-plain"></i> C++</span>
-
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- SKILLS -->
-<section id="skills">
-  <div class="section-container">
-
-    <p class="section-eyebrow">Expertise</p>
-    <h2 class="section-title">What I <span>Do Best</span></h2>
-    <p class="section-subtitle">Turning complex problems into elegant, scalable systems.</p>
-
-    <div class="skills-grid">
-
-      <!-- BACKEND -->
-      <div class="skill-card backend">
-        <div class="skill-header">
-          <div class="skill-icon">
-            <i class="devicon-laravel-plain colored"></i>
-          </div>
-          <h3>Backend Architecture</h3>
-        </div>
-
-        <div class="skill-tags">
-          <span class="skill-tag"><i class="devicon-laravel-plain colored"></i> Laravel</span>
-          <span class="skill-tag"><i class="devicon-cakephp-plain colored"></i> CakePHP</span>
-          <span class="skill-tag"><i class="devicon-php-plain colored"></i> PHP 8</span>
-          <span class="skill-tag"><i class="devicon-mysql-plain colored"></i> MySQL</span>
-          <span class="skill-tag"><i class="fas fa-plug"></i> REST API</span>
-        </div>
-      </div>
-
-      <!-- FRONTEND -->
-      <div class="skill-card frontend">
-        <div class="skill-header">
-          <div class="skill-icon">
-            <i class="devicon-react-original colored"></i>
-          </div>
-          <h3>Frontend Craft</h3>
-        </div>
-
-        <div class="skill-tags">
-          <span class="skill-tag"><i class="devicon-javascript-plain colored"></i> JavaScript</span>
-          <span class="skill-tag"><i class="devicon-react-original colored"></i> React</span>
-          <span class="skill-tag"><i class="devicon-tailwindcss-plain colored"></i> Tailwind</span>
-          <span class="skill-tag"><i class="devicon-bootstrap-plain colored"></i> Bootstrap</span>
-        </div>
-      </div>
-
-      <!-- DEVOPS -->
-      <div class="skill-card devops">
-        <div class="skill-header">
-          <div class="skill-icon">
-            <i class="devicon-docker-plain colored"></i>
-          </div>
-          <h3>DevOps & Infrastructure</h3>
-        </div>
-
-        <div class="skill-tags">
-          <span class="skill-tag"><i class="devicon-git-plain colored"></i> Git</span>
-          <span class="skill-tag"><i class="devicon-docker-plain colored"></i> Docker</span>
-          <span class="skill-tag"><i class="devicon-linux-plain colored"></i> Linux</span>
-          <span class="skill-tag"><i class="devicon-amazonwebservices-original colored"></i> AWS</span>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="section-container">
-    <p class="section-eyebrow">Portfolio</p>
-    <h2 class="section-title">Featured <span>Projects</span></h2>
-    <p class="section-subtitle">A selection of real-world work spanning government, fintech & SaaS.</p>
-    <div class="projects-grid">
-
-      <!-- LSG Portal -->
-      <div class="project-card">
-        <div class="project-gallery">
-          <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=200&fit=crop" alt="Server">
-          <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=200&fit=crop" alt="Code">
-          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=200&fit=crop" alt="Dashboard">
-        </div>
-        <div class="project-info">
-          <h3 class="project-title">🏛️ LSG Portal</h3>
-          <p class="project-desc">Government land service gateway with RBAC, API integration, and multilingual support.</p>
-          <div class="project-tech"><span>Laravel</span><span>MySQL</span><span>REST API</span></div>
-          <button class="project-link" onclick="openModal('lsg')">Explore →</button>
-        </div>
-      </div>
-
-      <!-- LDTAX -->
-      <div class="project-card">
-        <div class="project-gallery">
-          <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=200&fit=crop" alt="Fintech">
-          <img src="https://images.unsplash.com/photo-1601597111158-2fceff292cdc?w=200&fit=crop" alt="Payment">
-          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=200&fit=crop" alt="Reports">
-        </div>
-        <div class="project-info">
-          <h3 class="project-title">📑 LDTAX System</h3>
-          <p class="project-desc">Land development tax system with OTP, payment gateway, and reporting.</p>
-          <div class="project-tech"><span>Laravel</span><span>MySQL</span><span>Payment</span></div>
-          <button class="project-link" onclick="openModal('ldtax')">Explore →</button>
-        </div>
-      </div>
-
-      <!-- E-commerce -->
-      <div class="project-card">
-        <div class="project-gallery">
-          <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=200&fit=crop" alt="Tech Team">
-          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=200&fit=crop" alt="Analytics">
-          <img src="https://images.unsplash.com/photo-1587614382346-4ec70e388b28?w=200&fit=crop" alt="Code">
-        </div>
-        <div class="project-info">
-          <h3 class="project-title">🛍️ E-commerce</h3>
-          <p class="project-desc">Complete e-commerce solution with cart, checkout, and inventory.</p>
-          <div class="project-tech"><span>Laravel</span><span>jQuery</span><span>Stripe</span></div>
-          <button class="project-link" onclick="openModal('ecommerce')">Explore →</button>
-        </div>
-      </div>
-
-      <!-- SSTEX Admin -->
-      <div class="project-card">
-        <div class="project-gallery">
-            <img src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=600&fit=crop&auto=format" alt="Quality Inspection">
-            <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&fit=crop&auto=format" alt="Production Management">
-            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&fit=crop&auto=format" alt="Reports & Analytics">
-            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&fit=crop&auto=format" alt="Frontend UI Design">
-        </div>
-        <div class="project-info">
-          <h3 class="project-title">🏢 SSTEX Admin</h3>
-          <p class="project-desc">Dynamic admin panel with Google OAuth and multi-language.</p>
-          <div class="project-tech"><span>Laravel</span><span>OAuth</span><span>AJAX</span></div>
-          <button class="project-link" onclick="openModal('sstex')">Explore →</button>
-        </div>
-      </div>
-
-      <!-- Task Manager -->
-      <div class="project-card">
-        <div class="project-gallery">
-          <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=200&fit=crop" alt="Kanban">
-          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=200&fit=crop" alt="Team">
-          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=200&fit=crop" alt="Laptop">
-        </div>
-        <div class="project-info">
-          <h3 class="project-title">✅ Task Manager</h3>
-          <p class="project-desc">Team collaboration tool with real-time updates.</p>
-          <div class="project-tech"><span>React</span><span>Laravel</span><span>WebSocket</span></div>
-          <button class="project-link" onclick="openModal('taskmanager')">Explore →</button>
-        </div>
-      </div>
-
-      <!-- Analytics Dashboard -->
-      <div class="project-card">
-        <div class="project-gallery">
-          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=200&fit=crop" alt="Analytics">
-          <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=200&fit=crop" alt="Charts">
-          <img src="https://images.unsplash.com/photo-1543286386-713bdd548da4?w=200&fit=crop&auto=format" alt="Data">
-        </div>
-        <div class="project-info">
-          <h3 class="project-title">📊 Analytics Dashboard</h3>
-          <p class="project-desc">Real-time data visualization with interactive charts.</p>
-          <div class="project-tech"><span>React</span><span>Chart.js</span><span>API</span></div>
-          <button class="project-link" onclick="openModal('analytics')">Explore →</button>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- CERT + EXP WRAPPER -->
-<div class="cert-exp-wrapper">
-
-  <!-- floating bg icons -->
-  <div class="floating-tech">
-
-    <!-- Backend -->
-    <i class="devicon-laravel-plain colored"></i>
-    <i class="devicon-php-plain colored"></i>
-    <i class="devicon-mysql-plain colored"></i>
-
-    <!-- Core Dev -->
-    <i class="devicon-javascript-plain colored"></i>
-    <i class="devicon-react-original colored"></i>
-    <i class="devicon-bootstrap-plain colored"></i>
-
-    <!-- DevOps -->
-    <i class="devicon-git-plain colored"></i>
-    <i class="devicon-docker-plain colored"></i>
-    <i class="devicon-linux-plain colored"></i>
-    <i class="devicon-amazonwebservices-original colored"></i>
-
-    <!-- Generic fallback (still useful) -->
-    <i class="fas fa-server"></i>
-    <i class="fas fa-network-wired"></i>
-    <i class="fas fa-layer-group"></i>
-
-  </div>
-
-  <!-- Certifications -->
-  <section id="certifications">
-    <!-- Academic Background Animation -->
-    <div class="academic-floating">
-        <i class="fas fa-graduation-cap"></i>
-        <i class="fas fa-book-open"></i>
-        <i class="fas fa-certificate"></i>
-        <i class="fas fa-award"></i>
-        <i class="fas fa-university"></i>
-        <i class="fas fa-medal"></i>
-        <i class="fas fa-scroll"></i>
-        <i class="fas fa-user-graduate"></i>
-    </div>
-
-    <div class="section-container">
-      <p class="section-eyebrow">Credentials</p>
-      <h2 class="section-title">Certifications</h2>
-      <p class="section-subtitle">Continuous learning through recognized programs.</p>
-      <div class="certs-grid">
-
-        <!-- Bachelor Degree -->
-        <div class="cert-card" onclick="openCertModal('degree')" style="cursor:pointer;">
-          <div class="cert-icon"><i class="fas fa-graduation-cap"></i></div>
-          <h3>Bachelor of Science</h3>
-          <p>Computer Science & Engineering</p>
-          <span class="cert-badge">Jun 2022</span>
-        </div>
-
-        <!-- Cybersecurity -->
-        <div class="cert-card" onclick="openCertModal('cyber')" style="cursor:pointer;">
-          <div class="cert-icon"><i class="fas fa-shield-alt"></i></div>
-          <h3>Cybersecurity</h3>
-          <p>Byte Capsule — Batch Topper 🏆</p>
-          <span class="cert-badge">Aug 2023</span>
-        </div>
-
-        <!-- Big Data -->
-        <div class="cert-card" onclick="openCertModal('bigdata')" style="cursor:pointer;">
-          <div class="cert-icon"><i class="fas fa-database"></i></div>
-          <h3>Big Data Technology</h3>
-          <p>IIT, University of Dhaka</p>
-          <span class="cert-badge">Aug 2023</span>
-        </div>
-
-        <!-- Employability -->
-        <div class="cert-card" onclick="openCertModal('employ')" style="cursor:pointer;">
-          <div class="cert-icon"><i class="fas fa-chalkboard-user"></i></div>
-          <h3>Employability Skilling</h3>
-          <p>Wadhwani Foundation — Advanced</p>
-          <span class="cert-badge">Nov 2023</span>
-        </div>
-
-        <!-- Lean PM -->
-        <div class="cert-card" onclick="openCertModal('lean')" style="cursor:pointer;">
-          <div class="cert-icon"><i class="fas fa-tasks"></i></div>
-          <h3>Lean Project Management</h3>
-          <p>LeanPM® Foundation</p>
-          <span class="cert-badge">Feb 2026</span>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Experience -->
-  <section id="experience">
-    <div class="section-container">
-      <p class="section-eyebrow">Career</p>
-      <h2 class="section-title">Work Experience</h2>
-      <p class="section-subtitle">Building production software at scale since 2022.</p>
-      <div class="timeline">
-
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <span class="timeline-date">2023 — Present</span>
-            <h3 class="timeline-title">Junior Software Engineer</h3>
-            <p class="timeline-company">Mysoftheaven (BD) LTD.</p>
+          <div class="btn-group">
+            <a href="#projects" class="btn-primary">See My Work →</a>
+            <a href="#contact" class="btn-outline">Let's Talk</a>
           </div>
         </div>
-
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <span class="timeline-date">2022 — 2023</span>
-            <h3 class="timeline-title">Support & Implementation Engineer</h3>
-            <p class="timeline-company">Mysoftheaven (BD) LTD.</p>
+        <div class="profile-wrapper">
+          <div class="profile-frame">
+            <img class="profile-img" src="images/dsfsgd.png" alt="Imtiaz Ahmed">
+            <div class="profile-chip chip-1">
+              <span class="chip-dot" style="background:var(--lime);"></span>Available for work
+            </div>
+            <div class="profile-chip chip-2">
+              <span class="chip-dot" style="background:var(--coral);"></span>Laravel Expert
+            </div>
+            <div class="profile-chip chip-3">
+              <span class="chip-dot" style="background:var(--sky);"></span>Full Stack Dev
+            </div>
           </div>
         </div>
-
       </div>
-    </div>
-  </section>
+    </section>
 
-</div>
-<!-- END CERT + EXP WRAPPER -->
+    <!-- ABOUT -->
+    <section id="about" style="background:var(--bg);padding:90px 5%;position:relative;overflow:hidden;">
+      <div class="section-container">
+        <p class="section-eyebrow">About Me</p>
+        <h2 class="section-title">Who I <span>Am</span></h2>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;margin-top:2rem;">
 
-<!-- CONTACT -->
-<section id="contact">
-  <div class="section-container">
-    <p class="section-eyebrow">Get in touch</p>
-    <h2 class="section-title">Let's <span>Connect</span></h2>
-    <p class="section-subtitle">Open to new opportunities, collaborations, and a good chess match.</p>
-    <div class="contact-grid">
-      <div class="contact-info">
-        <p class="contact-info-title">Let's build something great together.</p>
-        <p class="contact-info-sub">I'm always happy to hear about new projects and ideas.</p>
-        <div class="contact-item">
-          <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-          <div><strong>Email</strong><span>sakibimtiaz07@gmail.com</span></div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-          <div><strong>Location</strong><span>Dhaka, Bangladesh</span></div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-icon"><i class="fas fa-chess-queen"></i></div>
-          <div><strong>Chess Lover</strong><span>♟️ Up for a game anytime</span></div>
-        </div>
-      </div>
-      <form class="contact-form" id="contactForm">
-        <p class="contact-form-title">Send a message</p>
-        <div class="form-group">
-          <label>Your name</label>
-          <input type="text" placeholder="John Doe" required>
-        </div>
-        <div class="form-group">
-          <label>Email address</label>
-          <input type="email" placeholder="you@example.com" required>
-        </div>
-        <div class="form-group">
-          <label>Message</label>
-          <textarea placeholder="Tell me about your project" required></textarea>
-        </div>
-        <button type="submit" class="btn-primary" style="border: none; cursor: pointer;">Send Message →</button>
-      </form>
-    </div>
-  </div>
-</section>
+          <!-- Left -->
+          <div>
+            <p style="color:var(--ink-2);font-size:1rem;font-weight:500;line-height:1.8;margin-bottom:1rem;">
+              I'm a passionate full-stack software engineer and software architect with <strong>2.5+ years</strong> of hands-on experience.
+            </p>
+            <p style="color:var(--ink-3);font-size:0.875rem;line-height:1.8;margin-bottom:0.8rem;">
+              I design and develop responsive websites, e-commerce stores, and web applications. Strong professional experience in <strong>PHP, Laravel, CakePHP</strong>, and modern frontend technologies — with a deep understanding of software architecture, OOP, and design patterns.
+            </p>
+            <p style="color:var(--ink-3);font-size:0.875rem;line-height:1.8;margin-bottom:1.8rem;">
+              I also have experience in cybersecurity, and I'm always open to R&D on new ideas and technologies.
+            </p>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-content">
-    <div class="footer-logo">Imtiaz Ahmed</div>
-    <div class="social-links">
-      <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
-      <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-      <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-      <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-    </div>
-    <p class="footer-copy">© 2026 Imtiaz Ahmed</p>
-  </div>
-</footer>
+            <div style="display:flex;flex-direction:column;gap:0.6rem;margin-bottom:2rem;">
+              <div style="display:flex;align-items:center;gap:12px;background:white;border-radius:14px;padding:0.75rem 1rem;border:1px solid var(--border);box-shadow:var(--shadow-sm);font-size:0.83rem;color:var(--ink-2);transition:all 0.25s;">
+                <span style="width:34px;height:34px;border-radius:10px;background:var(--lime-pale);display:flex;align-items:center;justify-content:center;color:var(--lime-dark);flex-shrink:0;border:1px solid rgba(168,204,26,0.2);"><i class="fas fa-bolt"></i></span>
+                Performance optimization & scalable architecture
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;background:white;border-radius:14px;padding:0.75rem 1rem;border:1px solid var(--border);box-shadow:var(--shadow-sm);font-size:0.83rem;color:var(--ink-2);">
+                <span style="width:34px;height:34px;border-radius:10px;background:var(--lime-pale);display:flex;align-items:center;justify-content:center;color:var(--lime-dark);flex-shrink:0;border:1px solid rgba(168,204,26,0.2);"><i class="fas fa-shield-alt"></i></span>
+                Cybersecurity awareness & secure coding practices
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;background:white;border-radius:14px;padding:0.75rem 1rem;border:1px solid var(--border);box-shadow:var(--shadow-sm);font-size:0.83rem;color:var(--ink-2);">
+                <span style="width:34px;height:34px;border-radius:10px;background:var(--lime-pale);display:flex;align-items:center;justify-content:center;color:var(--lime-dark);flex-shrink:0;border:1px solid rgba(168,204,26,0.2);"><i class="fab fa-git-alt"></i></span>
+                Git proficiency & collaborative development
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;background:white;border-radius:14px;padding:0.75rem 1rem;border:1px solid var(--border);box-shadow:var(--shadow-sm);font-size:0.83rem;color:var(--ink-2);">
+                <span style="width:34px;height:34px;border-radius:10px;background:var(--lime-pale);display:flex;align-items:center;justify-content:center;color:var(--lime-dark);flex-shrink:0;border:1px solid rgba(168,204,26,0.2);"><i class="fas fa-lightbulb"></i></span>
+                Proactive learner, open to R&D on new technologies
+              </div>
+            </div>
 
-<!-- PROJECT MODAL -->
-<div class="modal-overlay" id="projectModal">
-  <div class="modal-box" id="modalBox">
-    <div class="modal-header" id="modalHeader">
-      <span class="modal-type-badge" id="modalBadge"></span>
-      <h3 class="modal-project-title" id="modalTitle"></h3>
-      <p class="modal-company" id="modalCompany"></p>
-      <button class="modal-close" onclick="closeModal()" aria-label="Close modal">✕</button>
-    </div>
-    <div class="modal-body">
-      <div class="modal-meta-row" id="modalMeta"></div>
-      <p class="modal-section-label">About the project</p>
-      <p class="modal-desc" id="modalDesc"></p>
-      <p class="modal-section-label">Technologies used</p>
-      <div class="modal-tech-wrap" id="modalTech"></div>
-      <hr class="modal-divider">
-      <div class="modal-links" id="modalLinks"></div>
-    </div>
-  </div>
-</div>
+            <button onclick="openAboutModal()" class="btn-primary" style="border:none;cursor:pointer;">
+              Know More <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
 
-<!-- ABOUT MODAL -->
-<div class="modal-overlay" id="aboutModal">
-  <div class="modal-box" style="max-width:720px;border-radius:32px;">
-    <div style="padding:2rem 2rem 1.6rem;position:relative;background:linear-gradient(135deg,#edfcb2 0%,#f8f7f4 60%);border-bottom:1px solid var(--border);border-radius:32px 32px 0 0;">
-      <span style="display:inline-flex;align-items:center;gap:6px;font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;padding:5px 14px;border-radius:20px;margin-bottom:0.8rem;background:var(--lime);color:var(--ink);border:1px solid rgba(168,204,26,0.4);"><i class="fas fa-code"></i> Full Stack Engineer</span>
-      <h3 style="font-family:var(--font-display);font-size:1.7rem;font-weight:800;letter-spacing:-0.04em;color:var(--ink);margin-bottom:0.2rem;">Imtiaz Ahmed</h3>
-      <p style="font-size:0.82rem;color:var(--ink-3);font-weight:500;">Software Engineer · Mysoftheaven (BD) LTD. · Dhaka, Bangladesh</p>
-      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:1rem;">
-        <span style="display:inline-flex;align-items:center;gap:6px;font-size:0.68rem;font-weight:600;padding:5px 13px;border-radius:20px;background:var(--bg-soft);color:var(--ink-2);border:1px solid var(--border-2);"><i class="fas fa-briefcase"></i> 2.5+ Years</span>
-        <span style="display:inline-flex;align-items:center;gap:6px;font-size:0.68rem;font-weight:600;padding:5px 13px;border-radius:20px;background:var(--bg-soft);color:var(--ink-2);border:1px solid var(--border-2);"><i class="fab fa-laravel" style="color:#FF2D20"></i> Laravel Expert</span>
-        <span style="display:inline-flex;align-items:center;gap:6px;font-size:0.68rem;font-weight:600;padding:5px 13px;border-radius:20px;background:var(--bg-soft);color:var(--ink-2);border:1px solid var(--border-2);"><i class="fas fa-shield-alt" style="color:#4fb3e8"></i> Cybersecurity</span>
-        <span style="display:inline-flex;align-items:center;gap:6px;font-size:0.68rem;font-weight:600;padding:5px 13px;border-radius:20px;background:var(--bg-soft);color:var(--ink-2);border:1px solid var(--border-2);"><i class="fas fa-map-marker-alt"></i> Dhaka, BD</span>
-      </div>
-      <button class="modal-close" onclick="closeAboutModal()">✕</button>
-    </div>
-    <div class="modal-body">
+          <!-- Right -->
+          <div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+              <div style="background:white;border-radius:22px;padding:1.8rem 1.4rem;text-align:center;border:1px solid var(--border);box-shadow:var(--shadow-sm);">
+                <div style="font-family:var(--font-display);font-size:2.6rem;font-weight:800;color:var(--ink);letter-spacing:-0.05em;line-height:1;">2.5+</div>
+                <div style="font-size:0.68rem;font-weight:600;color:var(--ink-3);margin-top:6px;letter-spacing:0.04em;text-transform:uppercase;">Years Experience</div>
+              </div>
+              <div style="background:var(--lime);border-radius:22px;padding:1.8rem 1.4rem;text-align:center;border:1px solid transparent;box-shadow:var(--shadow-sm);">
+                <div style="font-family:var(--font-display);font-size:2.6rem;font-weight:800;color:var(--ink);letter-spacing:-0.05em;line-height:1;">15+</div>
+                <div style="font-size:0.68rem;font-weight:600;color:rgba(15,14,12,0.65);margin-top:6px;letter-spacing:0.04em;text-transform:uppercase;">Projects Done</div>
+              </div>
+              <div style="background:var(--ink);border-radius:22px;padding:1.8rem 1.4rem;text-align:center;box-shadow:var(--shadow-sm);">
+                <div style="font-family:var(--font-display);font-size:2.6rem;font-weight:800;color:white;letter-spacing:-0.05em;line-height:1;">5+</div>
+                <div style="font-size:0.68rem;font-weight:600;color:rgba(255,255,255,0.5);margin-top:6px;letter-spacing:0.04em;text-transform:uppercase;">Technologies</div>
+              </div>
+              <div style="background:white;border-radius:22px;padding:1.8rem 1.4rem;text-align:center;border:1.5px solid var(--border-2);box-shadow:var(--shadow-sm);">
+                <div style="font-family:var(--font-display);font-size:2.6rem;font-weight:800;color:var(--ink);letter-spacing:-0.05em;line-height:1;">100%</div>
+                <div style="font-size:0.68rem;font-weight:600;color:var(--ink-3);margin-top:6px;letter-spacing:0.04em;text-transform:uppercase;">Satisfaction</div>
+              </div>
+            </div>
 
-      <p class="modal-section-label">About</p>
-      <p class="modal-desc">I have 2.5+ years of experience as a full-stack software engineer and software architect. I am working in a company as a software engineer and have designed and developed responsive websites, e-commerce stores, and web applications. I have strong professional working experience with PHP, PHP Frameworks (Laravel, CakePHP), and also frontend technologies — with a deep understanding of software architecture, software design, maintenance, OOP, and design patterns. Additionally, I have experience in cybersecurity.</p>
+            <!-- Tech strip -->
+            <div class="tech-strip">
 
-      <p class="modal-section-label">Professional Highlights</p>
-      <p class="modal-desc">In my journey as a software engineer, I have successfully contributed to projects that demanded a deep understanding of backend technologies. My ability to architect scalable solutions and optimize code has led to the development of high-performance applications. I am adept at leveraging Laravel's powerful features and crafting efficient algorithms to solve complex problems.</p>
+              <!-- IDE -->
+              <span class="pill"><i class="devicon-vscode-plain colored"></i> VS Code</span>
 
-      <p class="modal-section-label">Skills & Expertise</p>
-      <div style="display:flex;flex-direction:column;gap:0.55rem;margin-bottom:1.6rem;">
-        <div style="display:flex;align-items:flex-start;gap:10px;background:var(--bg-soft);border-radius:13px;padding:0.75rem 1rem;border:1px solid var(--border);font-size:0.83rem;color:var(--ink-2);line-height:1.55;">
-          <span style="width:28px;height:28px;border-radius:8px;background:var(--lime-pale);display:flex;align-items:center;justify-content:center;color:var(--lime-dark);flex-shrink:0;"><i class="fas fa-code"></i></span>
-          Proficient in HTML, CSS, JavaScript, PHP, and MySQL — developing responsive websites and web applications from scratch.
-        </div>
-        <div style="display:flex;align-items:flex-start;gap:10px;background:var(--bg-soft);border-radius:13px;padding:0.75rem 1rem;border:1px solid var(--border);font-size:0.83rem;color:var(--ink-2);line-height:1.55;">
-          <span style="width:28px;height:28px;border-radius:8px;background:var(--lime-pale);display:flex;align-items:center;justify-content:center;color:var(--lime-dark);flex-shrink:0;"><i class="fas fa-bolt"></i></span>
-          Performance Optimization — specializing in optimizing applications for speed and efficiency, ensuring an exceptional user experience.
-        </div>
-        <div style="display:flex;align-items:flex-start;gap:10px;background:var(--bg-soft);border-radius:13px;padding:0.75rem 1rem;border:1px solid var(--border);font-size:0.83rem;color:var(--ink-2);line-height:1.55;">
-          <span style="width:28px;height:28px;border-radius:8px;background:var(--lime-pale);display:flex;align-items:center;justify-content:center;color:var(--lime-dark);flex-shrink:0;"><i class="fas fa-expand-arrows-alt"></i></span>
-          Scalability — solutions designed to handle increased loads and growing user bases with ease.
-        </div>
-        <div style="display:flex;align-items:flex-start;gap:10px;background:var(--bg-soft);border-radius:13px;padding:0.75rem 1rem;border:1px solid var(--border);font-size:0.83rem;color:var(--ink-2);line-height:1.55;">
-          <span style="width:28px;height:28px;border-radius:8px;background:var(--lime-pale);display:flex;align-items:center;justify-content:center;color:var(--lime-dark);flex-shrink:0;"><i class="fab fa-git-alt"></i></span>
-          Git Proficiency — reliable version control enabling streamlined collaboration and code management.
-        </div>
-        <div style="display:flex;align-items:flex-start;gap:10px;background:var(--bg-soft);border-radius:13px;padding:0.75rem 1rem;border:1px solid var(--border);font-size:0.83rem;color:var(--ink-2);line-height:1.55;">
-          <span style="width:28px;height:28px;border-radius:8px;background:var(--lime-pale);display:flex;align-items:center;justify-content:center;color:var(--lime-dark);flex-shrink:0;"><i class="fas fa-lightbulb"></i></span>
-          Proactive, fast learner, result-oriented — open to R&D on new ideas and technologies.
+              <!-- Backend -->
+              <span class="pill"><i class="devicon-laravel-plain colored"></i> Laravel</span>
+              <span class="pill"><i class="devicon-cakephp-plain colored"></i> CakePHP</span>
+              <span class="pill"><i class="devicon-php-plain colored"></i> PHP</span>
+              <span class="pill"><i class="devicon-mysql-plain colored"></i> MySQL</span>
+              <span class="pill"><i class="devicon-python-plain colored"></i> Python</span>
+              <span class="pill"><i class="devicon-java-plain colored"></i> Java</span>
+
+              <!-- Frontend -->
+              <span class="pill"><i class="devicon-react-original colored"></i> React</span>
+              <span class="pill"><i class="devicon-javascript-plain colored"></i> JavaScript</span>
+              <span class="pill"><i class="devicon-jquery-plain colored"></i> jQuery</span>
+              <span class="pill"><i class="devicon-html5-plain colored"></i> HTML5</span>
+              <span class="pill"><i class="devicon-css3-plain colored"></i> CSS3</span>
+              <span class="pill"><i class="devicon-bootstrap-plain colored"></i> Bootstrap</span>
+
+              <!-- Data / Config -->
+              <span class="pill"><i class="fas fa-code-branch"></i> JSON</span>
+              <span class="pill"><i class="fa-brands fa-npm"></i> NPM</span>
+
+              <!-- Dev Tools -->
+              <span class="pill"><i class="fa-solid fa-paper-plane"></i> Postman</span>
+              <span class="pill"><i class="fas fa-terminal"></i> PowerShell</span>
+              <span class="pill"><i class="fas fa-terminal"></i> Bash</span>
+              <span class="pill"><i class="fa-solid fa-box"></i> Composer</span>
+              <span class="pill"><i class="devicon-git-plain colored"></i> Git</span>
+              <span class="pill"><i class="devicon-github-original"></i> GitHub</span>
+
+              <!-- DevOps -->
+              <span class="pill"><i class="devicon-docker-plain colored"></i> Docker</span>
+              <span class="pill"><i class="devicon-linux-plain colored"></i> Linux</span>
+              <span class="pill"><i class="devicon-ubuntu-plain colored"></i> Ubuntu</span>
+              <span class="pill"><i class="devicon-debian-plain colored"></i> Debian</span>
+
+              <!-- Design Tools -->
+              <span class="pill"><i class="devicon-figma-plain colored"></i> Figma</span>
+              <span class="pill"><i class="fas fa-palette"></i> Canva</span>
+              <span class="pill"><i class="fas fa-pen-nib"></i> Illustrator</span>
+
+              <!-- Web / Browser -->
+              <span class="pill"><i class="devicon-google-plain"></i> Google</span>
+              <span class="pill"><i class="devicon-chrome-plain colored"></i> Chrome</span>
+              <span class="pill"><i class="fab fa-stack-overflow"></i> StackOverflow</span>
+
+              <!-- Social -->
+              <span class="pill"><i class="devicon-linkedin-plain"></i> LinkedIn</span>
+
+              <!-- Languages -->
+              <span class="pill"><i class="devicon-c-plain"></i> C</span>
+              <span class="pill"><i class="devicon-cplusplus-plain"></i> C++</span>
+
+            </div>
+          </div>
+
         </div>
       </div>
+    </section>
 
-      <hr class="modal-divider">
-      <p style="font-size:0.82rem;color:var(--ink-3);line-height:1.75;margin-bottom:1.5rem;font-style:italic;padding-left:1rem;border-left:3px solid var(--lime);">
-        I am enthusiastic about taking on new challenges, collaborating with passionate teams, and contributing to innovative projects. A hardworking, confident, and highly ambitious individual with a strong desire to learn new skills.
-      </p>
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="section-container">
 
-      <div class="modal-links">
-        <a href="mailto:sakibimtiaz07@gmail.com" class="modal-link-btn modal-link-primary"><i class="fas fa-envelope"></i> Get In Touch</a>
-        <a href="https://github.com/mrahmedsakib" target="_blank" class="modal-link-btn modal-link-secondary"><i class="fab fa-github"></i> GitHub</a>
-        <a href="https://sites.google.com/view/mrahmedsakib" target="_blank" class="modal-link-btn modal-link-secondary"><i class="fas fa-external-link-alt"></i> Portfolio Site</a>
+        <p class="section-eyebrow">Expertise</p>
+        <h2 class="section-title">What I <span>Do Best</span></h2>
+        <p class="section-subtitle">Turning complex problems into elegant, scalable systems.</p>
+
+        <div class="skills-grid">
+
+          <!-- BACKEND -->
+          <div class="skill-card backend">
+            <div class="skill-header">
+              <div class="skill-icon">
+                <i class="devicon-laravel-plain colored"></i>
+              </div>
+              <h3>Backend Architecture</h3>
+            </div>
+
+            <div class="skill-tags">
+              <span class="skill-tag"><i class="devicon-laravel-plain colored"></i> Laravel</span>
+              <span class="skill-tag"><i class="devicon-cakephp-plain colored"></i> CakePHP</span>
+              <span class="skill-tag"><i class="devicon-php-plain colored"></i> PHP 8</span>
+              <span class="skill-tag"><i class="devicon-mysql-plain colored"></i> MySQL</span>
+              <span class="skill-tag"><i class="fas fa-plug"></i> REST API</span>
+            </div>
+          </div>
+
+          <!-- FRONTEND -->
+          <div class="skill-card frontend">
+            <div class="skill-header">
+              <div class="skill-icon">
+                <i class="devicon-react-original colored"></i>
+              </div>
+              <h3>Frontend Craft</h3>
+            </div>
+
+            <div class="skill-tags">
+              <span class="skill-tag"><i class="devicon-javascript-plain colored"></i> JavaScript</span>
+              <span class="skill-tag"><i class="devicon-react-original colored"></i> React</span>
+              <span class="skill-tag"><i class="devicon-tailwindcss-plain colored"></i> Tailwind</span>
+              <span class="skill-tag"><i class="devicon-bootstrap-plain colored"></i> Bootstrap</span>
+            </div>
+          </div>
+
+          <!-- DEVOPS -->
+          <div class="skill-card devops">
+            <div class="skill-header">
+              <div class="skill-icon">
+                <i class="devicon-docker-plain colored"></i>
+              </div>
+              <h3>DevOps & Infrastructure</h3>
+            </div>
+
+            <div class="skill-tags">
+              <span class="skill-tag"><i class="devicon-git-plain colored"></i> Git</span>
+              <span class="skill-tag"><i class="devicon-docker-plain colored"></i> Docker</span>
+              <span class="skill-tag"><i class="devicon-linux-plain colored"></i> Linux</span>
+              <span class="skill-tag"><i class="fab fa-aws"></i> AWS</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="section-container">
+        <p class="section-eyebrow">Portfolio</p>
+        <h2 class="section-title">Featured <span>Projects</span></h2>
+        <p class="section-subtitle">A selection of real-world work spanning government, fintech & SaaS.</p>
+        <div class="projects-grid">
+
+          <!-- LSG Portal -->
+          <div class="project-card">
+            <div class="project-gallery">
+              <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=200&fit=crop" alt="Server">
+              <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=200&fit=crop" alt="Code">
+              <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=200&fit=crop" alt="Dashboard">
+            </div>
+            <div class="project-info">
+              <h3 class="project-title">🏛️ LSG Portal</h3>
+              <p class="project-desc">Government land service gateway with RBAC, API integration, and multilingual support.</p>
+              <div class="project-tech"><span>Laravel</span><span>MySQL</span><span>REST API</span></div>
+              <button class="project-link" onclick="openModal('lsg')">Explore →</button>
+            </div>
+          </div>
+
+          <!-- LDTAX -->
+          <div class="project-card">
+            <div class="project-gallery">
+              <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=200&fit=crop" alt="Fintech">
+              <img src="https://images.unsplash.com/photo-1601597111158-2fceff292cdc?w=200&fit=crop" alt="Payment">
+              <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=200&fit=crop" alt="Reports">
+            </div>
+            <div class="project-info">
+              <h3 class="project-title">📑 LDTAX System</h3>
+              <p class="project-desc">Land development tax system with OTP, payment gateway, and reporting.</p>
+              <div class="project-tech"><span>Laravel</span><span>MySQL</span><span>Payment</span></div>
+              <button class="project-link" onclick="openModal('ldtax')">Explore →</button>
+            </div>
+          </div>
+
+          <!-- E-commerce -->
+          <div class="project-card">
+            <div class="project-gallery">
+              <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=200&fit=crop" alt="Tech Team">
+              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=200&fit=crop" alt="Analytics">
+              <img src="https://images.unsplash.com/photo-1587614382346-4ec70e388b28?w=200&fit=crop" alt="Code">
+            </div>
+            <div class="project-info">
+              <h3 class="project-title">🛍️ E-commerce</h3>
+              <p class="project-desc">Complete e-commerce solution with cart, checkout, and inventory.</p>
+              <div class="project-tech"><span>Laravel</span><span>jQuery</span><span>Stripe</span></div>
+              <button class="project-link" onclick="openModal('ecommerce')">Explore →</button>
+            </div>
+          </div>
+
+          <!-- SSTEX Admin -->
+          <div class="project-card">
+            <div class="project-gallery">
+                <img src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=600&fit=crop&auto=format" alt="Quality Inspection">
+                <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&fit=crop&auto=format" alt="Production Management">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&fit=crop&auto=format" alt="Reports & Analytics">
+                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&fit=crop&auto=format" alt="Frontend UI Design">
+            </div>
+            <div class="project-info">
+              <h3 class="project-title">🏢 SSTEX Admin</h3>
+              <p class="project-desc">Dynamic admin panel with Google OAuth and multi-language.</p>
+              <div class="project-tech"><span>Laravel</span><span>OAuth</span><span>AJAX</span></div>
+              <button class="project-link" onclick="openModal('sstex')">Explore →</button>
+            </div>
+          </div>
+
+          <!-- Task Manager -->
+          <div class="project-card">
+            <div class="project-gallery">
+              <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=200&fit=crop" alt="Kanban">
+              <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=200&fit=crop" alt="Team">
+              <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=200&fit=crop" alt="Laptop">
+            </div>
+            <div class="project-info">
+              <h3 class="project-title">✅ Task Manager</h3>
+              <p class="project-desc">Team collaboration tool with real-time updates.</p>
+              <div class="project-tech"><span>React</span><span>Laravel</span><span>WebSocket</span></div>
+              <button class="project-link" onclick="openModal('taskmanager')">Explore →</button>
+            </div>
+          </div>
+
+          <!-- Analytics Dashboard -->
+          <div class="project-card">
+            <div class="project-gallery">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=200&fit=crop" alt="Analytics">
+              <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=200&fit=crop" alt="Charts">
+              <img src="https://images.unsplash.com/photo-1543286386-713bdd548da4?w=200&fit=crop&auto=format" alt="Data">
+            </div>
+            <div class="project-info">
+              <h3 class="project-title">📊 Analytics Dashboard</h3>
+              <p class="project-desc">Real-time data visualization with interactive charts.</p>
+              <div class="project-tech"><span>React</span><span>Chart.js</span><span>API</span></div>
+              <button class="project-link" onclick="openModal('analytics')">Explore →</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CERT + EXP WRAPPER -->
+    <div class="cert-exp-wrapper">
+
+      <!-- floating bg icons -->
+      <div class="floating-tech">
+
+        <!-- Backend -->
+        <i class="devicon-laravel-plain colored"></i>
+        <i class="devicon-php-plain colored"></i>
+        <i class="devicon-mysql-plain colored"></i>
+
+        <!-- Core Dev -->
+        <i class="devicon-javascript-plain colored"></i>
+        <i class="devicon-react-original colored"></i>
+        <i class="devicon-bootstrap-plain colored"></i>
+
+        <!-- DevOps -->
+        <i class="devicon-git-plain colored"></i>
+        <i class="devicon-docker-plain colored"></i>
+        <i class="devicon-linux-plain colored"></i>
+        <i class="devicon-amazonwebservices-original colored"></i>
+
+        <!-- Generic fallback (still useful) -->
+        <i class="fas fa-server"></i>
+        <i class="fas fa-network-wired"></i>
+        <i class="fas fa-layer-group"></i>
+
+      </div>
+
+      <!-- Certifications -->
+      <section id="certifications">
+        <!-- Academic Background Animation -->
+        <div class="academic-floating">
+            <i class="fas fa-graduation-cap"></i>
+            <i class="fas fa-book-open"></i>
+            <i class="fas fa-certificate"></i>
+            <i class="fas fa-award"></i>
+            <i class="fas fa-university"></i>
+            <i class="fas fa-medal"></i>
+            <i class="fas fa-scroll"></i>
+            <i class="fas fa-user-graduate"></i>
+        </div>
+
+        <div class="section-container">
+          <p class="section-eyebrow">Credentials</p>
+          <h2 class="section-title">Certifications</h2>
+          <p class="section-subtitle">Continuous learning through recognized programs.</p>
+          <div class="certs-grid">
+
+            <!-- Bachelor Degree -->
+            <div class="cert-card" onclick="openCertModal('degree')" style="cursor:pointer;">
+              <div class="cert-icon"><i class="fas fa-graduation-cap"></i></div>
+              <h3>Bachelor of Science</h3>
+              <p>Computer Science & Engineering</p>
+              <span class="cert-badge">Jun 2022</span>
+            </div>
+
+            <!-- Cybersecurity -->
+            <div class="cert-card" onclick="openCertModal('cyber')" style="cursor:pointer;">
+              <div class="cert-icon"><i class="fas fa-shield-alt"></i></div>
+              <h3>Cybersecurity</h3>
+              <p>Byte Capsule — Batch Topper 🏆</p>
+              <span class="cert-badge">Aug 2023</span>
+            </div>
+
+            <!-- Big Data -->
+            <div class="cert-card" onclick="openCertModal('bigdata')" style="cursor:pointer;">
+              <div class="cert-icon"><i class="fas fa-database"></i></div>
+              <h3>Big Data Technology</h3>
+              <p>IIT, University of Dhaka</p>
+              <span class="cert-badge">Aug 2023</span>
+            </div>
+
+            <!-- Employability -->
+            <div class="cert-card" onclick="openCertModal('employ')" style="cursor:pointer;">
+              <div class="cert-icon"><i class="fas fa-chalkboard-user"></i></div>
+              <h3>Employability Skilling</h3>
+              <p>Wadhwani Foundation — Advanced</p>
+              <span class="cert-badge">Nov 2023</span>
+            </div>
+
+            <!-- Lean PM -->
+            <div class="cert-card" onclick="openCertModal('lean')" style="cursor:pointer;">
+              <div class="cert-icon"><i class="fas fa-tasks"></i></div>
+              <h3>Lean Project Management</h3>
+              <p>LeanPM® Foundation</p>
+              <span class="cert-badge">Feb 2026</span>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Experience -->
+      <section id="experience">
+        <div class="section-container">
+          <p class="section-eyebrow">Career</p>
+          <h2 class="section-title">Work Experience</h2>
+          <p class="section-subtitle">Building production software at scale since 2022.</p>
+          <div class="timeline">
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <span class="timeline-date">2023 — Present</span>
+                <h3 class="timeline-title">Junior Software Engineer</h3>
+                <p class="timeline-company">Mysoftheaven (BD) LTD.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <span class="timeline-date">2022 — 2023</span>
+                <h3 class="timeline-title">Support & Implementation Engineer</h3>
+                <p class="timeline-company">Mysoftheaven (BD) LTD.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+    </div>
+    <!-- END CERT + EXP WRAPPER -->
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-container">
+        <p class="section-eyebrow">Get in touch</p>
+        <h2 class="section-title">Let's <span>Connect</span></h2>
+        <p class="section-subtitle">Open to new opportunities, collaborations, and a good chess match.</p>
+        <div class="contact-grid">
+          <div class="contact-info">
+            <p class="contact-info-title">Let's build something great together.</p>
+            <p class="contact-info-sub">I'm always happy to hear about new projects and ideas.</p>
+            <div class="contact-item">
+              <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+              <div><strong>Email</strong><span>sakibimtiaz07@gmail.com</span></div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+              <div><strong>Location</strong><span>Dhaka, Bangladesh</span></div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon"><i class="fas fa-chess-queen"></i></div>
+              <div><strong>Chess Lover</strong><span>♟️ Up for a game anytime</span></div>
+            </div>
+          </div>
+          <form class="contact-form" id="contactForm">
+            <p class="contact-form-title">Send a message</p>
+            <div class="form-group">
+              <label>Your name</label>
+              <input type="text" placeholder="John Doe" required>
+            </div>
+            <div class="form-group">
+              <label>Email address</label>
+              <input type="email" placeholder="you@example.com" required>
+            </div>
+            <div class="form-group">
+              <label>Message</label>
+              <textarea placeholder="Tell me about your project" required></textarea>
+            </div>
+            <button type="submit" class="btn-primary" style="border: none; cursor: pointer;">Send Message →</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-logo">Imtiaz Ahmed</div>
+        <div class="social-links">
+          <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p class="footer-copy">© 2026 Imtiaz Ahmed</p>
+      </div>
+    </footer>
+
+    <!-- PROJECT MODAL -->
+    <div class="modal-overlay" id="projectModal">
+      <div class="modal-box" id="modalBox">
+        <div class="modal-header" id="modalHeader">
+          <span class="modal-type-badge" id="modalBadge"></span>
+          <h3 class="modal-project-title" id="modalTitle"></h3>
+          <p class="modal-company" id="modalCompany"></p>
+          <button class="modal-close" onclick="closeModal()" aria-label="Close modal">✕</button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-meta-row" id="modalMeta"></div>
+          <p class="modal-section-label">About the project</p>
+          <p class="modal-desc" id="modalDesc"></p>
+          <p class="modal-section-label">Technologies used</p>
+          <div class="modal-tech-wrap" id="modalTech"></div>
+          <hr class="modal-divider">
+          <div class="modal-links" id="modalLinks"></div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
-<!-- CERT MODAL -->
-<div class="modal-overlay" id="certModal">
-  <div class="modal-box" style="max-width:620px;">
-    <div class="modal-header" id="certModalHeader">
-      <span class="modal-type-badge" id="certBadge"></span>
-      <h3 class="modal-project-title" id="certTitle"></h3>
-      <p class="modal-company" id="certOrg"></p>
-      <button class="modal-close" onclick="closeCertModal()">✕</button>
+    <!-- ABOUT MODAL -->
+    <div class="modal-overlay" id="aboutModal">
+      <div class="modal-box" style="max-width:720px;border-radius:32px;">
+        <div style="padding:2rem 2rem 1.6rem;position:relative;background:linear-gradient(135deg,#edfcb2 0%,#f8f7f4 60%);border-bottom:1px solid var(--border);border-radius:32px 32px 0 0;">
+          <span style="display:inline-flex;align-items:center;gap:6px;font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;padding:5px 14px;border-radius:20px;margin-bottom:0.8rem;background:var(--lime);color:var(--ink);border:1px solid rgba(168,204,26,0.4);"><i class="fas fa-code"></i> Full Stack Engineer</span>
+          <h3 style="font-family:var(--font-display);font-size:1.7rem;font-weight:800;letter-spacing:-0.04em;color:var(--ink);margin-bottom:0.2rem;">Imtiaz Ahmed</h3>
+          <p style="font-size:0.82rem;color:var(--ink-3);font-weight:500;">Software Engineer · Mysoftheaven (BD) LTD. · Dhaka, Bangladesh</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:1rem;">
+            <span style="display:inline-flex;align-items:center;gap:6px;font-size:0.68rem;font-weight:600;padding:5px 13px;border-radius:20px;background:var(--bg-soft);color:var(--ink-2);border:1px solid var(--border-2);"><i class="fas fa-briefcase"></i> 2.5+ Years</span>
+            <span style="display:inline-flex;align-items:center;gap:6px;font-size:0.68rem;font-weight:600;padding:5px 13px;border-radius:20px;background:var(--bg-soft);color:var(--ink-2);border:1px solid var(--border-2);"><i class="fab fa-laravel" style="color:#FF2D20"></i> Laravel Expert</span>
+            <span style="display:inline-flex;align-items:center;gap:6px;font-size:0.68rem;font-weight:600;padding:5px 13px;border-radius:20px;background:var(--bg-soft);color:var(--ink-2);border:1px solid var(--border-2);"><i class="fas fa-shield-alt" style="color:#4fb3e8"></i> Cybersecurity</span>
+            <span style="display:inline-flex;align-items:center;gap:6px;font-size:0.68rem;font-weight:600;padding:5px 13px;border-radius:20px;background:var(--bg-soft);color:var(--ink-2);border:1px solid var(--border-2);"><i class="fas fa-map-marker-alt"></i> Dhaka, BD</span>
+          </div>
+          <button class="modal-close" onclick="closeAboutModal()">✕</button>
+        </div>
+        <div class="modal-body">
+
+          <p class="modal-section-label">About</p>
+          <p class="modal-desc">I have 2.5+ years of experience as a full-stack software engineer and software architect. I am working in a company as a software engineer and have designed and developed responsive websites, e-commerce stores, and web applications. I have strong professional working experience with PHP, PHP Frameworks (Laravel, CakePHP), and also frontend technologies — with a deep understanding of software architecture, software design, maintenance, OOP, and design patterns. Additionally, I have experience in cybersecurity.</p>
+
+          <p class="modal-section-label">Professional Highlights</p>
+          <p class="modal-desc">In my journey as a software engineer, I have successfully contributed to projects that demanded a deep understanding of backend technologies. My ability to architect scalable solutions and optimize code has led to the development of high-performance applications. I am adept at leveraging Laravel's powerful features and crafting efficient algorithms to solve complex problems.</p>
+
+          <p class="modal-section-label">Skills & Expertise</p>
+          <div style="display:flex;flex-direction:column;gap:0.55rem;margin-bottom:1.6rem;">
+            <div style="display:flex;align-items:flex-start;gap:10px;background:var(--bg-soft);border-radius:13px;padding:0.75rem 1rem;border:1px solid var(--border);font-size:0.83rem;color:var(--ink-2);line-height:1.55;">
+              <span style="width:28px;height:28px;border-radius:8px;background:var(--lime-pale);display:flex;align-items:center;justify-content:center;color:var(--lime-dark);flex-shrink:0;"><i class="fas fa-code"></i></span>
+              Proficient in HTML, CSS, JavaScript, PHP, and MySQL — developing responsive websites and web applications from scratch.
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:10px;background:var(--bg-soft);border-radius:13px;padding:0.75rem 1rem;border:1px solid var(--border);font-size:0.83rem;color:var(--ink-2);line-height:1.55;">
+              <span style="width:28px;height:28px;border-radius:8px;background:var(--lime-pale);display:flex;align-items:center;justify-content:center;color:var(--lime-dark);flex-shrink:0;"><i class="fas fa-bolt"></i></span>
+              Performance Optimization — specializing in optimizing applications for speed and efficiency, ensuring an exceptional user experience.
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:10px;background:var(--bg-soft);border-radius:13px;padding:0.75rem 1rem;border:1px solid var(--border);font-size:0.83rem;color:var(--ink-2);line-height:1.55;">
+              <span style="width:28px;height:28px;border-radius:8px;background:var(--lime-pale);display:flex;align-items:center;justify-content:center;color:var(--lime-dark);flex-shrink:0;"><i class="fas fa-expand-arrows-alt"></i></span>
+              Scalability — solutions designed to handle increased loads and growing user bases with ease.
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:10px;background:var(--bg-soft);border-radius:13px;padding:0.75rem 1rem;border:1px solid var(--border);font-size:0.83rem;color:var(--ink-2);line-height:1.55;">
+              <span style="width:28px;height:28px;border-radius:8px;background:var(--lime-pale);display:flex;align-items:center;justify-content:center;color:var(--lime-dark);flex-shrink:0;"><i class="fab fa-git-alt"></i></span>
+              Git Proficiency — reliable version control enabling streamlined collaboration and code management.
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:10px;background:var(--bg-soft);border-radius:13px;padding:0.75rem 1rem;border:1px solid var(--border);font-size:0.83rem;color:var(--ink-2);line-height:1.55;">
+              <span style="width:28px;height:28px;border-radius:8px;background:var(--lime-pale);display:flex;align-items:center;justify-content:center;color:var(--lime-dark);flex-shrink:0;"><i class="fas fa-lightbulb"></i></span>
+              Proactive, fast learner, result-oriented — open to R&D on new ideas and technologies.
+            </div>
+          </div>
+
+          <hr class="modal-divider">
+          <p style="font-size:0.82rem;color:var(--ink-3);line-height:1.75;margin-bottom:1.5rem;font-style:italic;padding-left:1rem;border-left:3px solid var(--lime);">
+            I am enthusiastic about taking on new challenges, collaborating with passionate teams, and contributing to innovative projects. A hardworking, confident, and highly ambitious individual with a strong desire to learn new skills.
+          </p>
+
+          <div class="modal-links">
+            <a href="mailto:sakibimtiaz07@gmail.com" class="modal-link-btn modal-link-primary"><i class="fas fa-envelope"></i> Get In Touch</a>
+            <a href="https://github.com/mrahmedsakib" target="_blank" class="modal-link-btn modal-link-secondary"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://sites.google.com/view/mrahmedsakib" target="_blank" class="modal-link-btn modal-link-secondary"><i class="fas fa-external-link-alt"></i> Portfolio Site</a>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="modal-body">
-      <div class="modal-meta-row" id="certMeta"></div>
-      <p class="modal-section-label">Details</p>
-      <p class="modal-desc" id="certDesc"></p>
-      <hr class="modal-divider">
-      <div class="modal-links" id="certLinks"></div>
+
+    <!-- CERT MODAL -->
+    <div class="modal-overlay" id="certModal">
+      <div class="modal-box" style="max-width:620px;">
+        <div class="modal-header" id="certModalHeader">
+          <span class="modal-type-badge" id="certBadge"></span>
+          <h3 class="modal-project-title" id="certTitle"></h3>
+          <p class="modal-company" id="certOrg"></p>
+          <button class="modal-close" onclick="closeCertModal()">✕</button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-meta-row" id="certMeta"></div>
+          <p class="modal-section-label">Details</p>
+          <p class="modal-desc" id="certDesc"></p>
+          <hr class="modal-divider">
+          <div class="modal-links" id="certLinks"></div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-<script>
-// ========== TYPING ANIMATION ==========
-const texts = [
-  "Software Engineer",
-  "Laravel Developer",
-  "Full Stack Developer",
-  "Software Architect",
-  "PHP & Laravel Expert",
-  "Creating Web Experiences",
-  "Writing Clean Code",
-  "Solving problems",
-  "Bug Fixing"
-];
-let idx = 0, char = 0, del = false;
-const typedEl = document.getElementById("typed-text");
-
-function typeEffect() {
-  const current = texts[idx];
-  if (del) {
-    typedEl.textContent = current.substring(0, char - 1);
-    char--;
-  } else {
-    typedEl.textContent = current.substring(0, char + 1);
-    char++;
-  }
-
-  if (!del && char === current.length) {
-    del = true;
-    setTimeout(typeEffect, 2000);
-    return;
-  }
-
-  if (del && char === 0) {
-    del = false;
-    idx = (idx + 1) % texts.length;
-  }
-
-  setTimeout(typeEffect, del ? 50 : 100);
-}
-typeEffect();
-
-// ========== NAV SCROLL ==========
-window.addEventListener("scroll", () => {
-  const nav = document.getElementById("navbar");
-  if (window.scrollY > 50) nav.classList.add("scrolled");
-  else nav.classList.remove("scrolled");
-});
-
-// ========== MOBILE MENU ==========
-const menuBtn = document.getElementById("menuBtn");
-const navLinks = document.getElementById("navLinks");
-menuBtn.addEventListener("click", () => navLinks.classList.toggle("active"));
-
-document.querySelectorAll('.nav-links a').forEach(link => {
-  link.addEventListener('click', () => navLinks.classList.remove('active'));
-});
-
-// ========== CONTACT FORM ==========
-document.getElementById("contactForm").addEventListener("submit", (e) => {
-  e.preventDefault();
-  alert("✨ Thanks for reaching out! I'll respond within 24 hours.");
-  e.target.reset();
-});
-
-// ========== SCROLL ANIMATION ==========
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.style.opacity = '1';
-      entry.target.style.transform = 'translateY(0)';
-    }
-  });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.skill-card, .project-card, .cert-card, .timeline-item').forEach(el => {
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(25px)';
-  el.style.transition = '0.5s ease';
-  observer.observe(el);
-});
-
-// ========== PROJECT DATA ==========
-const projects = {
-  lsg: {
-    title: "🏛️ LSG Portal",
-    company: "Mysoftheaven (BD) LTD.",
-    badge: "Government Portal",
-    headerBg: "#f0fdf4",
-    badgeBg: "#dcfce7",
-    badgeColor: "#166534",
-    titleColor: "#14532d",
-    companyColor: "#15803d",
-    techBg: "#f0fdf4",
-    techColor: "#166534",
-    techBorder: "#bbf7d0",
-    meta: [
-      { icon: "📅", label: "2023 — Ongoing" },
-      { icon: "💻", label: "Laravel / PHP 8" },
-      { icon: "🌐", label: "Web Application" }
-    ],
-    desc: "A government land service gateway system that provides citizens and officials with a unified portal to manage land-related services. Features role-based access control (RBAC), external API integrations, and multilingual support to serve a diverse user base across Bangladesh.",
-    tech: ["Laravel", "PHP 8", "MySQL", "REST API", "RBAC", "Blade Templating", "Bootstrap", "jQuery", "MVC Architecture", "GitHub"],
-    links: [
-      { label: "🌐 Live Portal", url: "#", type: "primary" }
-    ]
-  },
-  ldtax: {
-    title: "📑 LDTAX System",
-    company: "Mysoftheaven (BD) LTD.",
-    badge: "FinTech / GovTech",
-    headerBg: "#fffbeb",
-    badgeBg: "#fef3c7",
-    badgeColor: "#92400e",
-    titleColor: "#78350f",
-    companyColor: "#b45309",
-    techBg: "#fffbeb",
-    techColor: "#92400e",
-    techBorder: "#fde68a",
-    meta: [
-      { icon: "📅", label: "2023 — Ongoing" },
-      { icon: "💻", label: "Laravel / PHP 8" },
-      { icon: "💳", label: "Payment Gateway" }
-    ],
-    desc: "A land development tax management system built for government use. Enables citizens to calculate, pay, and track land development tax online. Integrated OTP-based verification for secure authentication, a payment gateway for seamless transactions, and automated reporting for administrators.",
-    tech: ["Laravel", "PHP 8", "MySQL", "Payment Gateway", "OTP Auth", "Blade Templating", "Bootstrap", "jQuery", "PDF Reports", "MVC Architecture", "GitHub"],
-    links: [
-      { label: "🌐 Live System", url: "#", type: "primary" }
-    ]
-  },
-  ecommerce: {
-    title: "🛍️ E-commerce Platform",
-    company: "Personal / Client Project",
-    badge: "E-Commerce",
-    headerBg: "#fdf4ff",
-    badgeBg: "#fae8ff",
-    badgeColor: "#6b21a8",
-    titleColor: "#581c87",
-    companyColor: "#7e22ce",
-    techBg: "#fdf4ff",
-    techColor: "#6b21a8",
-    techBorder: "#e9d5ff",
-    meta: [
-      { icon: "📅", label: "2023" },
-      { icon: "💻", label: "Laravel / jQuery" },
-      { icon: "💳", label: "Stripe Payments" }
-    ],
-    desc: "A full-featured e-commerce solution built from scratch. Includes product catalog management, shopping cart, secure checkout with Stripe payment integration, order tracking, and inventory management. Admin panel allows real-time stock control and sales analytics.",
-    tech: ["Laravel", "PHP 8", "MySQL", "jQuery", "Stripe", "Blade Templating", "Bootstrap", "REST API", "Inventory Management", "Order Tracking", "GitHub"],
-    links: [
-      { label: "🛒 View Store", url: "#", type: "primary" },
-      { label: "⚙️ Admin Panel", url: "#", type: "secondary" }
-    ]
-  },
-  sstex: {
-    title: "🏢 SSTEX Admin Panel",
-    company: "SSTEX GROUP BD",
-    badge: "Web Application",
-
-    images: [
-      "images/sstex-admin-dashboard.jpg",
-      "images/sstex-home-page.jpg"
-    ],
-
-
-    headerBg: "#f0fdf4",
-    badgeBg: "#dcfce7",
-    badgeColor: "#166534",
-    titleColor: "#14532d",
-    companyColor: "#15803d",
-    techBg: "#f0fdf4",
-    techColor: "#166534",
-    techBorder: "#bbf7d0",
-    meta: [
-      { icon: "📅", label: "Nov 2024 – Jun 2025" },
-      { icon: "💻", label: "PHP 8 / Laravel 10" },
-      { icon: "🌐", label: "Web Application" }
-    ],
-    desc: "Developed a fully dynamic admin panel for SSTEX GROUP BD to manage Sliders, Services, Products, CEO Messages, and Blog content. Integrated role-based authentication, optimized MySQL queries, image upload with validation, newsletter system, contact forms, Google OAuth login, and multilingual (Bangla & English) support. Built with responsive design, scalability, and maintainability in mind.",
-    tech: ["Laravel 10", "PHP 8", "MySQL", "Blade Templating", "Tailwind CSS", "JavaScript", "REST APIs", "Role-Based Auth", "Google OAuth", "Image Upload & Validation", "Newsletter System", "Contact Form", "Multilingual (Bangla & English)", "MVC Architecture", "GitHub"],
-    links: [
-      { label: "🖥️ Admin Dashboard", url: "#", type: "primary" },
-      { label: "🏠 Home Page", url: "#", type: "secondary" }
-    ]
-  },
-  taskmanager: {
-    title: "✅ Task Manager",
-    company: "Personal / Team Project",
-    badge: "Collaboration Tool",
-    headerBg: "#eff6ff",
-    badgeBg: "#dbeafe",
-    badgeColor: "#1e40af",
-    titleColor: "#1e3a8a",
-    companyColor: "#1d4ed8",
-    techBg: "#eff6ff",
-    techColor: "#1e40af",
-    techBorder: "#bfdbfe",
-    meta: [
-      { icon: "📅", label: "2024" },
-      { icon: "💻", label: "React / Laravel" },
-      { icon: "⚡", label: "Real-time / WebSocket" }
-    ],
-    desc: "A team collaboration tool with real-time task updates using WebSocket technology. Features drag-and-drop Kanban boards, task assignment, priority management, deadline tracking, and team chat. React frontend communicates with a Laravel REST API backend for seamless user experience.",
-    tech: ["React", "Laravel", "PHP 8", "MySQL", "WebSocket", "REST API", "Tailwind CSS", "Kanban Board", "Real-time Updates", "JWT Auth", "GitHub"],
-    links: [
-      { label: "🚀 Live App", url: "#", type: "primary" },
-      { label: "💻 Source Code", url: "#", type: "secondary" }
-    ]
-  },
-  analytics: {
-    title: "📊 Analytics Dashboard",
-    company: "Personal / Client Project",
-    badge: "Data Visualization",
-    headerBg: "#f0fdfa",
-    badgeBg: "#ccfbf1",
-    badgeColor: "#065f46",
-    titleColor: "#064e3b",
-    companyColor: "#059669",
-    techBg: "#f0fdfa",
-    techColor: "#065f46",
-    techBorder: "#99f6e4",
-    meta: [
-      { icon: "📅", label: "2024" },
-      { icon: "💻", label: "React / Chart.js" },
-      { icon: "📊", label: "Data Visualization" }
-    ],
-    desc: "A real-time analytics dashboard with interactive charts and live data feeds via REST API. Displays KPIs, user activity trends, revenue metrics, and conversion funnels through visually rich Chart.js components. Designed for business intelligence and performance monitoring with a clean, modern UI.",
-    tech: ["React", "Chart.js", "REST API", "JavaScript", "Tailwind CSS", "Real-time Data", "Recharts", "Axios", "CSS Animations", "GitHub"],
-    links: [
-      { label: "📊 Live Dashboard", url: "#", type: "primary" },
-      { label: "💻 Source Code", url: "#", type: "secondary" }
-    ]
-  }
-};
-
-// ========== OPEN MODAL ==========
-function openModal(key) {
-  const p = projects[key];
-  if (!p) return;
-
-  document.getElementById('modalHeader').style.background = p.headerBg;
-
-  const badge = document.getElementById('modalBadge');
-  badge.textContent = p.badge;
-  badge.style.cssText = `background:${p.badgeBg}; color:${p.badgeColor}; font-size:0.6rem; font-weight:700; text-transform:uppercase; letter-spacing:2px; padding:4px 12px; border-radius:20px; margin-bottom:0.7rem; display:inline-block; position:relative; z-index:1;`;
-
-  const title = document.getElementById('modalTitle');
-  title.textContent = p.title;
-  title.style.color = p.titleColor;
-
-  const company = document.getElementById('modalCompany');
-  company.textContent = p.company;
-  company.style.color = p.companyColor;
-
-  const meta = document.getElementById('modalMeta');
-  meta.innerHTML = p.meta.map(m =>
-    `<span class="modal-meta-chip">${m.icon} ${m.label}</span>`
-  ).join('');
-
-  document.getElementById('modalDesc').textContent = p.desc;
-
-  const techWrap = document.getElementById('modalTech');
-  techWrap.innerHTML = p.tech.map(t =>
-    `<span class="modal-tech-chip" style="background:${p.techBg}; color:${p.techColor}; border:1px solid ${p.techBorder};">${t}</span>`
-  ).join('');
-
-  const links = document.getElementById('modalLinks');
-  links.innerHTML = p.links.map(l => {
-    const cls = l.type === 'primary' ? 'modal-link-btn modal-link-primary' : 'modal-link-btn modal-link-secondary';
-    return `<a href="${l.url}" class="${cls}" target="_blank">${l.label}</a>`;
-  }).join('');
-
-  const overlay = document.getElementById('projectModal');
-  overlay.classList.add('active');
-  document.body.style.overflow = 'hidden';
-}
-
-// ========== CLOSE MODAL ==========
-function closeModal() {
-  document.getElementById('projectModal').classList.remove('active');
-  document.body.style.overflow = '';
-}
-
-document.getElementById('projectModal').addEventListener('click', function(e) {
-  if (e.target === this) closeModal();
-});
-
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') {
-    closeModal();
-    closeAboutModal();
-    closeCertModal();
-  }
-});
-
-// About Modal
-function openAboutModal() {
-  document.getElementById('aboutModal').classList.add('active');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeAboutModal() {
-  document.getElementById('aboutModal').classList.remove('active');
-  document.body.style.overflow = '';
-}
-
-document.getElementById('aboutModal').addEventListener('click', function(e) {
-  if (e.target === this) closeAboutModal();
-});
-
-// About Modal End
-
-// Certifications
-const certs = {
-  degree: {
-    title: "🎓 Bachelor of Science",
-    org: "Computer Science & Engineering · Faculty of Engineering",
-    badge: "Academic Degree",
-    headerBg: "#eff6ff",
-    badgeBg: "#dbeafe", badgeColor: "#1e40af",
-    titleColor: "#1e3a8a", orgColor: "#1d4ed8",
-    meta: [
-      { icon: "📅", label: "Completed June 2022" },
-      { icon: "🏛️", label: "Faculty of Engineering" },
-      { icon: "💻", label: "Computer Science & Engineering" }
-    ],
-    desc: "Successfully completed my Bachelor's degree program in Computer Science and Engineering in June 2022 from the Faculty of Engineering. The program covered core areas of software engineering, algorithms, data structures, database systems, and computer networks.",
-    links: []
-  },
-  cyber: {
-    title: "🛡️ Cybersecurity for Professionals",
-    org: "Byte Capsule · 4th Batch",
-    badge: "🏆 Batch Topper",
-    headerBg: "#fdf4ff",
-    badgeBg: "#fae8ff", badgeColor: "#6b21a8",
-    titleColor: "#581c87", orgColor: "#7e22ce",
-    meta: [
-      { icon: "📅", label: "Aug 2023" },
-      { icon: "⏱️", label: "6-Month Program" },
-      { icon: "🏆", label: "Batch Topper" }
-    ],
-    desc: "Completed the Cybersecurity for Professionals course in August 2023 from the 4th batch of Byte Capsule. The course was a 6-month self-learning program covering cybersecurity fundamentals, ethical hacking, network security, and secure coding practices. Achieved batch topper distinction.",
-    links: [
-      { label: "🔗 View Certificate", url: "#", type: "primary" }
-    ]
-  },
-  bigdata: {
-    title: "📊 Big Data Technology",
-    org: "IIT, University of Dhaka · EDGE Project",
-    badge: "Govt. Program",
-    headerBg: "#f0fdfa",
-    badgeBg: "#ccfbf1", badgeColor: "#065f46",
-    titleColor: "#064e3b", orgColor: "#059669",
-    meta: [
-      { icon: "📅", label: "26 May – 01 Aug 2023" },
-      { icon: "🏛️", label: "University of Dhaka" },
-      { icon: "🌐", label: "BCC · ICT Division" }
-    ],
-    desc: "Successfully completed the training on Big Data Technology under the Hire and Train program of the Enhancing Digital Government & Economy (EDGE) project by the Bangladesh Computer Council (BCC), ICT Division. The program was organized by Mysoftheaven (BD) Ltd. and managed by the Institute of Information Technology (IIT), University of Dhaka — conducted from 26 May 2023 to 01 August 2023.",
-    links: [
-      { label: "🔗 View Certificate", url: "#", type: "primary" }
-    ]
-  },
-  employ: {
-    title: "💼 21st Century Employability Skilling",
-    org: "Wadhwani Foundation · EDGE (BCC)",
-    badge: "Advanced Level",
-    headerBg: "#fffbeb",
-    badgeBg: "#fef3c7", badgeColor: "#92400e",
-    titleColor: "#78350f", orgColor: "#b45309",
-    meta: [
-      { icon: "📅", label: "27 Nov 2023" },
-      { icon: "📈", label: "Advanced Level" },
-      { icon: "🌐", label: "Digital Government & Economy — EDGE" }
-    ],
-    desc: "Completed the 21st Century Employability Skilling Program — Advanced level on 27 November 2023 under the Digital Government and Economy — EDGE program by BCC. The program covered professional skills, digital literacy, workplace communication, and career readiness for the modern tech industry.",
-    links: [
-      { label: "🔗 View Certificate", url: "#", type: "primary" }
-    ]
-  },
-  lean: {
-    title: "📋 Lean Project Management",
-    org: "LeanPM® Foundation",
-    badge: "Professional Cert",
-    headerBg: "#f0fdf4",
-    badgeBg: "#dcfce7", badgeColor: "#166534",
-    titleColor: "#14532d", orgColor: "#15803d",
-    meta: [
-      { icon: "📅", label: "Feb 2026" },
-      { icon: "🏅", label: "LeanPM® Foundation" },
-      { icon: "⚙️", label: "Agile & Lean Methodology" }
-    ],
-    desc: "Completed the LeanPM® Foundation certification in Lean Project Management in February 2026. The certification covers lean principles, agile methodologies, waste elimination, continuous improvement (Kaizen), and applying lean thinking to software project management.",
-    links: [
-      { label: "🔗 View Certificate", url: "#", type: "primary" }
-    ]
-  }
-};
-
-function openCertModal(key) {
-  const c = certs[key];
-  if (!c) return;
-
-  document.getElementById('certModalHeader').style.background = c.headerBg;
-
-  const badge = document.getElementById('certBadge');
-  badge.textContent = c.badge;
-  badge.style.cssText = `background:${c.badgeBg};color:${c.badgeColor};font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;padding:4px 12px;border-radius:20px;margin-bottom:0.7rem;display:inline-block;`;
-
-  const title = document.getElementById('certTitle');
-  title.textContent = c.title;
-  title.style.color = c.titleColor;
-
-  const org = document.getElementById('certOrg');
-  org.textContent = c.org;
-  org.style.color = c.orgColor;
-
-  document.getElementById('certMeta').innerHTML = c.meta.map(m =>
-    `<span class="modal-meta-chip">${m.icon} ${m.label}</span>`
-  ).join('');
-
-  document.getElementById('certDesc').textContent = c.desc;
-
-  document.getElementById('certLinks').innerHTML = c.links.map(l =>
-    `<a href="${l.url}" class="modal-link-btn ${l.type === 'primary' ? 'modal-link-primary' : 'modal-link-secondary'}" target="_blank">${l.label}</a>`
-  ).join('') || '<span style="font-size:0.78rem;color:var(--ink-3);">No external link available.</span>';
-
-  document.getElementById('certModal').classList.add('active');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeCertModal() {
-  document.getElementById('certModal').classList.remove('active');
-  document.body.style.overflow = '';
-}
-
-document.getElementById('certModal').addEventListener('click', function(e) {
-  if (e.target === this) closeCertModal();
-});
-
-// Certifications End
-
-</script>
-</body>
+    <!-- JS file -->
+    <script src="script.js" defer></script>
+  </body>
 </html>
